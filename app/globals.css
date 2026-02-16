@@ -52,72 +52,72 @@
 
 :root {
   --radius: 0.625rem;
-  --background: 229 18.64% 23.14%; /* base */
-  --foreground: 227 70.15% 86.86%; /* text */
-  --card: 229 18.64% 23.14%; /* base */
-  --card-foreground: 227 70.15% 86.86%; /* text */
-  --popover: 229 18.64% 23.14%; /* base */
-  --popover-foreground: 227 70.15% 86.86%; /* text */
-  --primary: 222 74.24% 74.12%; /* accent - Blue */
-  --primary-foreground: 229 18.64% 23.14%; /* base */
-  --secondary: 230 15.58% 30.20%; /* surface0 */
-  --secondary-foreground: 227 70.15% 86.86%; /* text */
-  --muted: 230 15.58% 30.20%; /* surface0 */
-  --muted-foreground: 227 43.69% 79.80%; /* subtext1 */
-  --accent: 230 15.58% 30.20%; /* surface0 */
-  --accent-foreground: 227 70.15% 86.86%; /* text */
-  --destructive: 359 67.79% 70.78%; /* red */
-  --border: 227 14.74% 37.25%; /* surface1 */
-  --input: 227 14.74% 37.25%; /* surface1 */
-  --ring: 227 70.15% 86.86%; /* text */
-  --chart-1: 341 18.43% 40.00%; /* red */
-  --chart-2: 191 18.43% 39.22%; /* teal */
-  --chart-3: 224 23.53% 43.53%; /* blue */
-  --chart-4: 31 9.41% 43.53%; /* yellow */
-  --chart-5: 126 9.41% 41.18%; /* green */
-  --sidebar: 229 18.82% 21.96%; /* mantle */
-  --sidebar-foreground: 227 70.15% 86.86%; /* text */
-  --sidebar-primary: 222 74.24% 74.12%; /* accent - Blue */
-  --sidebar-primary-foreground: 229 18.64% 23.14%; /* base */
-  --sidebar-accent: 229 18.64% 23.14%; /* surface0 */
-  --sidebar-accent-foreground: 227 70.15% 86.86%; /* text */
-  --sidebar-border: 227 14.74% 37.25%; /* surface1 */
-  --sidebar-ring: 227 14.74% 37.25%; /* surface1 */
+  --background: 240 21.05% 14.90%; /* base */
+  --foreground: 226 63.93% 88.04%; /* text */
+  --card: 240 21.05% 14.90%; /* base */
+  --card-foreground: 226 63.93% 88.04%; /* text */
+  --popover: 240 21.05% 14.90%; /* base */
+  --popover-foreground: 226 63.93% 88.04%; /* text */
+  --primary: 217 91.87% 75.88%; /* accent - Blue */
+  --primary-foreground: 240 21.05% 14.90%; /* base */
+  --secondary: 237 16.24% 22.94%; /* surface0 */
+  --secondary-foreground: 226 63.93% 88.04%; /* text */
+  --muted: 237 16.24% 22.94%; /* surface0 */
+  --muted-foreground: 227 35.29% 80.00%; /* subtext1 */
+  --accent: 237 16.24% 22.94%; /* surface0 */
+  --accent-foreground: 226 63.93% 88.04%; /* text */
+  --destructive: 343 81.25% 74.90%; /* red */
+  --border: 234 13.21% 31.18%; /* surface1 */
+  --input: 234 13.21% 31.18%; /* surface1 */
+  --ring: 226 63.93% 88.04%; /* text */
+  --chart-1: 329 21.57% 37.25%; /* red */
+  --chart-2: 188 18.82% 37.25%; /* teal */
+  --chart-3: 221 27.45% 39.61%; /* blue */
+  --chart-4: 30 9.41% 42.35%; /* yellow */
+  --chart-5: 139 12.94% 38.04%; /* green */
+  --sidebar: 240 21.18% 14.12%; /* mantle */
+  --sidebar-foreground: 226 63.93% 88.04%; /* text */
+  --sidebar-primary: 217 91.87% 75.88%; /* accent - Blue */
+  --sidebar-primary-foreground: 240 21.05% 14.90%; /* base */
+  --sidebar-accent: 240 21.05% 14.90%; /* surface0 */
+  --sidebar-accent-foreground: 226 63.93% 88.04%; /* text */
+  --sidebar-border: 234 13.21% 31.18%; /* surface1 */
+  --sidebar-ring: 234 13.21% 31.18%; /* surface1 */
 }
 
 .dark {
   --radius: 0.625rem;
-  --background: 229 18.64% 23.14%; /* base */
-  --foreground: 227 70.15% 86.86%; /* text */
-  --card: 229 18.64% 23.14%; /* base */
-  --card-foreground: 227 70.15% 86.86%; /* text */
-  --popover: 229 18.64% 23.14%; /* base */
-  --popover-foreground: 227 70.15% 86.86%; /* text */
-  --primary: 222 74.24% 74.12%; /* accent - Blue */
-  --primary-foreground: 229 18.64% 23.14%; /* base */
-  --secondary: 230 15.58% 30.20%; /* surface0 */
-  --secondary-foreground: 227 70.15% 86.86%; /* text */
-  --muted: 230 15.58% 30.20%; /* surface0 */
-  --muted-foreground: 227 43.69% 79.80%; /* subtext1 */
-  --accent: 230 15.58% 30.20%; /* surface0 */
-  --accent-foreground: 227 70.15% 86.86%; /* text */
-  --destructive: 359 67.79% 70.78%; /* red */
-  --border: 227 14.74% 37.25%; /* surface1 */
-  --input: 227 14.74% 37.25%; /* surface1 */
-  --ring: 227 70.15% 86.86%; /* text */
-  --chart-1: 341 18.43% 40.00%; /* red */
-  --chart-2: 191 18.43% 39.22%; /* teal */
-  --chart-3: 224 23.53% 43.53%; /* blue */
-  --chart-4: 31 9.41% 43.53%; /* yellow */
-  --chart-5: 126 9.41% 41.18%; /* green */
-  --sidebar: 229 18.82% 21.96%; /* mantle */
-  --sidebar-foreground: 227 70.15% 86.86%; /* text */
-  --sidebar-primary: 222 74.24% 74.12%; /* accent - Blue */
-  --sidebar-primary-foreground: 229 18.64% 23.14%; /* base */
-  --sidebar-accent: 229 18.64% 23.14%; /* surface0 */
-  --sidebar-accent-foreground: 227 70.15% 86.86%; /* text */
-  --sidebar-border: 227 14.74% 37.25%; /* surface1 */
-  --sidebar-ring: 227 14.74% 37.25%; /* surface1 */
+  --background: 240 21.05% 14.90%; /* base */
+  --foreground: 226 63.93% 88.04%; /* text */
+  --card: 240 21.05% 14.90%; /* base */
+  --card-foreground: 226 63.93% 88.04%; /* text */
+  --popover: 240 21.05% 14.90%; /* base */
+  --popover-foreground: 226 63.93% 88.04%; /* text */
+  --primary: 217 91.87% 75.88%; /* accent - Blue */
+  --primary-foreground: 240 21.05% 14.90%; /* base */
+  --secondary: 237 16.24% 22.94%; /* surface0 */
+  --secondary-foreground: 226 63.93% 88.04%; /* text */
+  --muted: 237 16.24% 22.94%; /* surface0 */
+  --muted-foreground: 227 35.29% 80.00%; /* subtext1 */
+  --accent: 237 16.24% 22.94%; /* surface0 */
+  --accent-foreground: 226 63.93% 88.04%; /* text */
+  --destructive: 343 81.25% 74.90%; /* red */
+  --border: 234 13.21% 31.18%; /* surface1 */
+  --input: 234 13.21% 31.18%; /* surface1 */
+  --ring: 226 63.93% 88.04%; /* text */
+  --chart-1: 329 21.57% 37.25%; /* red */
+  --chart-2: 188 18.82% 37.25%; /* teal */
+  --chart-3: 221 27.45% 39.61%; /* blue */
+  --chart-4: 30 9.41% 42.35%; /* yellow */
+  --chart-5: 139 12.94% 38.04%; /* green */
+  --sidebar: 240 21.18% 14.12%; /* mantle */
+  --sidebar-foreground: 226 63.93% 88.04%; /* text */
+  --sidebar-primary: 217 91.87% 75.88%; /* accent - Blue */
+  --sidebar-primary-foreground: 240 21.05% 14.90%; /* base */
+  --sidebar-accent: 240 21.05% 14.90%; /* surface0 */
+  --sidebar-accent-foreground: 226 63.93% 88.04%; /* text */
+  --sidebar-border: 234 13.21% 31.18%; /* surface1 */
+  --sidebar-ring: 234 13.21% 31.18%; /* surface1 */
 }
 
 @layer base {

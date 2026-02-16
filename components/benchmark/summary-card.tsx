@@ -20,7 +20,7 @@ export function SummaryCard({ fastest, slowest }: SummaryCardProps) {
             <p className="text-xs text-muted-foreground">Fastest</p>
             <a
               href={`#${slugify(fastest)}`}
-              className="font-semibold text-green-400 underline-offset-2 hover:underline"
+              className="font-semibold text-green-400 link-underline"
             >
               {fastest}
             </a>
@@ -36,7 +36,7 @@ export function SummaryCard({ fastest, slowest }: SummaryCardProps) {
             <p className="text-xs text-muted-foreground">Slowest</p>
             <a
               href={`#${slugify(slowest)}`}
-              className="font-semibold text-destructive underline-offset-2 hover:underline"
+              className="font-semibold text-destructive link-underline"
             >
               {slowest}
             </a>

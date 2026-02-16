@@ -18,13 +18,13 @@ export function Footer() {
   return (
     <footer className="border-t py-6">
       <div className="container flex flex-col items-center justify-center gap-2 px-4 md:px-8 max-w-screen-2xl mx-auto text-center">
-        <p className="text-sm leading-loose text-muted-foreground flex items-center justify-center gap-1 flex-wrap">
+        <p className="text-sm text-muted-foreground flex items-center justify-center gap-1 flex-wrap">
           Made with <Heart className="h-4 w-4 text-red-500 fill-red-500" /> by{" "}
           <Link
             href="https://mjw.dev"
             target="_blank"
             rel="noreferrer"
-            className="font-medium underline underline-offset-4"
+            className="font-medium text-primary link-underline"
           >
             Marvin Wendt
           </Link>{" "}
@@ -33,7 +33,7 @@ export function Footer() {
             href="https://github.com/MarvinJWendt/gobench.dev/graphs/contributors"
             target="_blank"
             rel="noreferrer"
-            className="font-medium underline underline-offset-4"
+            className="font-medium text-primary link-underline"
           >
             contributors
           </Link>

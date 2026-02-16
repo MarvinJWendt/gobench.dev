@@ -69,7 +69,7 @@ export default async function BenchmarkPage({ params }: PageProps) {
       {/* Back link */}
       <Link
         href="/"
-        className="mb-6 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+        className="mb-6 inline-flex items-center gap-1.5 text-sm text-muted-foreground link-underline hover:text-foreground"
       >
         <ArrowLeft className="h-4 w-4" />
         All Benchmarks
@@ -106,7 +106,7 @@ export default async function BenchmarkPage({ params }: PageProps) {
             href={`https://github.com/MarvinJWendt/gobench.dev/tree/main/${group.System.Pkg}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 underline decoration-muted-foreground/50 underline-offset-2 transition-colors hover:text-primary hover:decoration-primary"
+            className="inline-flex items-center gap-1 link-underline hover:text-primary"
           >
             <Box className="h-3.5 w-3.5" />
             {group.System.Pkg}

@@ -127,4 +127,14 @@
   body {
     @apply bg-background text-foreground;
   }
+  /* Custom link underline animation */
+  .link-underline {
+    @apply no-underline relative transition-colors duration-300 pb-0.5;
+  }
+  .link-underline::after {
+    @apply content-[''] absolute left-0 bottom-0 w-0 h-[1px] bg-current transition-all duration-300;
+  }
+  .link-underline:hover::after {
+    @apply w-full;
+  }
 }

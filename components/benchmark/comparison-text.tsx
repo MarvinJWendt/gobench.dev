@@ -43,7 +43,7 @@ export function ComparisonText({ comparison }: ComparisonTextProps) {
           than{" "}
           <a
             href={`#${slugify(entry.other)}`}
-            className="font-medium underline decoration-muted-foreground/50 underline-offset-2 transition-colors hover:text-primary hover:decoration-primary"
+            className="font-medium text-primary link-underline"
           >
             {entry.other}
           </a>

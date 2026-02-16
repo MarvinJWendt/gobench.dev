@@ -115,7 +115,7 @@ export default function Home() {
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
           {benchmarks.map((b) => (
-            <Link key={b.slug} href={`/${b.slug}`} className="group h-full">
+            <Link key={b.slug} href={`/${b.slug}`} className="group h-full no-underline">
               <Card className="h-full hover:shadow-xl hover:border-primary transition-all duration-300 group-hover:-translate-y-1 bg-card border-muted-foreground/10">
                 <CardHeader className="pb-4">
                   <div className="flex justify-between items-start gap-4">

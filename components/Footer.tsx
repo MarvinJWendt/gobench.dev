@@ -37,7 +37,6 @@ export function Footer() {
           >
             contributors
           </Link>
-          .
         </p>
         <p className="text-xs text-muted-foreground/60 max-w-[600px]">
           gobench.dev is not affiliated with, funded by, or associated with the Go team or Google.

@@ -32,18 +32,18 @@ var runCmd = &cobra.Command{
 
 		// Walk through the benchmarks directory
 		err := utils.WalkOverBenchmarks(basePath, func(path string) error {
-			return runBenchmark(logger, path, !all)
+			return runBenchmark(logger, path, all)
 		})
 
 		return err
 	},
 }
 
-func runBenchmark(logger *slog.Logger, path string, skipExisting bool) error {
+func runBenchmark(logger *slog.Logger, path string, all bool) error {
 	outputFilePath := filepath.Join(path, "_bench.out")
 	logger.Debug("running benchmark", "path", path)
 
-	if _, err := os.Stat(outputFilePath); err == nil && skipExisting {
+	if _, err := os.Stat(outputFilePath); err == nil && !all {
 		logger.Debug("benchmark output already exists, skipping", "path", path)
 		return nil
 	}
@@ -81,7 +81,7 @@ func runBenchmark(logger *slog.Logger, path string, skipExisting bool) error {
 
 func init() {
 	runCmd.Flags().StringP("benchmarks", "b", "../benchmarks", "Filepath of the \"benchmarks\" directory")
-	runCmd.Flags().BoolP("all", "a", false, "Run all benchmarks, even if the output file already exists")
+	runCmd.Flags().BoolP("all", "a", false, "Re-run all benchmarks, overwriting existing output files")
 
 	rootCmd.AddCommand(runCmd)
 }

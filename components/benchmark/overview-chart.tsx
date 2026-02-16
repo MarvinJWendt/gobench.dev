@@ -69,7 +69,7 @@ export function OverviewChart({ benchmarks }: OverviewChartProps) {
   const [cpuCount, setCpuCount] = useState(cpuCounts[0]?.toString() ?? "1");
   const [scale, setScale] = useState<ScaleType>("log");
 
-  const data = useMemo(
+  const rawData = useMemo(
     () =>
       getOverviewChartData(
         displayBenchmarks,
@@ -79,6 +79,20 @@ export function OverviewChart({ benchmarks }: OverviewChartProps) {
       ),
     [displayBenchmarks, cpuCount, metricCfg.field],
   );
+
+  // Log scale can't handle zero values (log(0) = -Infinity breaks the chart).
+  // Replace zeros with undefined so the line skips those points.
+  const data = useMemo(() => {
+    if (scale !== "log") return rawData;
+    return rawData.map((point) => {
+      const cleaned: Record<string, number | undefined> = { N: point.N };
+      for (const key of Object.keys(point)) {
+        if (key === "N") continue;
+        cleaned[key] = point[key] === 0 ? undefined : point[key];
+      }
+      return cleaned;
+    });
+  }, [rawData, scale]);
 
   const chartConfig = useMemo(() => {
     const config: ChartConfig = {};

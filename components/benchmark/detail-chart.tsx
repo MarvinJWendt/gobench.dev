@@ -79,11 +79,25 @@ function StandardDetailChart({
 }) {
   const { metric } = useMetric();
   const metricCfg = METRICS[metric];
+  const [scale, setScale] = useState<ScaleType>("log");
 
-  const data = useMemo(
+  const rawData = useMemo(
     () => getDetailChartData(benchmark, variationName, metricCfg.field),
     [benchmark, variationName, metricCfg.field],
   );
+
+  // Log scale can't handle zero values (log(0) = -Infinity breaks the chart).
+  const data = useMemo(() => {
+    if (scale !== "log") return rawData;
+    return rawData.map((point) => {
+      const cleaned: Record<string, number | undefined> = { N: point.N };
+      for (const key of Object.keys(point)) {
+        if (key === "N") continue;
+        cleaned[key] = point[key] === 0 ? undefined : point[key];
+      }
+      return cleaned;
+    });
+  }, [rawData, scale]);
   const cpuCounts = useMemo(() => {
     const variations = variationName
       ? benchmark.Variations.filter((v) => v.Name === variationName)
@@ -92,7 +106,6 @@ function StandardDetailChart({
     for (const v of variations) s.add(v.CPUCount);
     return [...s].sort((a, b) => a - b);
   }, [benchmark, variationName]);
-  const [scale, setScale] = useState<ScaleType>("log");
 
   const chartConfig = useMemo(() => {
     const config: ChartConfig = {};
@@ -218,11 +231,24 @@ function CombinedDetailChart({
   const [cpuCount, setCpuCount] = useState(cpuCounts[0]?.toString() ?? "1");
   const [scale, setScale] = useState<ScaleType>("log");
 
-  const data = useMemo(
+  const rawData = useMemo(
     () =>
       getCombinedDetailChartData(benchmark, Number(cpuCount), metricCfg.field),
     [benchmark, cpuCount, metricCfg.field],
   );
+
+  // Log scale can't handle zero values (log(0) = -Infinity breaks the chart).
+  const data = useMemo(() => {
+    if (scale !== "log") return rawData;
+    return rawData.map((point) => {
+      const cleaned: Record<string, number | undefined> = { N: point.N };
+      for (const key of Object.keys(point)) {
+        if (key === "N") continue;
+        cleaned[key] = point[key] === 0 ? undefined : point[key];
+      }
+      return cleaned;
+    });
+  }, [rawData, scale]);
 
   const chartConfig = useMemo(() => {
     const config: ChartConfig = {};

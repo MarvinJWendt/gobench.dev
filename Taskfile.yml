@@ -9,5 +9,12 @@ tasks:
     desc: Runs all benchmarks
     dir: cmd
     cmds:
+      - go run . run --all
+      - go run . generate
+
+  bench:update:
+    desc: Runs benchmarks for groups that have not been run yet
+    dir: cmd
+    cmds:
       - go run . run
       - go run . generate

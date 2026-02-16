@@ -13,7 +13,7 @@ import {
   sortByPerformance,
   slugify,
 } from "@/lib/benchmark-utils";
-import { highlightGo } from "@/lib/highlight";
+import { highlightGo, renderDescription } from "@/lib/highlight";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -56,11 +56,23 @@ export default async function BenchmarkPage({ params }: PageProps) {
   const comparisons = getComparisons(group.Benchmarks);
   const sortedBenchmarks = sortByPerformance(group.Benchmarks);
 
-  // Pre-highlight all code blocks on the server
+  // Pre-render descriptions and code blocks on the server
+  const groupDescriptionHtml = await renderDescription(group.Description.trim());
+
   const highlightedCode = new Map<string, string>();
+  const benchDescriptionHtml = new Map<string, string>();
   for (const bench of sortedBenchmarks) {
     if (bench.BenchmarkCode) {
-      highlightedCode.set(bench.Name, await highlightGo(bench.BenchmarkCode));
+      const code = group.Constants
+        ? group.Constants.trimEnd() + "\n\n" + bench.BenchmarkCode
+        : bench.BenchmarkCode;
+      highlightedCode.set(bench.Name, await highlightGo(code));
+    }
+    if (bench.Description) {
+      benchDescriptionHtml.set(
+        bench.Name,
+        await renderDescription(bench.Description.trim()),
+      );
     }
   }
 
@@ -90,7 +102,10 @@ export default async function BenchmarkPage({ params }: PageProps) {
           </div>
         )}
 
-        <p className="mt-4 leading-relaxed">{group.Description.trim()}</p>
+        <p
+          className="mt-4 leading-relaxed"
+          dangerouslySetInnerHTML={{ __html: groupDescriptionHtml }}
+        />
 
         {/* System info */}
         <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-muted-foreground">
@@ -163,10 +178,11 @@ export default async function BenchmarkPage({ params }: PageProps) {
                 )}
               </div>
 
-              {bench.Description && (
-                <p className="mb-6 text-muted-foreground">
-                  {bench.Description.trim()}
-                </p>
+              {benchDescriptionHtml.has(bench.Name) && (
+                <p
+                  className="mb-6 text-muted-foreground"
+                  dangerouslySetInnerHTML={{ __html: benchDescriptionHtml.get(bench.Name)! }}
+                />
               )}
 
               {/* Detail chart: CPU scaling */}

@@ -137,4 +137,9 @@
   .link-underline:hover::after {
     @apply w-full;
   }
+
+  /* Syntax-highlighted inline code */
+  .inline-code {
+    @apply rounded-sm bg-[#1e1e2e] px-1.5 py-0.5 text-sm font-mono;
+  }
 }

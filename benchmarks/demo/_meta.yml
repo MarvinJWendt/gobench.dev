@@ -1,9 +1,9 @@
 name: Demo
-headline: A demo benchmark to preview all the functions of go-benchmarks and to validate them.
+headline: A demo benchmark to preview all the functions of gobench.dev and to validate them.
 description: >
-  This demo benchmark is customized to display all the functions of go-benchmarks.
+  This demo benchmark is customized to display all the functions of gobench.dev.
   The results can be used to validate if the charts match the raw benchmark data.
-  It can also be used to see what go-benchmarks can do.
+  It can also be used to see what gobench.dev can do.
 
 tags:
   - demo

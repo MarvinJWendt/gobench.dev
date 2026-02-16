@@ -1,0 +1,13 @@
+version: 3
+
+tasks:
+  dev:
+    cmds:
+      - pnpm dev
+  
+  bench:
+    desc: Runs all benchmarks
+    dir: cmd
+    cmds:
+      - go run . run
+      - go run . generate

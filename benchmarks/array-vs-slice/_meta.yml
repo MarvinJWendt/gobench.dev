@@ -1,0 +1,35 @@
+name: Array vs Slice
+headline: A benchmark to compare the performance of arrays, pre-allocated slices and dynamic slices.
+description: >
+    This benchmark compares the performance of arrays, pre-allocated slices and dynamic slices.
+    It shows that arrays are the fastest, but they are not very flexible.
+    Pre-allocated slices are a good compromise between speed and flexibility.
+    Dynamic slices are the slowest, but they are the most flexible.
+
+tags:
+  - array
+  - slice
+
+contributors:
+  - MarvinJWendt
+
+meta:
+  - implementation: Array
+    description: >
+      Arrays in Go are fixed-length sequences of elements of a single type.
+
+  - implementation: Dynamic Slice
+    description: >
+        Slices in Go are variable-length sequences of elements of a single type.
+        They are built on top of arrays. Each time you append an element to a slice, the Go runtime checks if the underlying array is large enough to hold the new element.
+        If it is not large enough, the runtime allocates a new array and copies the elements from the old array to the new one.
+        This makes dynamic slices very flexible, but also slower.
+
+  - implementation: Preallocated Slice
+    description: >
+        Pre-allocated slices are slices, that have a fixed length and capacity.
+        They are built on top of arrays. Each time you append an element to a pre-allocated slice, the Go runtime checks if the underlying array is large enough to hold the new element.
+        If it is not large enough, the runtime allocates a new array and copies the elements from the old array to the new one.
+        This makes pre-allocated slices very flexible, but also slower.
+        The advantage of pre-allocated slices is, that you can pre-allocate the underlying array, so that the runtime does not need to allocate a new array each time you append an element.
+        This makes pre-allocated slices faster than dynamic slices, but they are still slower than arrays.

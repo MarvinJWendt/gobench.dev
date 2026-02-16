@@ -1,0 +1,25 @@
+name: Demo
+headline: A demo benchmark to preview all the functions of go-benchmarks and to validate them.
+description: >
+  This demo benchmark is customized to display all the functions of go-benchmarks.
+  The results can be used to validate if the charts match the raw benchmark data.
+  It can also be used to see what go-benchmarks can do.
+
+tags:
+  - demo
+
+contributors:
+  - MarvinJWendt
+
+meta:
+  - implementation: Faster Over Time
+    description: >
+      This benchmark gets faster, the more runs it has.
+
+  - implementation: Slower Over Time
+    description: >
+      This benchmark gets slower, the more runs it has.
+
+  - implementation: Faster With More CPU Cores
+    description: >
+      This benchmark gets faster, the more CPU cores it has.

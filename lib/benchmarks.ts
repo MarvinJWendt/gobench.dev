@@ -49,6 +49,7 @@ export interface BenchmarkMeta {
   description: string;
   tags: string[];
   contributors: string[];
+  hidden?: boolean;
   meta: {
     implementation: string;
     description: string;
@@ -62,6 +63,7 @@ export interface BenchmarkSummary {
   headline: string;
   description: string;
   tags: string[];
+  hidden?: boolean;
 }
 
 // --- Data access functions ---
@@ -109,6 +111,7 @@ export function getAllBenchmarkSummaries(): BenchmarkSummary[] {
       headline: group.Headline,
       description: group.Description,
       tags: meta.tags ?? [],
+      hidden: meta.hidden,
     };
   });
 }

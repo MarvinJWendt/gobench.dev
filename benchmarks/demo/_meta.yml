@@ -1,3 +1,5 @@
+hidden: true
+
 name: Demo
 headline: A demo benchmark to preview all the functions of gobench.dev and to validate them.
 description: >

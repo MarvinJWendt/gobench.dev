@@ -31,7 +31,10 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  const benchmarks = getAllBenchmarkSummaries();
+  const isDev = process.env.NODE_ENV === "development";
+  const benchmarks = getAllBenchmarkSummaries().filter(
+    (b) => isDev || !b.hidden,
+  );
 
   return (
     <div className="flex flex-col min-h-screen">

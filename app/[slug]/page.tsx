@@ -29,6 +29,7 @@ import { BehaviorProvider } from "@/components/benchmark/behavior-context";
 import { BehaviorTabs } from "@/components/benchmark/behavior-tabs";
 import { BehaviorSummaryCard } from "@/components/benchmark/behavior-summary-card";
 import { BenchmarkSectionHeader } from "@/components/benchmark/benchmark-section-header";
+import { MetricProvider } from "@/components/benchmark/metric-context";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -186,7 +187,7 @@ export default async function BenchmarkPage({ params }: PageProps) {
                       : `CPU Scaling — ${bench.Name}`}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className={multiBehavior ? "space-y-4" : undefined}>
+                <CardContent className="space-y-4">
                   {multiBehavior && <BehaviorTabs />}
                   <DetailChart benchmark={bench} />
                 </CardContent>
@@ -294,13 +295,15 @@ export default async function BenchmarkPage({ params }: PageProps) {
 
       <Separator />
 
-      {multiBehavior ? (
-        <BehaviorProvider behaviors={variationNames}>
-          {pageContent}
-        </BehaviorProvider>
-      ) : (
-        pageContent
-      )}
+      <MetricProvider>
+        {multiBehavior ? (
+          <BehaviorProvider behaviors={variationNames}>
+            {pageContent}
+          </BehaviorProvider>
+        ) : (
+          pageContent
+        )}
+      </MetricProvider>
     </div>
   );
 }

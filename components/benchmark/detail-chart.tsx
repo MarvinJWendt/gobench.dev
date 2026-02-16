@@ -21,17 +21,18 @@ import type { Benchmark } from "@/lib/benchmarks";
 import {
   getDetailChartData,
   getCombinedDetailChartData,
-  getVariationNames,
   getCpuCounts,
   cpuKey,
   cpuLabel,
   chartKey,
   capitalize,
-  formatNs,
+  METRICS,
   formatN,
 } from "@/lib/benchmark-utils";
 import { ScaleToggle, type ScaleType } from "@/components/benchmark/scale-toggle";
+import { MetricToggle } from "@/components/benchmark/metric-toggle";
 import { useBehavior } from "@/components/benchmark/behavior-context";
+import { useMetric } from "@/components/benchmark/metric-context";
 import { CHART_COLORS } from "@/components/benchmark/overview-chart";
 
 const CPU_COLORS = [
@@ -76,9 +77,12 @@ function StandardDetailChart({
   benchmark: Benchmark;
   variationName?: string;
 }) {
+  const { metric } = useMetric();
+  const metricCfg = METRICS[metric];
+
   const data = useMemo(
-    () => getDetailChartData(benchmark, variationName),
-    [benchmark, variationName],
+    () => getDetailChartData(benchmark, variationName, metricCfg.field),
+    [benchmark, variationName, metricCfg.field],
   );
   const cpuCounts = useMemo(() => {
     const variations = variationName
@@ -114,9 +118,16 @@ function StandardDetailChart({
     });
   }, []);
 
+  const yLabel = scale === "log" ? metricCfg.yAxisLogLabel : metricCfg.yAxisLabel;
+
   return (
     <div className="space-y-3">
-      <ScaleToggle value={scale} onChange={setScale} />
+      {/* Controls */}
+      <div className="flex flex-wrap items-center gap-3">
+        <MetricToggle />
+        <ScaleToggle value={scale} onChange={setScale} />
+      </div>
+
       <ChartContainer config={chartConfig} className="min-h-[250px] w-full">
         <LineChart
           data={data}
@@ -137,9 +148,9 @@ function StandardDetailChart({
             scale={scale}
             domain={scale === "log" ? ["auto", "auto"] : undefined}
             allowDataOverflow={scale === "log"}
-            tickFormatter={formatNs}
+            tickFormatter={metricCfg.format}
             label={{
-              value: scale === "log" ? "ns/op (log)" : "ns/op",
+              value: yLabel,
               angle: -90,
               position: "insideLeft",
               offset: 5,
@@ -159,7 +170,7 @@ function StandardDetailChart({
                       {chartConfig[String(name)]?.label ?? name}
                     </span>
                     <span className="font-mono font-medium tabular-nums">
-                      {formatNs(Number(value))}
+                      {metricCfg.format(Number(value))}
                     </span>
                   </div>
                 )}
@@ -200,13 +211,17 @@ function CombinedDetailChart({
   benchmark: Benchmark;
   behaviors: string[];
 }) {
+  const { metric } = useMetric();
+  const metricCfg = METRICS[metric];
+
   const cpuCounts = useMemo(() => getCpuCounts([benchmark]), [benchmark]);
   const [cpuCount, setCpuCount] = useState(cpuCounts[0]?.toString() ?? "1");
   const [scale, setScale] = useState<ScaleType>("log");
 
   const data = useMemo(
-    () => getCombinedDetailChartData(benchmark, Number(cpuCount)),
-    [benchmark, cpuCount],
+    () =>
+      getCombinedDetailChartData(benchmark, Number(cpuCount), metricCfg.field),
+    [benchmark, cpuCount, metricCfg.field],
   );
 
   const chartConfig = useMemo(() => {
@@ -233,12 +248,16 @@ function CombinedDetailChart({
     });
   }, []);
 
+  const yLabel = scale === "log" ? metricCfg.yAxisLogLabel : metricCfg.yAxisLabel;
+
   return (
     <div className="space-y-3">
       {/* Controls */}
-      <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-        <div className="flex items-center gap-3">
-          <span className="text-sm text-muted-foreground">CPU Cores:</span>
+      <div className="flex flex-wrap items-center gap-3">
+        <MetricToggle />
+        <ScaleToggle value={scale} onChange={setScale} />
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-muted-foreground">CPU:</span>
           <ToggleGroup
             type="single"
             value={cpuCount}
@@ -255,7 +274,6 @@ function CombinedDetailChart({
             ))}
           </ToggleGroup>
         </div>
-        <ScaleToggle value={scale} onChange={setScale} />
       </div>
 
       {/* Chart */}
@@ -279,9 +297,9 @@ function CombinedDetailChart({
             scale={scale}
             domain={scale === "log" ? ["auto", "auto"] : undefined}
             allowDataOverflow={scale === "log"}
-            tickFormatter={formatNs}
+            tickFormatter={metricCfg.format}
             label={{
-              value: scale === "log" ? "ns/op (log)" : "ns/op",
+              value: yLabel,
               angle: -90,
               position: "insideLeft",
               offset: 5,
@@ -301,7 +319,7 @@ function CombinedDetailChart({
                       {chartConfig[String(name)]?.label ?? name}
                     </span>
                     <span className="font-mono font-medium tabular-nums">
-                      {formatNs(Number(value))}
+                      {metricCfg.format(Number(value))}
                     </span>
                   </div>
                 )}

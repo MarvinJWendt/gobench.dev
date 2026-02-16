@@ -24,11 +24,13 @@ import {
   getCombinedBenchmarks,
   filterBenchmarkVariations,
   chartKey,
-  formatNs,
+  METRICS,
   formatN,
 } from "@/lib/benchmark-utils";
 import { ScaleToggle, type ScaleType } from "@/components/benchmark/scale-toggle";
+import { MetricToggle } from "@/components/benchmark/metric-toggle";
 import { useBehavior } from "@/components/benchmark/behavior-context";
+import { useMetric } from "@/components/benchmark/metric-context";
 
 export const CHART_COLORS = [
   "var(--color-chart-1)",
@@ -44,6 +46,8 @@ interface OverviewChartProps {
 
 export function OverviewChart({ benchmarks }: OverviewChartProps) {
   const behaviorCtx = useBehavior();
+  const { metric } = useMetric();
+  const metricCfg = METRICS[metric];
 
   // Filter benchmarks based on active behavior
   const displayBenchmarks = useMemo(() => {
@@ -66,8 +70,14 @@ export function OverviewChart({ benchmarks }: OverviewChartProps) {
   const [scale, setScale] = useState<ScaleType>("log");
 
   const data = useMemo(
-    () => getOverviewChartData(displayBenchmarks, Number(cpuCount)),
-    [displayBenchmarks, cpuCount],
+    () =>
+      getOverviewChartData(
+        displayBenchmarks,
+        Number(cpuCount),
+        undefined,
+        metricCfg.field,
+      ),
+    [displayBenchmarks, cpuCount, metricCfg.field],
   );
 
   const chartConfig = useMemo(() => {
@@ -94,12 +104,16 @@ export function OverviewChart({ benchmarks }: OverviewChartProps) {
     });
   }, []);
 
+  const yLabel = scale === "log" ? metricCfg.yAxisLogLabel : metricCfg.yAxisLabel;
+
   return (
     <div className="space-y-3">
       {/* Controls */}
-      <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-        <div className="flex items-center gap-3">
-          <span className="text-sm text-muted-foreground">CPU Cores:</span>
+      <div className="flex flex-wrap items-center gap-3">
+        <MetricToggle />
+        <ScaleToggle value={scale} onChange={setScale} />
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-muted-foreground">CPU:</span>
           <ToggleGroup
             type="single"
             value={cpuCount}
@@ -116,7 +130,6 @@ export function OverviewChart({ benchmarks }: OverviewChartProps) {
             ))}
           </ToggleGroup>
         </div>
-        <ScaleToggle value={scale} onChange={setScale} />
       </div>
 
       {/* Chart */}
@@ -132,8 +145,8 @@ export function OverviewChart({ benchmarks }: OverviewChartProps) {
             scale={scale}
             domain={scale === "log" ? ["auto", "auto"] : undefined}
             allowDataOverflow={scale === "log"}
-            tickFormatter={formatNs}
-            label={{ value: scale === "log" ? "ns/op (log)" : "ns/op", angle: -90, position: "insideLeft", offset: 5, style: { fill: "var(--color-muted-foreground)", fontSize: 12 } }}
+            tickFormatter={metricCfg.format}
+            label={{ value: yLabel, angle: -90, position: "insideLeft", offset: 5, style: { fill: "var(--color-muted-foreground)", fontSize: 12 } }}
           />
           <ChartTooltip
             content={
@@ -148,7 +161,7 @@ export function OverviewChart({ benchmarks }: OverviewChartProps) {
                       {chartConfig[String(name)]?.label ?? name}
                     </span>
                     <span className="font-mono font-medium tabular-nums">
-                      {formatNs(Number(value))}
+                      {metricCfg.format(Number(value))}
                     </span>
                   </div>
                 )}

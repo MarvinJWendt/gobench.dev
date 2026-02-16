@@ -1,4 +1,40 @@
-import type { Benchmark } from "./benchmarks";
+import type { Benchmark, BenchmarkVariation } from "./benchmarks";
+
+// --- Metric types ---
+
+export type MetricType = "ns_per_op" | "bytes_per_op" | "allocs_per_op";
+
+export interface MetricConfig {
+  label: string;
+  field: keyof BenchmarkVariation;
+  format: (value: number) => string;
+  yAxisLabel: string;
+  yAxisLogLabel: string;
+}
+
+export const METRICS: Record<MetricType, MetricConfig> = {
+  ns_per_op: {
+    label: "Time",
+    field: "NsPerOp",
+    format: formatNs,
+    yAxisLabel: "ns/op",
+    yAxisLogLabel: "ns/op (log)",
+  },
+  bytes_per_op: {
+    label: "Memory",
+    field: "AllocedBytesPerOp",
+    format: formatBytes,
+    yAxisLabel: "B/op",
+    yAxisLogLabel: "B/op (log)",
+  },
+  allocs_per_op: {
+    label: "Allocs",
+    field: "AllocsPerOp",
+    format: formatAllocs,
+    yAxisLabel: "allocs/op",
+    yAxisLogLabel: "allocs/op (log)",
+  },
+};
 
 // --- Behavior detection ---
 
@@ -70,6 +106,7 @@ export function getOverviewChartData(
   benchmarks: Benchmark[],
   cpuCount: number,
   variationName?: string,
+  metricField: keyof BenchmarkVariation = "NsPerOp",
 ): OverviewDataPoint[] {
   // Collect all unique N values
   const nValues = new Set<number>();
@@ -91,7 +128,7 @@ export function getOverviewChartData(
           v.CPUCount === cpuCount &&
           (!variationName || v.Name === variationName),
       );
-      if (v) point[chartKey(b.Name)] = v.NsPerOp;
+      if (v) point[chartKey(b.Name)] = v[metricField] as number;
     }
     return point;
   });
@@ -106,6 +143,7 @@ export interface DetailDataPoint {
 export function getDetailChartData(
   benchmark: Benchmark,
   variationName?: string,
+  metricField: keyof BenchmarkVariation = "NsPerOp",
 ): DetailDataPoint[] {
   const variations = variationName
     ? benchmark.Variations.filter((v) => v.Name === variationName)
@@ -125,7 +163,7 @@ export function getDetailChartData(
     const point: DetailDataPoint = { N: n };
     for (const cpu of [...cpuCounts].sort((a, b) => a - b)) {
       const v = variations.find((v) => v.N === n && v.CPUCount === cpu);
-      if (v) point[cpuKey(cpu)] = v.NsPerOp;
+      if (v) point[cpuKey(cpu)] = v[metricField] as number;
     }
     return point;
   });
@@ -135,6 +173,7 @@ export function getDetailChartData(
 export function getCombinedDetailChartData(
   benchmark: Benchmark,
   cpuCount: number,
+  metricField: keyof BenchmarkVariation = "NsPerOp",
 ): DetailDataPoint[] {
   const nValues = new Set<number>();
   for (const v of benchmark.Variations) {
@@ -147,7 +186,7 @@ export function getCombinedDetailChartData(
     const point: DetailDataPoint = { N: n };
     for (const v of benchmark.Variations) {
       if (v.N === n && v.CPUCount === cpuCount) {
-        point[chartKey(v.Name)] = v.NsPerOp;
+        point[chartKey(v.Name)] = v[metricField] as number;
       }
     }
     return point;
@@ -284,6 +323,22 @@ export function formatNs(ns: number): string {
   if (ns < 1_000) return `${Math.round(ns * 100) / 100} ns`;
   if (ns < 1_000_000) return `${Math.round((ns / 1_000) * 100) / 100} µs`;
   return `${Math.round((ns / 1_000_000) * 100) / 100} ms`;
+}
+
+/** Smart-format bytes into B, KB, or MB. */
+export function formatBytes(bytes: number): string {
+  if (bytes === 0) return "0 B";
+  if (bytes < 1_024) return `${Math.round(bytes * 100) / 100} B`;
+  if (bytes < 1_048_576)
+    return `${Math.round((bytes / 1_024) * 100) / 100} KB`;
+  return `${Math.round((bytes / 1_048_576) * 100) / 100} MB`;
+}
+
+/** Format allocation counts. */
+export function formatAllocs(allocs: number): string {
+  if (allocs >= 1_000_000) return `${Math.round(allocs / 1_000_000 * 100) / 100}M`;
+  if (allocs >= 1_000) return `${Math.round(allocs / 1_000 * 100) / 100}K`;
+  return String(Math.round(allocs * 100) / 100);
 }
 
 /** Format N values as 1K, 2K etc. */

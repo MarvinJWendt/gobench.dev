@@ -2,239 +2,239 @@ goos: linux
 goarch: amd64
 pkg: benchmarks/array-vs-slice
 cpu: AMD Ryzen 9 9950X3D 16-Core Processor          
-BenchmarkArray_run                   	    1000	       195.8 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-2                 	    1000	       211.1 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-4                 	    1000	       195.4 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-8                 	    1000	       195.4 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-16                	    1000	       210.2 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-32                	    1000	       203.5 ns/op	       0 B/op	       0 allocs/op
-BenchmarkDynamicSlice_run            	    1000	      2193 ns/op	   25207 B/op	      11 allocs/op
-BenchmarkDynamicSlice_run-2          	    1000	      3596 ns/op	   25208 B/op	      11 allocs/op
-BenchmarkDynamicSlice_run-4          	    1000	      4124 ns/op	   25213 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-8          	    1000	      3761 ns/op	   25208 B/op	      11 allocs/op
-BenchmarkDynamicSlice_run-16         	    1000	      3230 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-32         	    1000	      3495 ns/op	   25213 B/op	      12 allocs/op
-BenchmarkPreallocatedSlice_run       	    1000	       969.8 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-2     	    1000	      1306 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-4     	    1000	      2066 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-8     	    1000	      1516 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-16    	    1000	      1439 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-32    	    1000	      1321 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkArray_run                   	    1000	       206.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-2                 	    1000	       217.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-4                 	    1000	       234.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-8                 	    1000	       217.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-16                	    1000	       243.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-32                	    1000	       205.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkDynamicSlice_run            	    1000	      2923 ns/op	   25208 B/op	      11 allocs/op
+BenchmarkDynamicSlice_run-2          	    1000	      3896 ns/op	   25208 B/op	      11 allocs/op
+BenchmarkDynamicSlice_run-4          	    1000	      4244 ns/op	   25208 B/op	      11 allocs/op
+BenchmarkDynamicSlice_run-8          	    1000	      3491 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-16         	    1000	      3559 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-32         	    1000	      3133 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkPreallocatedSlice_run       	    1000	       927.2 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-2     	    1000	      1073 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-4     	    1000	      1600 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-8     	    1000	      1453 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-16    	    1000	      1305 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-32    	    1000	      1204 ns/op	    8192 B/op	       1 allocs/op
 PASS
-ok  	benchmarks/array-vs-slice	0.051s
+ok  	benchmarks/array-vs-slice	0.052s
 goos: linux
 goarch: amd64
 pkg: benchmarks/array-vs-slice
 cpu: AMD Ryzen 9 9950X3D 16-Core Processor          
-BenchmarkArray_run                   	    2000	        96.89 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-2                 	    2000	        95.78 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-4                 	    2000	        96.70 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-8                 	    2000	        96.80 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-16                	    2000	        96.77 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-32                	    2000	        96.86 ns/op	       0 B/op	       0 allocs/op
-BenchmarkDynamicSlice_run            	    2000	      1778 ns/op	   25208 B/op	      11 allocs/op
-BenchmarkDynamicSlice_run-2          	    2000	      3359 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-4          	    2000	      3593 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-8          	    2000	      3695 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-16         	    2000	      3402 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-32         	    2000	      3299 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkPreallocatedSlice_run       	    2000	       817.7 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-2     	    2000	      1446 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-4     	    2000	      1374 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-8     	    2000	      1290 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-16    	    2000	      1212 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-32    	    2000	      1268 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkArray_run                   	    2000	        96.87 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-2                 	    2000	        99.13 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-4                 	    2000	        97.15 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-8                 	    2000	       100.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-16                	    2000	        97.25 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-32                	    2000	        97.01 ns/op	       0 B/op	       0 allocs/op
+BenchmarkDynamicSlice_run            	    2000	      1980 ns/op	   25207 B/op	      11 allocs/op
+BenchmarkDynamicSlice_run-2          	    2000	      3311 ns/op	   25208 B/op	      11 allocs/op
+BenchmarkDynamicSlice_run-4          	    2000	      3390 ns/op	   25211 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-8          	    2000	      3881 ns/op	   25210 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-16         	    2000	      3426 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-32         	    2000	      3095 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkPreallocatedSlice_run       	    2000	       716.8 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-2     	    2000	      1244 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-4     	    2000	      1281 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-8     	    2000	      1438 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-16    	    2000	      1261 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-32    	    2000	      1213 ns/op	    8192 B/op	       1 allocs/op
 PASS
 ok  	benchmarks/array-vs-slice	0.076s
 goos: linux
 goarch: amd64
 pkg: benchmarks/array-vs-slice
 cpu: AMD Ryzen 9 9950X3D 16-Core Processor          
-BenchmarkArray_run                   	    3000	        64.53 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-2                 	    3000	       140.4 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-4                 	    3000	        64.49 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-8                 	    3000	        64.52 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-16                	    3000	        64.54 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-32                	    3000	        64.53 ns/op	       0 B/op	       0 allocs/op
-BenchmarkDynamicSlice_run            	    3000	      1706 ns/op	   25208 B/op	      11 allocs/op
-BenchmarkDynamicSlice_run-2          	    3000	      3369 ns/op	   25208 B/op	      11 allocs/op
-BenchmarkDynamicSlice_run-4          	    3000	      3488 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-8          	    3000	      3611 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-16         	    3000	      3390 ns/op	   25210 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-32         	    3000	      3424 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkPreallocatedSlice_run       	    3000	       792.9 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-2     	    3000	      1212 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-4     	    3000	      1459 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-8     	    3000	      1446 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-16    	    3000	      1208 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-32    	    3000	      1257 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkArray_run                   	    3000	        64.74 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-2                 	    3000	        62.55 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-4                 	    3000	        64.73 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-8                 	    3000	        60.73 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-16                	    3000	        64.58 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-32                	    3000	        64.66 ns/op	       0 B/op	       0 allocs/op
+BenchmarkDynamicSlice_run            	    3000	      1763 ns/op	   25208 B/op	      11 allocs/op
+BenchmarkDynamicSlice_run-2          	    3000	      3268 ns/op	   25208 B/op	      11 allocs/op
+BenchmarkDynamicSlice_run-4          	    3000	      3929 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-8          	    3000	      3506 ns/op	   25210 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-16         	    3000	      3355 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-32         	    3000	      3306 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkPreallocatedSlice_run       	    3000	       812.1 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-2     	    3000	      1196 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-4     	    3000	      1372 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-8     	    3000	      1296 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-16    	    3000	      1267 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-32    	    3000	      1292 ns/op	    8192 B/op	       1 allocs/op
 PASS
-ok  	benchmarks/array-vs-slice	0.103s
+ok  	benchmarks/array-vs-slice	0.104s
 goos: linux
 goarch: amd64
 pkg: benchmarks/array-vs-slice
 cpu: AMD Ryzen 9 9950X3D 16-Core Processor          
-BenchmarkArray_run                   	    4000	        48.45 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-2                 	    4000	        53.82 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-4                 	    4000	        48.46 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-8                 	    4000	        48.52 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-16                	    4000	        48.43 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-32                	    4000	        48.42 ns/op	       0 B/op	       0 allocs/op
-BenchmarkDynamicSlice_run            	    4000	      1599 ns/op	   25208 B/op	      11 allocs/op
-BenchmarkDynamicSlice_run-2          	    4000	      3080 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-4          	    4000	      3635 ns/op	   25209 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-8          	    4000	      3472 ns/op	   25209 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-16         	    4000	      3397 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-32         	    4000	      3514 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkPreallocatedSlice_run       	    4000	       669.5 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-2     	    4000	      1158 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-4     	    4000	      1372 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-8     	    4000	      1180 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-16    	    4000	      1371 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-32    	    4000	      1223 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkArray_run                   	    4000	        51.17 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-2                 	    4000	        48.68 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-4                 	    4000	        48.52 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-8                 	    4000	        48.49 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-16                	    4000	        48.29 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-32                	    4000	        48.78 ns/op	       0 B/op	       0 allocs/op
+BenchmarkDynamicSlice_run            	    4000	      1747 ns/op	   25208 B/op	      11 allocs/op
+BenchmarkDynamicSlice_run-2          	    4000	      3115 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-4          	    4000	      3630 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-8          	    4000	      3675 ns/op	   25209 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-16         	    4000	      3177 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-32         	    4000	      3351 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkPreallocatedSlice_run       	    4000	       701.0 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-2     	    4000	      1213 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-4     	    4000	      1294 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-8     	    4000	      1334 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-16    	    4000	      1292 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-32    	    4000	      1228 ns/op	    8192 B/op	       1 allocs/op
 PASS
-ok  	benchmarks/array-vs-slice	0.126s
+ok  	benchmarks/array-vs-slice	0.127s
 goos: linux
 goarch: amd64
 pkg: benchmarks/array-vs-slice
 cpu: AMD Ryzen 9 9950X3D 16-Core Processor          
-BenchmarkArray_run                   	    5000	        38.67 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-2                 	    5000	        39.09 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-4                 	    5000	        38.70 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-8                 	    5000	        38.63 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-16                	    5000	        38.69 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-32                	    5000	        38.66 ns/op	       0 B/op	       0 allocs/op
-BenchmarkDynamicSlice_run            	    5000	      1565 ns/op	   25208 B/op	      11 allocs/op
-BenchmarkDynamicSlice_run-2          	    5000	      3047 ns/op	   25208 B/op	      11 allocs/op
-BenchmarkDynamicSlice_run-4          	    5000	      3229 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-8          	    5000	      3356 ns/op	   25209 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-16         	    5000	      3343 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-32         	    5000	      3381 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkPreallocatedSlice_run       	    5000	       682.9 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-2     	    5000	      1279 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-4     	    5000	      1320 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-8     	    5000	      1370 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-16    	    5000	      1244 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-32    	    5000	      1248 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkArray_run                   	    5000	        38.88 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-2                 	    5000	        39.65 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-4                 	    5000	        38.74 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-8                 	    5000	        38.91 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-16                	    5000	        38.76 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-32                	    5000	        38.70 ns/op	       0 B/op	       0 allocs/op
+BenchmarkDynamicSlice_run            	    5000	      1627 ns/op	   25208 B/op	      11 allocs/op
+BenchmarkDynamicSlice_run-2          	    5000	      3097 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-4          	    5000	      3737 ns/op	   25209 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-8          	    5000	      3612 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-16         	    5000	      3367 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-32         	    5000	      3461 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkPreallocatedSlice_run       	    5000	       706.3 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-2     	    5000	      1254 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-4     	    5000	      1484 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-8     	    5000	      1380 ns/op	    8193 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-16    	    5000	      1346 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-32    	    5000	      1328 ns/op	    8192 B/op	       1 allocs/op
 PASS
-ok  	benchmarks/array-vs-slice	0.149s
+ok  	benchmarks/array-vs-slice	0.155s
 goos: linux
 goarch: amd64
 pkg: benchmarks/array-vs-slice
 cpu: AMD Ryzen 9 9950X3D 16-Core Processor          
-BenchmarkArray_run                   	    6000	        32.37 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-2                 	    6000	        54.19 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-4                 	    6000	        37.03 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-8                 	    6000	        32.32 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-16                	    6000	        32.26 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-32                	    6000	        32.28 ns/op	       0 B/op	       0 allocs/op
-BenchmarkDynamicSlice_run            	    6000	      1552 ns/op	   25208 B/op	      11 allocs/op
-BenchmarkDynamicSlice_run-2          	    6000	      3092 ns/op	   25208 B/op	      11 allocs/op
-BenchmarkDynamicSlice_run-4          	    6000	      3651 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-8          	    6000	      3572 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-16         	    6000	      3111 ns/op	   25209 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-32         	    6000	      3401 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkPreallocatedSlice_run       	    6000	       715.1 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-2     	    6000	      1252 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-4     	    6000	      1388 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-8     	    6000	      1349 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-16    	    6000	      1195 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-32    	    6000	      1283 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkArray_run                   	    6000	        32.43 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-2                 	    6000	        32.73 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-4                 	    6000	        33.06 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-8                 	    6000	        32.39 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-16                	    6000	        32.43 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-32                	    6000	        32.37 ns/op	       0 B/op	       0 allocs/op
+BenchmarkDynamicSlice_run            	    6000	      1570 ns/op	   25208 B/op	      11 allocs/op
+BenchmarkDynamicSlice_run-2          	    6000	      3022 ns/op	   25208 B/op	      11 allocs/op
+BenchmarkDynamicSlice_run-4          	    6000	      3419 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-8          	    6000	      3746 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-16         	    6000	      3245 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-32         	    6000	      3242 ns/op	   25209 B/op	      12 allocs/op
+BenchmarkPreallocatedSlice_run       	    6000	       680.1 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-2     	    6000	      1364 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-4     	    6000	      1416 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-8     	    6000	      1341 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-16    	    6000	      1281 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-32    	    6000	      1311 ns/op	    8192 B/op	       1 allocs/op
 PASS
-ok  	benchmarks/array-vs-slice	0.177s
+ok  	benchmarks/array-vs-slice	0.178s
 goos: linux
 goarch: amd64
 pkg: benchmarks/array-vs-slice
 cpu: AMD Ryzen 9 9950X3D 16-Core Processor          
-BenchmarkArray_run                   	    7000	        31.18 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-2                 	    7000	        28.24 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-4                 	    7000	        27.66 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-8                 	    7000	        27.65 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-16                	    7000	        27.63 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-32                	    7000	        27.64 ns/op	       0 B/op	       0 allocs/op
-BenchmarkDynamicSlice_run            	    7000	      1644 ns/op	   25208 B/op	      11 allocs/op
-BenchmarkDynamicSlice_run-2          	    7000	      2977 ns/op	   25208 B/op	      11 allocs/op
-BenchmarkDynamicSlice_run-4          	    7000	      3382 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-8          	    7000	      3321 ns/op	   25209 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-16         	    7000	      3007 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-32         	    7000	      3087 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkPreallocatedSlice_run       	    7000	       662.4 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-2     	    7000	      1228 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-4     	    7000	      1412 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-8     	    7000	      1321 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-16    	    7000	      1341 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-32    	    7000	      1201 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkArray_run                   	    7000	        27.83 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-2                 	    7000	        28.05 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-4                 	    7000	        27.76 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-8                 	    7000	        27.64 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-16                	    7000	        27.72 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-32                	    7000	        27.78 ns/op	       0 B/op	       0 allocs/op
+BenchmarkDynamicSlice_run            	    7000	      1715 ns/op	   25208 B/op	      11 allocs/op
+BenchmarkDynamicSlice_run-2          	    7000	      3146 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-4          	    7000	      3628 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-8          	    7000	      3599 ns/op	   25209 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-16         	    7000	      3343 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-32         	    7000	      3235 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkPreallocatedSlice_run       	    7000	       679.5 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-2     	    7000	      1119 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-4     	    7000	      1368 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-8     	    7000	      1336 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-16    	    7000	      1202 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-32    	    7000	      1192 ns/op	    8192 B/op	       1 allocs/op
 PASS
-ok  	benchmarks/array-vs-slice	0.194s
+ok  	benchmarks/array-vs-slice	0.202s
 goos: linux
 goarch: amd64
 pkg: benchmarks/array-vs-slice
 cpu: AMD Ryzen 9 9950X3D 16-Core Processor          
-BenchmarkArray_run                   	    8000	        24.22 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-2                 	    8000	        24.23 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-4                 	    8000	        24.35 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-8                 	    8000	        23.44 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-16                	    8000	        23.45 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-32                	    8000	        24.21 ns/op	       0 B/op	       0 allocs/op
-BenchmarkDynamicSlice_run            	    8000	      1536 ns/op	   25208 B/op	      11 allocs/op
-BenchmarkDynamicSlice_run-2          	    8000	      2916 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-4          	    8000	      3301 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-8          	    8000	      3372 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-16         	    8000	      3196 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-32         	    8000	      3273 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkPreallocatedSlice_run       	    8000	       663.7 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-2     	    8000	      1249 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-4     	    8000	      1399 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-8     	    8000	      1216 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-16    	    8000	      1191 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-32    	    8000	      1151 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkArray_run                   	    8000	        24.23 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-2                 	    8000	        23.73 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-4                 	    8000	        24.28 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-8                 	    8000	        24.26 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-16                	    8000	        24.27 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-32                	    8000	        25.63 ns/op	       0 B/op	       0 allocs/op
+BenchmarkDynamicSlice_run            	    8000	      1598 ns/op	   25208 B/op	      11 allocs/op
+BenchmarkDynamicSlice_run-2          	    8000	      3049 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-4          	    8000	      3600 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-8          	    8000	      3562 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-16         	    8000	      3260 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-32         	    8000	      3352 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkPreallocatedSlice_run       	    8000	       680.2 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-2     	    8000	      1186 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-4     	    8000	      1451 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-8     	    8000	      1301 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-16    	    8000	      1201 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-32    	    8000	      1248 ns/op	    8192 B/op	       1 allocs/op
 PASS
-ok  	benchmarks/array-vs-slice	0.218s
+ok  	benchmarks/array-vs-slice	0.227s
 goos: linux
 goarch: amd64
 pkg: benchmarks/array-vs-slice
 cpu: AMD Ryzen 9 9950X3D 16-Core Processor          
-BenchmarkArray_run                   	    9000	        21.54 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-2                 	    9000	        21.52 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-4                 	    9000	        21.59 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-8                 	    9000	        21.57 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-16                	    9000	        21.55 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-32                	    9000	        25.29 ns/op	       0 B/op	       0 allocs/op
-BenchmarkDynamicSlice_run            	    9000	      2019 ns/op	   25208 B/op	      11 allocs/op
-BenchmarkDynamicSlice_run-2          	    9000	      3483 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkArray_run                   	    9000	        21.65 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-2                 	    9000	        21.90 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-4                 	    9000	        21.68 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-8                 	    9000	        21.76 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-16                	    9000	        21.81 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-32                	    9000	        21.71 ns/op	       0 B/op	       0 allocs/op
+BenchmarkDynamicSlice_run            	    9000	      1940 ns/op	   25208 B/op	      11 allocs/op
+BenchmarkDynamicSlice_run-2          	    9000	      3028 ns/op	   25208 B/op	      12 allocs/op
 BenchmarkDynamicSlice_run-4          	    9000	      3421 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-8          	    9000	      3525 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-16         	    9000	      3224 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-32         	    9000	      3058 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkPreallocatedSlice_run       	    9000	       685.9 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-2     	    9000	      1174 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-4     	    9000	      1347 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-8     	    9000	      1363 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-16    	    9000	      1262 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-32    	    9000	      1198 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkDynamicSlice_run-8          	    9000	      3434 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-16         	    9000	      2986 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-32         	    9000	      3134 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkPreallocatedSlice_run       	    9000	       662.3 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-2     	    9000	      1126 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-4     	    9000	      1278 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-8     	    9000	      1295 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-16    	    9000	      1148 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-32    	    9000	      1152 ns/op	    8192 B/op	       1 allocs/op
 PASS
-ok  	benchmarks/array-vs-slice	0.256s
+ok  	benchmarks/array-vs-slice	0.244s
 goos: linux
 goarch: amd64
 pkg: benchmarks/array-vs-slice
 cpu: AMD Ryzen 9 9950X3D 16-Core Processor          
-BenchmarkArray_run                   	   10000	        22.50 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-2                 	   10000	        19.48 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-4                 	   10000	        19.86 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-8                 	   10000	        19.45 ns/op	       0 B/op	       0 allocs/op
-BenchmarkArray_run-16                	   10000	        19.47 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run                   	   10000	        19.34 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-2                 	   10000	        19.38 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-4                 	   10000	        19.41 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-8                 	   10000	        19.46 ns/op	       0 B/op	       0 allocs/op
+BenchmarkArray_run-16                	   10000	        34.82 ns/op	       0 B/op	       0 allocs/op
 BenchmarkArray_run-32                	   10000	        19.43 ns/op	       0 B/op	       0 allocs/op
-BenchmarkDynamicSlice_run            	   10000	      1556 ns/op	   25208 B/op	      11 allocs/op
-BenchmarkDynamicSlice_run-2          	   10000	      3042 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-4          	   10000	      3465 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-8          	   10000	      3428 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-16         	   10000	      3099 ns/op	   25209 B/op	      12 allocs/op
-BenchmarkDynamicSlice_run-32         	   10000	      3189 ns/op	   25208 B/op	      12 allocs/op
-BenchmarkPreallocatedSlice_run       	   10000	       706.2 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-2     	   10000	      1285 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-4     	   10000	      1400 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-8     	   10000	      1320 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-16    	   10000	      1185 ns/op	    8192 B/op	       1 allocs/op
-BenchmarkPreallocatedSlice_run-32    	   10000	      1213 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkDynamicSlice_run            	   10000	      1547 ns/op	   25208 B/op	      11 allocs/op
+BenchmarkDynamicSlice_run-2          	   10000	      2757 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-4          	   10000	      3439 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-8          	   10000	      3475 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-16         	   10000	      3314 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkDynamicSlice_run-32         	   10000	      3331 ns/op	   25208 B/op	      12 allocs/op
+BenchmarkPreallocatedSlice_run       	   10000	       703.8 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-2     	   10000	      1131 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-4     	   10000	      1288 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-8     	   10000	      1336 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-16    	   10000	      1179 ns/op	    8192 B/op	       1 allocs/op
+BenchmarkPreallocatedSlice_run-32    	   10000	      1241 ns/op	    8192 B/op	       1 allocs/op
 PASS
-ok  	benchmarks/array-vs-slice	0.274s
+ok  	benchmarks/array-vs-slice	0.271s

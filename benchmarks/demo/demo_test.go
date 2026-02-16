@@ -1,42 +1,51 @@
 package demo
 
 import (
+	"runtime"
+	"sync"
 	"testing"
-	"time"
 )
 
-func BenchmarkSlowerOverTime_run(b *testing.B) {
+func BenchmarkFasterOverTime_run(b *testing.B) {
+	const maxWork = 5000
 	for i := 0; i < b.N; i++ {
-		time.Sleep(time.Duration(i/50) * time.Nanosecond)
+		// Work decreases as i grows, reaching zero after maxWork iterations
+		work := maxWork - i
+		if work < 0 {
+			work = 0
+		}
+		s := 0
+		for j := 0; j < work; j++ {
+			s += j
+		}
+		runtime.KeepAlive(s)
 	}
 }
 
-func BenchmarkFasterOverTime_run(b *testing.B) {
-	const maxDelay = 1000 // Maximum delay in nanoseconds
+func BenchmarkSlowerOverTime_run(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		// Calculate the sleep duration, ensuring it's never less than 0
-		delay := maxDelay - i
-		if delay < 0 {
-			delay = 0
+		// Work increases linearly with each iteration
+		s := 0
+		for j := 0; j < i; j++ {
+			s += j
 		}
-		time.Sleep(time.Duration(delay) * time.Nanosecond)
+		runtime.KeepAlive(s)
 	}
 }
 
 func BenchmarkFasterWithMoreCPUCores_run(b *testing.B) {
-	done := make(chan bool)
-
+	var wg sync.WaitGroup
+	wg.Add(b.N)
 	for i := 0; i < b.N; i++ {
 		go func() {
-			// Increase the workload inside the goroutine
-			time.Sleep(10000000 * time.Nanosecond)
-
-			done <- true
+			defer wg.Done()
+			// CPU-bound work that benefits from parallelism
+			s := 0
+			for j := 0; j < 50000; j++ {
+				s += j
+			}
+			runtime.KeepAlive(s)
 		}()
 	}
-
-	// Wait for all goroutines to finish
-	for i := 0; i < b.N; i++ {
-		<-done
-	}
+	wg.Wait()
 }

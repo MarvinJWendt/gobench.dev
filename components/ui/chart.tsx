@@ -258,16 +258,22 @@ function ChartLegendContent({
   payload,
   verticalAlign = "bottom",
   nameKey,
-}: React.ComponentProps<"div"> &
+  hiddenKeys,
+  onToggle,
+}: Omit<React.ComponentProps<"div">, "onToggle"> &
   Pick<RechartsPrimitive.LegendProps, "payload" | "verticalAlign"> & {
     hideIcon?: boolean
     nameKey?: string
+    hiddenKeys?: Set<string>
+    onToggle?: (dataKey: string) => void
   }) {
   const { config } = useChart()
 
   if (!payload?.length) {
     return null
   }
+
+  const interactive = !!onToggle
 
   return (
     <div
@@ -282,13 +288,20 @@ function ChartLegendContent({
         .map((item) => {
           const key = `${nameKey || item.dataKey || "value"}`
           const itemConfig = getPayloadConfigFromPayload(config, item, key)
+          const dataKey = String(item.dataKey || item.value)
+          const isHidden = hiddenKeys?.has(dataKey)
 
           return (
-            <div
+            <button
               key={item.value}
+              type="button"
               className={cn(
-                "[&>svg]:text-muted-foreground flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3"
+                "[&>svg]:text-muted-foreground flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 transition-opacity",
+                interactive && "cursor-pointer hover:opacity-80",
+                isHidden && "opacity-40"
               )}
+              onClick={() => onToggle?.(dataKey)}
+              tabIndex={interactive ? 0 : -1}
             >
               {itemConfig?.icon && !hideIcon ? (
                 <itemConfig.icon />
@@ -301,7 +314,7 @@ function ChartLegendContent({
                 />
               )}
               {itemConfig?.label}
-            </div>
+            </button>
           )
         })}
     </div>

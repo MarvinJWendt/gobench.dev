@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import {
   LineChart,
   Line,
@@ -25,6 +25,7 @@ import {
   formatNs,
   formatN,
 } from "@/lib/benchmark-utils";
+import { ScaleToggle, type ScaleType } from "@/components/benchmark/scale-toggle";
 
 const CHART_COLORS = [
   "var(--color-chart-1)",
@@ -41,6 +42,7 @@ interface OverviewChartProps {
 export function OverviewChart({ benchmarks }: OverviewChartProps) {
   const cpuCounts = useMemo(() => getCpuCounts(benchmarks), [benchmarks]);
   const [cpuCount, setCpuCount] = useState(cpuCounts[0]?.toString() ?? "1");
+  const [scale, setScale] = useState<ScaleType>("log");
 
   const data = useMemo(
     () => getOverviewChartData(benchmarks, Number(cpuCount)),
@@ -58,26 +60,42 @@ export function OverviewChart({ benchmarks }: OverviewChartProps) {
     return config;
   }, [benchmarks]);
 
+  const [hiddenKeys, setHiddenKeys] = useState<Set<string>>(new Set());
+  const toggleKey = useCallback((key: string) => {
+    setHiddenKeys((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) {
+        next.delete(key);
+      } else {
+        next.add(key);
+      }
+      return next;
+    });
+  }, []);
+
   return (
     <div className="space-y-3">
-      {/* CPU count selector */}
-      <div className="flex items-center gap-3">
-        <span className="text-sm text-muted-foreground">CPU Cores:</span>
-        <ToggleGroup
-          type="single"
-          value={cpuCount}
-          onValueChange={(v) => {
-            if (v) setCpuCount(v);
-          }}
-          variant="outline"
-          size="sm"
-        >
-          {cpuCounts.map((c) => (
-            <ToggleGroupItem key={c} value={c.toString()}>
-              {c}
-            </ToggleGroupItem>
-          ))}
-        </ToggleGroup>
+      {/* Controls */}
+      <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+        <div className="flex items-center gap-3">
+          <span className="text-sm text-muted-foreground">CPU Cores:</span>
+          <ToggleGroup
+            type="single"
+            value={cpuCount}
+            onValueChange={(v) => {
+              if (v) setCpuCount(v);
+            }}
+            variant="outline"
+            size="sm"
+          >
+            {cpuCounts.map((c) => (
+              <ToggleGroupItem key={c} value={c.toString()}>
+                {c}
+              </ToggleGroupItem>
+            ))}
+          </ToggleGroup>
+        </div>
+        <ScaleToggle value={scale} onChange={setScale} />
       </div>
 
       {/* Chart */}
@@ -90,11 +108,11 @@ export function OverviewChart({ benchmarks }: OverviewChartProps) {
             label={{ value: "Iterations (N)", position: "insideBottom", offset: -2, style: { fill: "var(--color-muted-foreground)", fontSize: 12 } }}
           />
           <YAxis
-            scale="log"
-            domain={["auto", "auto"]}
-            allowDataOverflow
+            scale={scale}
+            domain={scale === "log" ? ["auto", "auto"] : undefined}
+            allowDataOverflow={scale === "log"}
             tickFormatter={formatNs}
-            label={{ value: "ns/op (log)", angle: -90, position: "insideLeft", offset: 5, style: { fill: "var(--color-muted-foreground)", fontSize: 12 } }}
+            label={{ value: scale === "log" ? "ns/op (log)" : "ns/op", angle: -90, position: "insideLeft", offset: 5, style: { fill: "var(--color-muted-foreground)", fontSize: 12 } }}
           />
           <ChartTooltip
             content={
@@ -116,7 +134,7 @@ export function OverviewChart({ benchmarks }: OverviewChartProps) {
               />
             }
           />
-          <ChartLegend content={<ChartLegendContent />} />
+          <ChartLegend content={<ChartLegendContent hiddenKeys={hiddenKeys} onToggle={toggleKey} />} />
           {benchmarks.map((b, i) => (
             <Line
               key={b.Name}
@@ -126,6 +144,7 @@ export function OverviewChart({ benchmarks }: OverviewChartProps) {
               strokeWidth={2}
               dot={{ r: 3 }}
               activeDot={{ r: 5 }}
+              hide={hiddenKeys.has(chartKey(b.Name))}
             />
           ))}
         </LineChart>

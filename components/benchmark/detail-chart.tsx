@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState, useCallback } from "react";
 import {
   LineChart,
   Line,
@@ -25,6 +25,7 @@ import {
   formatNs,
   formatN,
 } from "@/lib/benchmark-utils";
+import { ScaleToggle, type ScaleType } from "@/components/benchmark/scale-toggle";
 
 const CPU_COLORS = [
   "var(--color-chart-1)",
@@ -42,6 +43,7 @@ interface DetailChartProps {
 export function DetailChart({ benchmark }: DetailChartProps) {
   const data = useMemo(() => getDetailChartData(benchmark), [benchmark]);
   const cpuCounts = useMemo(() => getCpuCounts([benchmark]), [benchmark]);
+  const [scale, setScale] = useState<ScaleType>("log");
 
   const chartConfig = useMemo(() => {
     const config: ChartConfig = {};
@@ -54,19 +56,37 @@ export function DetailChart({ benchmark }: DetailChartProps) {
     return config;
   }, [cpuCounts]);
 
+  const [hiddenKeys, setHiddenKeys] = useState<Set<string>>(new Set());
+  const toggleKey = useCallback((key: string) => {
+    setHiddenKeys((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) {
+        next.delete(key);
+      } else {
+        next.add(key);
+      }
+      return next;
+    });
+  }, []);
+
   return (
-    <ChartContainer config={chartConfig} className="min-h-[250px] w-full">
-      <LineChart data={data} margin={{ top: 5, right: 20, bottom: 5, left: 10 }}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis
-          dataKey="N"
-          tickFormatter={formatN}
-          label={{ value: "Iterations (N)", position: "insideBottom", offset: -2, style: { fill: "var(--color-muted-foreground)", fontSize: 12 } }}
-        />
-        <YAxis
-          tickFormatter={formatNs}
-          label={{ value: "ns/op", angle: -90, position: "insideLeft", offset: 5, style: { fill: "var(--color-muted-foreground)", fontSize: 12 } }}
-        />
+    <div className="space-y-3">
+      <ScaleToggle value={scale} onChange={setScale} />
+      <ChartContainer config={chartConfig} className="min-h-[250px] w-full">
+        <LineChart data={data} margin={{ top: 5, right: 20, bottom: 5, left: 10 }}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis
+            dataKey="N"
+            tickFormatter={formatN}
+            label={{ value: "Iterations (N)", position: "insideBottom", offset: -2, style: { fill: "var(--color-muted-foreground)", fontSize: 12 } }}
+          />
+          <YAxis
+            scale={scale}
+            domain={scale === "log" ? ["auto", "auto"] : undefined}
+            allowDataOverflow={scale === "log"}
+            tickFormatter={formatNs}
+            label={{ value: scale === "log" ? "ns/op (log)" : "ns/op", angle: -90, position: "insideLeft", offset: 5, style: { fill: "var(--color-muted-foreground)", fontSize: 12 } }}
+          />
         <ChartTooltip
           content={
             <ChartTooltipContent
@@ -87,7 +107,7 @@ export function DetailChart({ benchmark }: DetailChartProps) {
             />
           }
         />
-        <ChartLegend content={<ChartLegendContent />} />
+        <ChartLegend content={<ChartLegendContent hiddenKeys={hiddenKeys} onToggle={toggleKey} />} />
         {cpuCounts.map((cpu, i) => (
           <Line
             key={cpu}
@@ -97,9 +117,11 @@ export function DetailChart({ benchmark }: DetailChartProps) {
             strokeWidth={2}
             dot={{ r: 3 }}
             activeDot={{ r: 5 }}
+            hide={hiddenKeys.has(cpuKey(cpu))}
           />
         ))}
       </LineChart>
     </ChartContainer>
+    </div>
   );
 }

@@ -10,7 +10,10 @@ import {
 import {
   getFastestAndSlowest,
   getComparisons,
+  getVariationNames,
+  hasMultipleBehaviors,
   sortByPerformance,
+  capitalize,
   slugify,
 } from "@/lib/benchmark-utils";
 import { highlightGo, renderDescription } from "@/lib/highlight";
@@ -22,6 +25,10 @@ import { DetailChart } from "@/components/benchmark/detail-chart";
 import { CodeBlock } from "@/components/benchmark/code-block";
 import { ComparisonText } from "@/components/benchmark/comparison-text";
 import { SummaryCard } from "@/components/benchmark/summary-card";
+import { BehaviorProvider } from "@/components/benchmark/behavior-context";
+import { BehaviorTabs } from "@/components/benchmark/behavior-tabs";
+import { BehaviorSummaryCard } from "@/components/benchmark/behavior-summary-card";
+import { BenchmarkSectionHeader } from "@/components/benchmark/benchmark-section-header";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -52,9 +59,27 @@ export default async function BenchmarkPage({ params }: PageProps) {
 
   const group = getBenchmarkGroup(slug);
   const meta = getBenchmarkMeta(slug);
-  const { fastest, slowest } = getFastestAndSlowest(group.Benchmarks);
-  const comparisons = getComparisons(group.Benchmarks);
-  const sortedBenchmarks = sortByPerformance(group.Benchmarks);
+  const variationNames = getVariationNames(group.Benchmarks);
+  const multiBehavior = hasMultipleBehaviors(group.Benchmarks);
+
+  // Sort by the first behavior for consistent section ordering
+  const sortVariation = multiBehavior ? variationNames[0] : undefined;
+  const sortedBenchmarks = sortByPerformance(group.Benchmarks, sortVariation);
+
+  // Standard single-behavior data
+  const { fastest, slowest } = multiBehavior
+    ? { fastest: "", slowest: "" }
+    : getFastestAndSlowest(group.Benchmarks);
+  const comparisons = multiBehavior
+    ? null
+    : getComparisons(group.Benchmarks);
+
+  // Per-behavior comparisons for multi-behavior benchmarks
+  const behaviorComparisons = multiBehavior
+    ? Object.fromEntries(
+        variationNames.map((b) => [b, getComparisons(group.Benchmarks, b)]),
+      )
+    : null;
 
   // Pre-render descriptions and code blocks on the server
   const groupDescriptionHtml = await renderDescription(group.Description.trim());
@@ -75,6 +100,144 @@ export default async function BenchmarkPage({ params }: PageProps) {
       );
     }
   }
+
+  // Shared page content from summary card downward
+  const pageContent = (
+    <>
+      {/* Summary: fastest / slowest */}
+      <section className="mt-8">
+        {multiBehavior ? (
+          <BehaviorSummaryCard benchmarks={group.Benchmarks} />
+        ) : (
+          <SummaryCard fastest={fastest} slowest={slowest} />
+        )}
+      </section>
+
+      {/* Overview comparison chart */}
+      <section className="mt-8">
+        <Card>
+          <CardHeader>
+            <CardTitle>Performance Comparison</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {multiBehavior && <BehaviorTabs />}
+            <OverviewChart benchmarks={sortedBenchmarks} />
+          </CardContent>
+        </Card>
+      </section>
+
+      <Separator className="mt-10" />
+
+      {/* Individual benchmark sections */}
+      <div className="mt-10 space-y-12">
+        {sortedBenchmarks.map((bench, index) => {
+          const html = highlightedCode.get(bench.Name);
+
+          return (
+            <section key={bench.Name} id={slugify(bench.Name)}>
+              {/* Section heading */}
+              {multiBehavior ? (
+                <BenchmarkSectionHeader
+                  benchmarkName={bench.Name}
+                  benchmarks={group.Benchmarks}
+                />
+              ) : (
+                <div className="mb-4 flex items-center gap-3">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-secondary text-xs font-semibold">
+                    {index + 1}
+                  </span>
+                  <h2 className="text-2xl font-semibold tracking-tight">
+                    {bench.Name}
+                  </h2>
+                  {bench.Name === fastest && (
+                    <Badge
+                      variant="default"
+                      className="bg-green-400/15 text-green-400 border-green-400/25"
+                    >
+                      Fastest
+                    </Badge>
+                  )}
+                  {bench.Name === slowest && (
+                    <Badge
+                      variant="default"
+                      className="bg-destructive/15 text-destructive border-destructive/25"
+                    >
+                      Slowest
+                    </Badge>
+                  )}
+                </div>
+              )}
+
+              {benchDescriptionHtml.has(bench.Name) && (
+                <p
+                  className="mb-6 text-muted-foreground"
+                  dangerouslySetInnerHTML={{
+                    __html: benchDescriptionHtml.get(bench.Name)!,
+                  }}
+                />
+              )}
+
+              {/* Detail chart */}
+              <Card className="mb-6">
+                <CardHeader>
+                  <CardTitle className="text-base">
+                    {multiBehavior
+                      ? `Performance — ${bench.Name}`
+                      : `CPU Scaling — ${bench.Name}`}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className={multiBehavior ? "space-y-4" : undefined}>
+                  {multiBehavior && <BehaviorTabs />}
+                  <DetailChart benchmark={bench} />
+                </CardContent>
+              </Card>
+
+              {/* Source code */}
+              {html && (
+                <div className="mb-6">
+                  <CodeBlock
+                    highlightedHtml={html}
+                    title={`Benchmark Code — ${bench.Name}`}
+                  />
+                </div>
+              )}
+
+              {/* Comparison text */}
+              {multiBehavior && behaviorComparisons ? (
+                <div className="rounded-lg border bg-secondary/30 px-4 py-3 space-y-4">
+                  {variationNames.map((behavior) => {
+                    const comparison = behaviorComparisons[behavior].find(
+                      (c) => c.name === bench.Name,
+                    );
+                    if (!comparison || comparison.vs.length === 0) return null;
+                    return (
+                      <div key={behavior}>
+                        <p className="mb-1.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                          {capitalize(behavior)}
+                        </p>
+                        <ComparisonText comparison={comparison} />
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                (() => {
+                  const comparison = comparisons?.find(
+                    (c) => c.name === bench.Name,
+                  );
+                  return comparison ? (
+                    <div className="rounded-lg border bg-secondary/30 px-4 py-3">
+                      <ComparisonText comparison={comparison} />
+                    </div>
+                  ) : null;
+                })()
+              )}
+            </section>
+          );
+        })}
+      </div>
+    </>
+  );
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-16">
@@ -131,92 +294,13 @@ export default async function BenchmarkPage({ params }: PageProps) {
 
       <Separator />
 
-      {/* Summary: fastest / slowest */}
-      <section className="mt-8">
-        <SummaryCard fastest={fastest} slowest={slowest} />
-      </section>
-
-      {/* Overview comparison chart */}
-      <section className="mt-8">
-        <Card>
-          <CardHeader>
-            <CardTitle>Performance Comparison</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <OverviewChart benchmarks={sortedBenchmarks} />
-          </CardContent>
-        </Card>
-      </section>
-
-      <Separator className="mt-10" />
-
-      {/* Individual benchmark sections */}
-      <div className="mt-10 space-y-12">
-        {sortedBenchmarks.map((bench, index) => {
-          const comparison = comparisons.find((c) => c.name === bench.Name);
-          const html = highlightedCode.get(bench.Name);
-
-          return (
-            <section key={bench.Name} id={slugify(bench.Name)}>
-              {/* Section heading */}
-              <div className="mb-4 flex items-center gap-3">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-secondary text-xs font-semibold">
-                  {index + 1}
-                </span>
-                <h2 className="text-2xl font-semibold tracking-tight">
-                  {bench.Name}
-                </h2>
-                {bench.Name === fastest && (
-                  <Badge variant="default" className="bg-green-400/15 text-green-400 border-green-400/25">
-                    Fastest
-                  </Badge>
-                )}
-                {bench.Name === slowest && (
-                  <Badge variant="default" className="bg-destructive/15 text-destructive border-destructive/25">
-                    Slowest
-                  </Badge>
-                )}
-              </div>
-
-              {benchDescriptionHtml.has(bench.Name) && (
-                <p
-                  className="mb-6 text-muted-foreground"
-                  dangerouslySetInnerHTML={{ __html: benchDescriptionHtml.get(bench.Name)! }}
-                />
-              )}
-
-              {/* Detail chart: CPU scaling */}
-              <Card className="mb-6">
-                <CardHeader>
-                  <CardTitle className="text-base">
-                    CPU Scaling — {bench.Name}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <DetailChart benchmark={bench} />
-                </CardContent>
-              </Card>
-
-              {/* Source code */}
-              {html && (
-                <div className="mb-6">
-                  <CodeBlock
-                    highlightedHtml={html}
-                    title={`Benchmark Code — ${bench.Name}`}
-                  />
-                </div>
-              )}
-
-              {/* Comparison text */}
-              {comparison && (
-                <div className="rounded-lg border bg-secondary/30 px-4 py-3">
-                  <ComparisonText comparison={comparison} />
-                </div>
-              )}
-            </section>
-          );
-        })}
-      </div>
+      {multiBehavior ? (
+        <BehaviorProvider behaviors={variationNames}>
+          {pageContent}
+        </BehaviorProvider>
+      ) : (
+        pageContent
+      )}
     </div>
   );
 }

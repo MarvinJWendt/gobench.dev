@@ -90,6 +90,17 @@ cmd/                  # Go CLI that runs and parses benchmarks
 
    The `implementation` field in `meta` must match the benchmark function name (without the `Benchmark` prefix and `_variation` suffix).
 
+### Multiple behaviors
+
+If an implementation needs to benchmark distinct operations (e.g. read vs write), use a separate suffix for each behavior instead of `_run`:
+
+   ```go
+   func BenchmarkBuffer_write(b *testing.B) { /* … */ }
+   func BenchmarkBuffer_read(b *testing.B)  { /* … */ }
+   ```
+
+Every implementation in the group must define the **same set of suffixes**. The UI auto-detects multiple behaviors and renders synced tabs (one per behavior plus a combined view) above each chart, with per-behavior comparison text.
+
 4. Run the benchmarks and generate the JSON data:
 
    ```bash

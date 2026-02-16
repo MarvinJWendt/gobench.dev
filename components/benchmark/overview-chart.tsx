@@ -21,13 +21,16 @@ import type { Benchmark } from "@/lib/benchmarks";
 import {
   getOverviewChartData,
   getCpuCounts,
+  getCombinedBenchmarks,
+  filterBenchmarkVariations,
   chartKey,
   formatNs,
   formatN,
 } from "@/lib/benchmark-utils";
 import { ScaleToggle, type ScaleType } from "@/components/benchmark/scale-toggle";
+import { useBehavior } from "@/components/benchmark/behavior-context";
 
-const CHART_COLORS = [
+export const CHART_COLORS = [
   "var(--color-chart-1)",
   "var(--color-chart-2)",
   "var(--color-chart-3)",
@@ -40,25 +43,43 @@ interface OverviewChartProps {
 }
 
 export function OverviewChart({ benchmarks }: OverviewChartProps) {
-  const cpuCounts = useMemo(() => getCpuCounts(benchmarks), [benchmarks]);
+  const behaviorCtx = useBehavior();
+
+  // Filter benchmarks based on active behavior
+  const displayBenchmarks = useMemo(() => {
+    if (!behaviorCtx) return benchmarks;
+
+    if (behaviorCtx.behavior === "combined") {
+      return getCombinedBenchmarks(benchmarks, behaviorCtx.behaviors);
+    }
+
+    return benchmarks.map((b) =>
+      filterBenchmarkVariations(b, behaviorCtx.behavior),
+    );
+  }, [benchmarks, behaviorCtx]);
+
+  const cpuCounts = useMemo(
+    () => getCpuCounts(displayBenchmarks),
+    [displayBenchmarks],
+  );
   const [cpuCount, setCpuCount] = useState(cpuCounts[0]?.toString() ?? "1");
   const [scale, setScale] = useState<ScaleType>("log");
 
   const data = useMemo(
-    () => getOverviewChartData(benchmarks, Number(cpuCount)),
-    [benchmarks, cpuCount],
+    () => getOverviewChartData(displayBenchmarks, Number(cpuCount)),
+    [displayBenchmarks, cpuCount],
   );
 
   const chartConfig = useMemo(() => {
     const config: ChartConfig = {};
-    benchmarks.forEach((b, i) => {
+    displayBenchmarks.forEach((b, i) => {
       config[chartKey(b.Name)] = {
         label: b.Name,
         color: CHART_COLORS[i % CHART_COLORS.length],
       };
     });
     return config;
-  }, [benchmarks]);
+  }, [displayBenchmarks]);
 
   const [hiddenKeys, setHiddenKeys] = useState<Set<string>>(new Set());
   const toggleKey = useCallback((key: string) => {
@@ -135,7 +156,7 @@ export function OverviewChart({ benchmarks }: OverviewChartProps) {
             }
           />
           <ChartLegend content={<ChartLegendContent hiddenKeys={hiddenKeys} onToggle={toggleKey} />} />
-          {benchmarks.map((b, i) => (
+          {displayBenchmarks.map((b, i) => (
             <Line
               key={b.Name}
               type="monotone"

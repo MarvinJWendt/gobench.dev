@@ -70,7 +70,10 @@ export function DetailChart({ benchmark }: DetailChartProps) {
         <ChartTooltip
           content={
             <ChartTooltipContent
-              labelFormatter={(value) => `N = ${formatN(Number(value))}`}
+              labelFormatter={(_value, payload) => {
+                const n = payload?.[0]?.payload?.N;
+                return `N = ${n != null ? formatN(n) : "—"}`;
+              }}
               formatter={(value, name) => (
                 <div className="flex w-full items-center justify-between gap-4">
                   <span className="text-muted-foreground">

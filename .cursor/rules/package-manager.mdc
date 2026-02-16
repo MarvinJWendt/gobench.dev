@@ -1,0 +1,17 @@
+---
+description: Enforce pnpm as the package manager
+globs: package.json
+alwaysApply: true
+---
+
+# Package Management
+
+- Always use **pnpm** for installing and managing dependencies.
+- Do not use `npm` or `yarn`.
+- If you see `package-lock.json` or `yarn.lock`, warn the user and suggest removing them in favor of `pnpm-lock.yaml`.
+
+## Commands
+- Install dependencies: `pnpm install`
+- Add dependency: `pnpm add <package>`
+- Add dev dependency: `pnpm add -D <package>`
+- Run scripts: `pnpm run <script>`

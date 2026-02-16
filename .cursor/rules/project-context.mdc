@@ -1,0 +1,16 @@
+---
+description: Always refer to project documentation for context
+globs: 
+alwaysApply: true
+---
+
+# Project Context & Documentation
+
+- **Primary Sources**:
+  - `README.md`: High-level overview, tech stack, and features.
+  - `CONTRIBUTING.md`: Detailed project structure, setup instructions, and guidelines for adding benchmarks.
+
+- **Usage**:
+  - Before answering questions about project structure or contribution workflows, refer to `CONTRIBUTING.md`.
+  - Use `README.md` to understand the core value proposition and tech stack.
+  - When adding new benchmarks, strictly follow the steps in `CONTRIBUTING.md` under "Adding a benchmark".

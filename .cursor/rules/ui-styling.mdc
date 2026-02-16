@@ -1,0 +1,39 @@
+---
+description: Use shadcn/ui components and Tailwind CSS for styling
+globs: **/*.tsx
+alwaysApply: false
+---
+
+# UI Styling & Components
+
+## Component Library
+- Always use **shadcn/ui** components for UI elements.
+- Import shadcn components from `@/components/ui`.
+- If a component is missing, run `npx shadcn@latest add <component-name>` to install it.
+- Never write custom UI components if a shadcn/ui equivalent exists.
+
+## Styling
+- Use **Tailwind CSS** for all styling.
+- Avoid custom CSS classes or inline styles unless absolutely necessary.
+- Use the `cn()` utility from `@/lib/utils` to merge Tailwind classes conditionally.
+
+## Icons
+- Use **Lucide React** icons.
+- Import icons from `lucide-react`.
+
+## Example
+
+```tsx
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import { Plus } from "lucide-react"
+
+export function AddItemButton({ className }: { className?: string }) {
+  return (
+    <Button className={cn("gap-2", className)}>
+      <Plus className="h-4 w-4" />
+      Add Item
+    </Button>
+  )
+}
+```

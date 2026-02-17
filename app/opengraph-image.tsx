@@ -76,7 +76,7 @@ export default async function Image() {
               padding: "0 20px",
             }}
           >
-            gobench.dev
+            GoBench.dev
           </div>
 
           {/* Subtitle */}

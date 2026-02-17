@@ -12,11 +12,25 @@ tasks:
       - go run . run --all
       - task: gen
 
+  bench:fast:
+    desc: Runs all benchmarks, with a single run
+    dir: cmd
+    cmds:
+      - go run . run --all --count 1
+      - task: gen
+
   bench:update:
     desc: Runs benchmarks for groups that have not been run yet
     dir: cmd
     cmds:
       - go run . run
+      - task: gen
+
+  bench:update:fast:
+    desc: Runs benchmarks for groups that have not been run yet, with a single run
+    dir: cmd
+    cmds:
+      - go run . run --count 1
       - task: gen
 
   gen:

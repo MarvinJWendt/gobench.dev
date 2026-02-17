@@ -1,0 +1,25 @@
+name: fmt
+headline: A benchmark of different fmt functions, of the Go standard library.
+description: >
+    The Go standard library has a lot of different functions to format strings.
+    This benchmark compares the performance of some of them.
+    This benchmark can be used to find the fastest function for a specific use-case.
+
+tags:
+  - demo
+
+contributors:
+  - MarvinJWendt
+
+meta:
+  - implementation: Faster Over Time
+    description: >
+      This benchmark gets faster, the more runs it has.
+
+  - implementation: Slower Over Time
+    description: >
+      This benchmark gets slower, the more runs it has.
+
+  - implementation: Faster With More CPU Cores
+    description: >
+      This benchmark gets faster, the more CPU cores it has.

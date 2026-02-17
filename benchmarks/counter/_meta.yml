@@ -1,0 +1,37 @@
+name: Counter
+headline: A benchmark to compare the performance of different counter implementations in Go.
+description: >
+  The classic counter is a simple integer, mostly increased by `i++`. This implementation works fine in the most cases, but it has some drawbacks.
+  One of them is that it is not thread-safe. If you want to use it in a concurrent environment, you have to use a mutex or a channel to synchronize the access.
+  A solution is to use atomics. There are different approaches to use atomics to make a counter thread-safe.
+  This benchmark shows which implementation is the fastest, in which use-case.
+
+tags:
+  - counter
+
+contributors:
+  - MarvinJWendt
+
+meta:
+  - implementation: Atomic Pointer Counter
+    description: >
+      The Atomic Pointer Counter uses an `uint64` to store the counter value.
+      It will then use `atomic.AddUint64` to increase the counter value via a pointer.
+
+  - implementation: Atomic Uint Counter
+    description: >
+      This implementation is very similar to the Atomic Pointer Counter,
+      but it uses an `atomic.Uint64` instead of a `uint64`.
+      That way, the counter value can be incremented directly, by calling its `Add` method.
+
+  - implementation: Int Counter
+    description: >
+      This implementation uses a simple `int` to store the counter value.
+      It will then use `i++` to increase the counter value.
+      This implementation is not thread-safe.
+
+  - implementation: Int Counter With Mutex
+    description: >
+      This implementation uses a simple `int` to store the counter value.
+      It will then use `i++` to increase the counter value.
+      This implementation is thread-safe, because it uses a mutex to synchronize the accesses.

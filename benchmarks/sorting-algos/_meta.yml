@@ -1,0 +1,47 @@
+hidden: true
+
+name: Sorting Algorithms
+headline: A benchmark to compare the performance of different sorting algorithms in Go.
+description: >
+  This benchmark compares the performance of different sorting algorithms in Go.
+  Each run creates a random int slice, containing 1000 pseudo-random elements.
+  It will then sort the slice with the specified algorithm.
+  It currently compares the performance of the following sorting algorithms:
+  Built-In `sort` package, Bubble Sort, Insertion Sort, Selection Sort, Merge Sort, Quick Sort.
+
+tags:
+  - sort
+  - algorithm
+
+contributors:
+  - MarvinJWendt
+
+meta:
+  - implementation: Builtin Sort
+    description: >
+      This benchmark uses the built-in `sort` package to sort the array.
+
+  - implementation: Bubble Sort
+    description: >
+      This benchmark uses the Bubble Sort algorithm to sort the array.
+      Bubble Sort works by repeatedly swapping the adjacent elements, if they are in the wrong order.
+
+  - implementation: Insertion Sort
+    description: >
+        This benchmark uses the Insertion Sort algorithm to sort the array.
+        Insertion Sort works by repeatedly inserting the next element into the sorted part of the array.
+
+  - implementation: Selection Sort
+    description: >
+        This benchmark uses the Selection Sort algorithm to sort the array.
+        Selection Sort works by repeatedly selecting the smallest element from the unsorted part of the array and putting it at the end of the sorted part of the array.
+
+  - implementation: Merge Sort
+    description: >
+        This benchmark uses the Merge Sort algorithm to sort the array.
+        Merge Sort works by repeatedly splitting the array into two halves, sorting them and then merging them back together.
+
+  - implementation: Quick Sort
+    description: >
+        This benchmark uses the Quick Sort algorithm to sort the array.
+        Quick Sort works by repeatedly selecting a pivot element, partitioning the array around the pivot and then sorting the two partitions.

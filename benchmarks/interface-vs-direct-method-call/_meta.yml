@@ -1,0 +1,22 @@
+name: Interface vs Direct Method Call
+headline: A benchmark to compare the performance of interface vs direct method calls in Go.
+description: >
+  This benchmark compares the performance of interface vs direct method calls in Go.
+  Each benchmark creates a struct, containing a single method.
+  It will then call the method on the struct, either directly or via an interface.
+
+tags:
+  - interface
+  - struct
+
+contributors:
+  - MarvinJWendt
+
+meta:
+  - implementation: Interface Method Call
+    description: >
+        This benchmark calls the method on the struct via an interface.
+
+  - implementation: Direct Method Call
+    description: >
+        This benchmark calls the method on the struct directly.

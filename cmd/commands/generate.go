@@ -1,12 +1,10 @@
 package commands
 
 import (
-	"bufio"
 	"fmt"
 	"os"
 	"path/filepath"
 	"sort"
-	"strings"
 
 	"github.com/marvinjwendt/gobench/cmd/internal/logger"
 	"github.com/marvinjwendt/gobench/cmd/internal/parser"
@@ -93,33 +91,6 @@ func medianUint64(vars []parser.Variation, field func(parser.Variation) uint64) 
 	return (vals[n/2-1] + vals[n/2]) / 2
 }
 
-// countVariations returns the total number of variations across all benchmarks in a group.
-func countVariations(group *parser.BenchmarkGroup) int {
-	total := 0
-	for _, b := range group.Benchmarks {
-		total += len(b.Variations)
-	}
-	return total
-}
-
-// countBenchmarkLines counts the number of benchmark result lines in a _bench.out file.
-func countBenchmarkLines(path string) int {
-	f, err := os.Open(path)
-	if err != nil {
-		return 0
-	}
-	defer f.Close()
-
-	count := 0
-	scanner := bufio.NewScanner(f)
-	for scanner.Scan() {
-		if strings.HasPrefix(scanner.Text(), "Benchmark") {
-			count++
-		}
-	}
-	return count
-}
-
 var generateCmd = &cobra.Command{
 	Use:     "generate",
 	Aliases: []string{"gen"},
@@ -129,7 +100,6 @@ var generateCmd = &cobra.Command{
 		logger := logger.New(debug)
 
 		benchmarksDir := cmd.Flag("benchmarks").Value.String()
-		logger.Info("starting benchmark generation", "dir", benchmarksDir)
 
 		if _, err := os.Stat(benchmarksDir); os.IsNotExist(err) {
 			return fmt.Errorf("benchmarks directory does not exist: %s", benchmarksDir)
@@ -140,65 +110,26 @@ var generateCmd = &cobra.Command{
 			return fmt.Errorf("failed to process benchmark groups: %w", err)
 		}
 
-		logger.Info("discovered benchmark groups", "count", len(groups))
-
-		// Collapse duplicate variations from multiple runs using median
-		totalRawVariations := 0
-		totalCollapsedVariations := 0
-		totalBenchmarkLines := 0
+		// Collapse duplicate variations and write JSON for each group
 		totalBenchmarks := 0
-
 		for i := range groups {
-			benchOutPath := filepath.Join(groups[i].Dir, "_bench.out")
-			lineCount := countBenchmarkLines(benchOutPath)
-			totalBenchmarkLines += lineCount
-
-			rawCount := countVariations(&groups[i])
-			totalRawVariations += rawCount
-
 			medianVariations(&groups[i])
-
-			collapsedCount := countVariations(&groups[i])
-			totalCollapsedVariations += collapsedCount
 			totalBenchmarks += len(groups[i].Benchmarks)
 
-			logger.Info("processed group",
-				"group", groups[i].Name,
-				"lines", lineCount,
-				"variations_raw", rawCount,
-				"variations_collapsed", collapsedCount,
-				"benchmarks", len(groups[i].Benchmarks),
-			)
-		}
-
-		logger.Info("benchmark processing summary",
-			"total_lines", totalBenchmarkLines,
-			"total_variations_raw", totalRawVariations,
-			"total_variations_collapsed", totalCollapsedVariations,
-			"total_benchmarks", totalBenchmarks,
-		)
-
-		// Write a _bench.json file for each benchmark group
-		totalBytes := 0
-		for _, group := range groups {
-			j, err := parser.GenerateGroupJson(group, true)
+			j, err := parser.GenerateGroupJson(groups[i], true)
 			if err != nil {
-				return fmt.Errorf("failed to generate json for %s: %w", group.Name, err)
+				return fmt.Errorf("failed to generate json for %s: %w", groups[i].Name, err)
 			}
 
-			outPath := filepath.Join(group.Dir, "_bench.json")
-			logger.Info("writing json", "path", outPath, "benchmarks", len(group.Benchmarks), "size_bytes", len(j))
+			outPath := filepath.Join(groups[i].Dir, "_bench.json")
 			if err := os.WriteFile(outPath, j, 0644); err != nil {
-				return fmt.Errorf("failed to write json for %s: %w", group.Name, err)
+				return fmt.Errorf("failed to write json for %s: %w", groups[i].Name, err)
 			}
-			totalBytes += len(j)
+
+			logger.Info("generated", "group", groups[i].Name, "benchmarks", len(groups[i].Benchmarks))
 		}
 
-		logger.Info("generation complete",
-			"groups", len(groups),
-			"json_files_written", len(groups),
-			"total_bytes_written", totalBytes,
-		)
+		logger.Info("done", "groups", len(groups), "total_benchmarks", totalBenchmarks)
 
 		return nil
 	},

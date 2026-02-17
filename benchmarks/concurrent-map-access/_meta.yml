@@ -1,0 +1,27 @@
+name: Concurrent Map Access
+headline: A benchmark to compare the performance of different concurrent map access implementations in Go.
+description: >
+    The classic map access is done by using the `map[key]` syntax.
+    This implementation works fine in the most cases, but it is not thread-safe.
+    A solution is to use the `sync.Map` type or to add a mutex to the map.
+    This benchmark shows which implementation is the fastest.
+
+tags:
+  - map
+  - concurrency
+  - sync
+
+contributors:
+  - MarvinJWendt
+
+meta:
+  - implementation: Mutex
+    description: >
+      This benchmark uses a `sync.Mutex` to lock the map, before accessing it.
+      This makes sure, that only one goroutine can access the map at the same time.
+      For this implementation, you need to write own wrappers, to lock and unlock the map on each access.
+
+  - implementation: Sync
+    description: >
+        This benchmark uses the `sync.Map` type.
+        This type is thread-safe, so you don't need to write own wrappers to lock and unlock the map on each access.

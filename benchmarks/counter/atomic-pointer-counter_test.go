@@ -5,6 +5,8 @@ import (
 	"testing"
 )
 
+var atomicPointerCounterSink uint64
+
 type AtomicPointerCounter struct {
 	count uint64
 }
@@ -19,7 +21,6 @@ func (c *AtomicPointerCounter) get() uint64 {
 
 func BenchmarkAtomicPointerCounter_increment(b *testing.B) {
 	var counter AtomicPointerCounter
-	b.ResetTimer()
 
 	for i := 0; i < b.N; i++ {
 		counter.increment()
@@ -28,9 +29,8 @@ func BenchmarkAtomicPointerCounter_increment(b *testing.B) {
 
 func BenchmarkAtomicPointerCounter_get(b *testing.B) {
 	var counter AtomicPointerCounter
-	b.ResetTimer()
 
 	for i := 0; i < b.N; i++ {
-		counter.get()
+		atomicPointerCounterSink = counter.get()
 	}
 }

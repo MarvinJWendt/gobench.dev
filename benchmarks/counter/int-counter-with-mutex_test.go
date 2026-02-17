@@ -5,6 +5,8 @@ import (
 	"testing"
 )
 
+var intCounterWithMutexSink uint64
+
 type IntCounterWithMutex struct {
 	count uint64
 	mu    sync.Mutex
@@ -24,7 +26,6 @@ func (c *IntCounterWithMutex) get() uint64 {
 
 func BenchmarkIntCounterWithMutex_increment(b *testing.B) {
 	var counter IntCounterWithMutex
-	b.ResetTimer()
 
 	for i := 0; i < b.N; i++ {
 		counter.increment()
@@ -33,9 +34,8 @@ func BenchmarkIntCounterWithMutex_increment(b *testing.B) {
 
 func BenchmarkIntCounterWithMutex_get(b *testing.B) {
 	var counter IntCounterWithMutex
-	b.ResetTimer()
 
 	for i := 0; i < b.N; i++ {
-		counter.get()
+		intCounterWithMutexSink = counter.get()
 	}
 }

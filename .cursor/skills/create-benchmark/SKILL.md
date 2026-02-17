@@ -101,6 +101,8 @@ func BenchmarkConcurrent_run(b *testing.B) {
 
 9. **Explain benchmark code** — use small comments to explain the benchmark code. Can be inline. Don't overdo it, only explain complex steps.
 
+10. NEVER run `task bench`. It reruns all benchmarks. The user will run the benchmarks and generation logic. Only use the go tooling to verify that the benchmark works as intended.
+
 ### Common Mistakes to Watch For
 
 - **Value receiver on mutable state**: `func (c IntCounter) increment()` modifies a copy, not the original. Use pointer receivers for mutable structs.

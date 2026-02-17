@@ -1,13 +1,17 @@
 name: Counter
 headline: A benchmark to compare the performance of different counter implementations in Go.
 description: >
-  The classic counter is a simple integer, mostly increased by `i++`. This implementation works fine in the most cases, but it has some drawbacks.
-  One of them is that it is not thread-safe. If you want to use it in a concurrent environment, you have to use a mutex or a channel to synchronize the access.
-  A solution is to use atomics. There are different approaches to use atomics to make a counter thread-safe.
-  This benchmark shows which implementation is the fastest, in which use-case.
+  Compares different ways to implement a counter in Go, from a plain integer to
+  thread-safe variants using atomics or a mutex.
+  The basic `int` counter serves as a non-synchronized baseline, while
+  `atomic.Uint64`, `atomic.AddUint64`, and `sync.Mutex` each add safety at
+  different performance costs.
 
 tags:
   - counter
+  - atomic
+  - mutex
+  - concurrency
 
 contributors:
   - MarvinJWendt
@@ -15,23 +19,24 @@ contributors:
 meta:
   - implementation: Atomic Pointer Counter
     description: >
-      The Atomic Pointer Counter uses an `uint64` to store the counter value.
-      It will then use `atomic.AddUint64` to increase the counter value via a pointer.
+      Uses a raw `uint64` field and the free-function `atomic.AddUint64` /
+      `atomic.LoadUint64` API, passing a pointer to the field explicitly.
+      This is the pre-Go-1.19 style of atomic access.
 
   - implementation: Atomic Uint Counter
     description: >
-      This implementation is very similar to the Atomic Pointer Counter,
-      but it uses an `atomic.Uint64` instead of a `uint64`.
-      That way, the counter value can be incremented directly, by calling its `Add` method.
+      Uses `atomic.Uint64` (introduced in Go 1.19) which wraps atomic
+      operations behind method calls (`Add`, `Load`).
+      Functionally equivalent to the pointer variant but with a cleaner API.
 
   - implementation: Int Counter
     description: >
-      This implementation uses a simple `int` to store the counter value.
-      It will then use `i++` to increase the counter value.
-      This implementation is not thread-safe.
+      A plain `uint64` counter incremented with `c.count++`.
+      Not thread-safe — serves as a baseline to show the raw cost of
+      incrementing without any synchronization.
 
   - implementation: Int Counter With Mutex
     description: >
-      This implementation uses a simple `int` to store the counter value.
-      It will then use `i++` to increase the counter value.
-      This implementation is thread-safe, because it uses a mutex to synchronize the accesses.
+      Wraps a plain `uint64` counter with a `sync.Mutex`, locking on every
+      `increment` and `get` call. Thread-safe, but the mutex adds overhead
+      compared to lock-free atomic operations.

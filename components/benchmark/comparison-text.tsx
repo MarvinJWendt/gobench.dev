@@ -10,45 +10,61 @@ export function ComparisonText({ comparison }: ComparisonTextProps) {
 
   return (
     <div className="space-y-1.5 text-sm">
-      {comparison.vs.map((entry) => (
-        <p key={entry.other}>
-          <span className="font-medium">{comparison.name}</span> is{" "}
-          <span
-            className={
-              entry.faster
-                ? "font-semibold text-green-400"
-                : "font-semibold text-destructive"
-            }
-          >
-            {entry.ratio}x
-          </span>{" "}
-          <span
-            className={
-              entry.faster
-                ? "text-green-400"
-                : "text-destructive"
-            }
-          >
-            ({entry.percentage}%)
-          </span>{" "}
-          <span
-            className={
-              entry.faster
-                ? "text-green-400"
-                : "text-destructive"
-            }
-          >
-            {entry.faster ? "faster" : "slower"}
-          </span>{" "}
-          than{" "}
-          <a
-            href={`#${slugify(entry.other)}`}
-            className="font-medium text-primary link-underline"
-          >
-            {entry.other}
-          </a>
-        </p>
-      ))}
+      {comparison.vs.map((entry) => {
+        const isEqual = entry.percentage === 0;
+
+        return (
+          <p key={entry.other}>
+            <span className="font-medium">{comparison.name}</span>{" "}
+            {isEqual ? (
+              <>
+                is{" "}
+                <span className="font-semibold text-muted-foreground">
+                  as fast as
+                </span>
+              </>
+            ) : (
+              <>
+                is{" "}
+                <span
+                  className={
+                    entry.faster
+                      ? "font-semibold text-green-400"
+                      : "font-semibold text-destructive"
+                  }
+                >
+                  {entry.ratio}x
+                </span>{" "}
+                <span
+                  className={
+                    entry.faster
+                      ? "text-green-400"
+                      : "text-destructive"
+                  }
+                >
+                  ({entry.percentage}%)
+                </span>{" "}
+                <span
+                  className={
+                    entry.faster
+                      ? "text-green-400"
+                      : "text-destructive"
+                  }
+                >
+                  {entry.faster ? "faster" : "slower"}
+                </span>{" "}
+                than
+              </>
+            )}{" "}
+            <a
+              href={`#${slugify(entry.other)}`}
+              className="font-medium text-primary link-underline"
+            >
+              {entry.other}
+            </a>
+          </p>
+        );
+      })}
     </div>
   );
 }

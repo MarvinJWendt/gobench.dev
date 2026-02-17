@@ -17,11 +17,14 @@ contributors:
 meta:
   - implementation: Mutex
     description: >
-      This benchmark uses a `sync.Mutex` to lock the map, before accessing it.
-      This makes sure, that only one goroutine can access the map at the same time.
-      For this implementation, you need to write own wrappers, to lock and unlock the map on each access.
+      Uses a `sync.RWMutex` to protect a plain `map[int]int`.
+      Reads take a shared lock (`RLock`), writes take an exclusive lock (`Lock`).
+      This is the standard approach when you control all access sites and
+      need fine-grained locking with concurrent readers.
 
   - implementation: Sync
     description: >
-        This benchmark uses the `sync.Map` type.
-        This type is thread-safe, so you don't need to write own wrappers to lock and unlock the map on each access.
+      Uses the `sync.Map` type from the standard library.
+      It is inherently thread-safe and needs no external locking.
+      Optimised for keys that are stable over time — performs best when
+      entries are written once and read many times.

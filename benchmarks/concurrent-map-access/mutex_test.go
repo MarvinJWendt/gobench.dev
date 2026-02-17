@@ -5,30 +5,36 @@ import (
 	"testing"
 )
 
-func BenchmarkMutex_run(b *testing.B) {
-	var m = make(map[int]int)
-	var mutex sync.Mutex
-	var wg sync.WaitGroup
+func BenchmarkMutex_write(b *testing.B) {
+	var mu sync.RWMutex
+	m := make(map[int]int)
+
+	b.RunParallel(func(pb *testing.PB) {
+		i := 0
+		for pb.Next() {
+			mu.Lock()
+			m[i%mapSize] = i
+			mu.Unlock()
+			i++
+		}
+	})
+}
+
+func BenchmarkMutex_read(b *testing.B) {
+	var mu sync.RWMutex
+	m := make(map[int]int, mapSize)
+	for i := range mapSize {
+		m[i] = i
+	}
 
 	b.ResetTimer()
-
-	for i := 0; i < b.N; i++ {
-		wg.Add(2)
-
-		go func() {
-			mutex.Lock()
-			m[i] = i
-			mutex.Unlock()
-			wg.Done()
-		}()
-
-		go func() {
-			mutex.Lock()
-			_ = m[i]
-			mutex.Unlock()
-			wg.Done()
-		}()
-
-		wg.Wait()
-	}
+	b.RunParallel(func(pb *testing.PB) {
+		i := 0
+		for pb.Next() {
+			mu.RLock()
+			_ = m[i%mapSize]
+			mu.RUnlock()
+			i++
+		}
+	})
 }

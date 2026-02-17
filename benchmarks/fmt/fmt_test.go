@@ -8,7 +8,7 @@ import (
 
 const s = "Hello, World!"
 
-func BenchmarkFmt_println(b *testing.B) {
+func BenchmarkFmtPrintln_run(b *testing.B) {
 	os.Stdout, _ = os.Open(os.DevNull)
 
 	for i := 0; i < b.N; i++ {
@@ -16,7 +16,7 @@ func BenchmarkFmt_println(b *testing.B) {
 	}
 }
 
-func BenchmarkFmt_print(b *testing.B) {
+func BenchmarkFmtPrint_run(b *testing.B) {
 	os.Stdout, _ = os.Open(os.DevNull)
 
 	for i := 0; i < b.N; i++ {
@@ -24,7 +24,7 @@ func BenchmarkFmt_print(b *testing.B) {
 	}
 }
 
-func BenchmarkFmt_printf(b *testing.B) {
+func BenchmarkFmtPrintf_run(b *testing.B) {
 	os.Stdout, _ = os.Open(os.DevNull)
 
 	for i := 0; i < b.N; i++ {

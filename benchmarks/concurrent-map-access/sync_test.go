@@ -5,25 +5,30 @@ import (
 	"testing"
 )
 
-func BenchmarkSync_run(b *testing.B) {
+func BenchmarkSync_write(b *testing.B) {
 	var m sync.Map
-	var wg sync.WaitGroup
+
+	b.RunParallel(func(pb *testing.PB) {
+		i := 0
+		for pb.Next() {
+			m.Store(i%mapSize, i)
+			i++
+		}
+	})
+}
+
+func BenchmarkSync_read(b *testing.B) {
+	var m sync.Map
+	for i := range mapSize {
+		m.Store(i, i)
+	}
 
 	b.ResetTimer()
-
-	for i := 0; i < b.N; i++ {
-		wg.Add(2)
-
-		go func() {
-			m.Store(i, i)
-			wg.Done()
-		}()
-
-		go func() {
-			m.Load(i)
-			wg.Done()
-		}()
-
-		wg.Wait()
-	}
+	b.RunParallel(func(pb *testing.PB) {
+		i := 0
+		for pb.Next() {
+			m.Load(i % mapSize)
+			i++
+		}
+	})
 }

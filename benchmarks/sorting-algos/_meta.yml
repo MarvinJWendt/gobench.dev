@@ -1,5 +1,3 @@
-hidden: true
-
 name: Sorting Algorithms
 headline: A benchmark to compare the performance of different sorting algorithms in Go.
 description: >

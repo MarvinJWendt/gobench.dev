@@ -239,18 +239,19 @@ export interface BenchmarkComparisons {
   vs: ComparisonEntry[];
 }
 
-/** Computes comparison data for each benchmark against every other, optionally for a specific behavior. */
+/** Computes comparison data for each benchmark against every other, optionally for a specific behavior and CPU count. */
 export function getComparisons(
   benchmarks: Benchmark[],
   variationName?: string,
+  cpuCount: number = 1,
 ): BenchmarkComparisons[] {
   return benchmarks.map((b) => {
-    const myMean = getMeanNsPerOp(b, 1, variationName);
+    const myMean = getMeanNsPerOp(b, cpuCount, variationName);
 
     const vs: ComparisonEntry[] = benchmarks
       .filter((other) => other.Name !== b.Name)
       .map((other) => {
-        const otherMean = getMeanNsPerOp(other, 1, variationName);
+        const otherMean = getMeanNsPerOp(other, cpuCount, variationName);
 
         if (myMean <= otherMean) {
           const ratio = otherMean / myMean;
@@ -280,28 +281,69 @@ export interface FastSlow {
   slowest: string;
 }
 
-/** Returns the fastest and slowest benchmark names (by mean NsPerOp at CPUCount=1). */
+/** Returns the highest CPU count found across all benchmark variations. */
+export function getMaxCpuCount(benchmarks: Benchmark[]): number {
+  let max = 1;
+  for (const b of benchmarks) {
+    for (const v of b.Variations) {
+      if (v.CPUCount > max) max = v.CPUCount;
+    }
+  }
+  return max;
+}
+
+/** Returns the fastest and slowest benchmark names by mean NsPerOp at the given CPU count. */
 export function getFastestAndSlowest(
   benchmarks: Benchmark[],
   variationName?: string,
+  cpuCount: number = 1,
 ): FastSlow {
   let fastest = benchmarks[0];
   let slowest = benchmarks[0];
 
   for (const b of benchmarks) {
     if (
-      getMeanNsPerOp(b, 1, variationName) <
-      getMeanNsPerOp(fastest, 1, variationName)
+      getMeanNsPerOp(b, cpuCount, variationName) <
+      getMeanNsPerOp(fastest, cpuCount, variationName)
     )
       fastest = b;
     if (
-      getMeanNsPerOp(b, 1, variationName) >
-      getMeanNsPerOp(slowest, 1, variationName)
+      getMeanNsPerOp(b, cpuCount, variationName) >
+      getMeanNsPerOp(slowest, cpuCount, variationName)
     )
       slowest = b;
   }
 
   return { fastest: fastest.Name, slowest: slowest.Name };
+}
+
+/** Compute display badges for a benchmark given single-core and multi-core rankings. */
+export function getBadges(
+  benchName: string,
+  single: FastSlow,
+  multi: FastSlow,
+): { label: string; isFastest: boolean }[] {
+  const badges: { label: string; isFastest: boolean }[] = [];
+  const identical =
+    single.fastest === multi.fastest && single.slowest === multi.slowest;
+
+  if (identical) {
+    if (benchName === single.fastest)
+      badges.push({ label: "Fastest", isFastest: true });
+    if (benchName === single.slowest)
+      badges.push({ label: "Slowest", isFastest: false });
+  } else {
+    if (benchName === single.fastest)
+      badges.push({ label: "Fastest (Single)", isFastest: true });
+    if (benchName === multi.fastest)
+      badges.push({ label: "Fastest (Multi)", isFastest: true });
+    if (benchName === single.slowest)
+      badges.push({ label: "Slowest (Single)", isFastest: false });
+    if (benchName === multi.slowest)
+      badges.push({ label: "Slowest (Multi)", isFastest: false });
+  }
+
+  return badges;
 }
 
 /** Sorts benchmarks from fastest to slowest by mean NsPerOp at CPUCount=1. */

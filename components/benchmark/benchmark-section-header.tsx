@@ -1,10 +1,11 @@
 "use client";
 
-import { useMemo, Fragment } from "react";
+import { useMemo } from "react";
 import { Badge } from "@/components/ui/badge";
 import { useBehavior } from "./behavior-context";
 import {
   getFastestAndSlowest,
+  getBadges,
   sortByPerformance,
   capitalize,
 } from "@/lib/benchmark-utils";
@@ -13,44 +14,57 @@ import type { Benchmark } from "@/lib/benchmarks";
 interface BenchmarkSectionHeaderProps {
   benchmarkName: string;
   benchmarks: Benchmark[];
+  maxCpu: number;
 }
 
 export function BenchmarkSectionHeader({
   benchmarkName,
   benchmarks,
+  maxCpu,
 }: BenchmarkSectionHeaderProps) {
   const ctx = useBehavior();
 
   const { rank, badges } = useMemo(() => {
-    if (!ctx) return { rank: 0, badges: [] as { fastest: boolean; label: string }[] };
+    if (!ctx) return { rank: 0, badges: [] as { isFastest: boolean; label: string }[] };
 
     if (ctx.behavior === "combined") {
-      // Show per-behavior badges, no rank
-      const badgeList: { fastest: boolean; label: string }[] = [];
+      // Show per-behavior badges with single/multi awareness
+      const badgeList: { isFastest: boolean; label: string }[] = [];
       for (const b of ctx.behaviors) {
-        const { fastest, slowest } = getFastestAndSlowest(benchmarks, b);
-        if (benchmarkName === fastest)
-          badgeList.push({ fastest: true, label: `Fastest (${capitalize(b)})` });
-        if (benchmarkName === slowest)
-          badgeList.push({ fastest: false, label: `Slowest (${capitalize(b)})` });
+        const single = getFastestAndSlowest(benchmarks, b, 1);
+        const multi = getFastestAndSlowest(benchmarks, b, maxCpu);
+        const identical =
+          single.fastest === multi.fastest && single.slowest === multi.slowest;
+
+        if (identical) {
+          if (benchmarkName === single.fastest)
+            badgeList.push({ isFastest: true, label: `Fastest (${capitalize(b)})` });
+          if (benchmarkName === single.slowest)
+            badgeList.push({ isFastest: false, label: `Slowest (${capitalize(b)})` });
+        } else {
+          if (benchmarkName === single.fastest)
+            badgeList.push({ isFastest: true, label: `Fastest (${capitalize(b)}, Single)` });
+          if (benchmarkName === multi.fastest)
+            badgeList.push({ isFastest: true, label: `Fastest (${capitalize(b)}, Multi)` });
+          if (benchmarkName === single.slowest)
+            badgeList.push({ isFastest: false, label: `Slowest (${capitalize(b)}, Single)` });
+          if (benchmarkName === multi.slowest)
+            badgeList.push({ isFastest: false, label: `Slowest (${capitalize(b)}, Multi)` });
+        }
       }
       return { rank: 0, badges: badgeList };
     }
 
-    // Single behavior: rank + fastest/slowest badges
+    // Single behavior: rank + single/multi badges
     const sorted = sortByPerformance(benchmarks, ctx.behavior);
     const r = sorted.findIndex((b) => b.Name === benchmarkName) + 1;
-    const { fastest, slowest } = getFastestAndSlowest(benchmarks, ctx.behavior);
-    const badgeList: { fastest: boolean; label: string }[] = [];
-    if (benchmarkName === fastest)
-      badgeList.push({ fastest: true, label: "Fastest" });
-    if (benchmarkName === slowest)
-      badgeList.push({ fastest: false, label: "Slowest" });
-    return { rank: r, badges: badgeList };
-  }, [benchmarkName, benchmarks, ctx]);
+    const single = getFastestAndSlowest(benchmarks, ctx.behavior, 1);
+    const multi = getFastestAndSlowest(benchmarks, ctx.behavior, maxCpu);
+    return { rank: r, badges: getBadges(benchmarkName, single, multi) };
+  }, [benchmarkName, benchmarks, ctx, maxCpu]);
 
   return (
-    <div className="mb-4 flex items-center gap-3">
+    <div className="mb-4 flex flex-wrap items-center gap-3">
       {rank > 0 && (
         <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-secondary text-xs font-semibold">
           {rank}
@@ -62,7 +76,7 @@ export function BenchmarkSectionHeader({
           key={badge.label}
           variant="default"
           className={
-            badge.fastest
+            badge.isFastest
               ? "bg-green-400/15 text-green-400 border-green-400/25"
               : "bg-destructive/15 text-destructive border-destructive/25"
           }

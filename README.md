@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="public/header.png" alt="GoBench.dev — Write Faster Go Code" width="100%" />
+<img src="https://gobench.dev/opengraph-image" alt="GoBench.dev — Write Faster Go Code" width="100%" />
 
 <br />
 <br />

@@ -32,6 +32,10 @@ import { CpuSelectionProvider } from "@/components/benchmark/cpu-selection-conte
 import { CpuSelectionToggle } from "@/components/benchmark/cpu-selection-toggle";
 import { ComparisonBlock } from "@/components/benchmark/comparison-block";
 import { Contributors } from "@/components/benchmark/contributors";
+import {
+  TableOfContents,
+  InlineTableOfContents,
+} from "@/components/benchmark/table-of-contents";
 import { SITE_URL, BASE_KEYWORDS } from "@/lib/seo";
 
 interface PageProps {
@@ -127,7 +131,7 @@ export default async function BenchmarkPage({ params }: PageProps) {
       </section>
 
       {/* Summary: fastest / slowest */}
-      <section className="mt-4">
+      <section id="summary" className="mt-4">
         {multiBehavior ? (
           <BehaviorSummaryCard benchmarks={group.Benchmarks} />
         ) : (
@@ -242,8 +246,23 @@ export default async function BenchmarkPage({ params }: PageProps) {
     keywords: meta.tags.join(", "),
   };
 
+  const tocImplementationItems = sortedBenchmarks.map((b) => ({
+    name: b.Name,
+    slug: slugify(b.Name),
+  }));
+
   return (
-    <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-16">
+    <div className="relative mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-16">
+      {/* Desktop sidebar TOC — anchored to the left edge of content */}
+      <aside className="hidden min-[1400px]:block absolute top-0 bottom-0 right-full mr-6 w-48">
+        <div className="sticky top-[50vh] -translate-y-1/2">
+          <TableOfContents
+            summarySlug="summary"
+            implementationItems={tocImplementationItems}
+          />
+        </div>
+      </aside>
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -307,6 +326,13 @@ export default async function BenchmarkPage({ params }: PageProps) {
 
       <Separator />
 
+      {/* Mobile/tablet TOC — visible when sidebar doesn't fit */}
+      <InlineTableOfContents
+        summarySlug="summary"
+        implementationItems={tocImplementationItems}
+        className="mt-6 min-[1400px]:hidden"
+      />
+
       <CpuSelectionProvider cpuCounts={cpuCounts}>
         <MetricProvider>
           <CurveTypeProvider>
@@ -322,7 +348,9 @@ export default async function BenchmarkPage({ params }: PageProps) {
       </CpuSelectionProvider>
 
       {/* Contributors */}
-      <Contributors contributors={meta.contributors} />
+      <section id="contributors">
+        <Contributors contributors={meta.contributors} />
+      </section>
     </div>
   );
 }

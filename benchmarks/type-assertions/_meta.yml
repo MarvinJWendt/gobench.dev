@@ -1,0 +1,39 @@
+name: Type Assertions
+headline: Comparing type assertion, type switch, reflection, and comma-ok checks on interfaces.
+description: >
+  Compares four ways to check or extract the concrete type behind an interface value:
+  direct type assertion (`v.(Type)`), a type switch (`switch v.(type)`),
+  reflection via `reflect.TypeOf`, and the safe comma-ok assertion (`v, ok := v.(Type)`).
+  These patterns appear frequently in generic code and interface-heavy designs,
+  and their performance trade-offs are worth understanding.
+
+tags:
+  - type-assertion
+  - type-switch
+  - reflection
+  - interface
+
+contributors:
+  - MarvinJWendt
+
+meta:
+  - implementation: Type Assertion
+    description: >
+      Direct type assertion using `v.(Type)`. The fastest form but panics
+      if the interface value does not hold the expected type.
+
+  - implementation: Type Switch
+    description: >
+      Type switch using `switch v.(type)`. Allows matching against multiple
+      concrete types in a single construct with pattern-matching semantics.
+
+  - implementation: Reflection Type Of
+    description: >
+      Reflection-based check using `reflect.TypeOf`. Most flexible but carries
+      the overhead of the reflect package. The target type is cached before the
+      hot loop.
+
+  - implementation: Type Assertion With Ok
+    description: >
+      Comma-ok type assertion using `v, ok := v.(Type)`. Safe alternative to
+      a bare assertion — returns false instead of panicking on mismatch.

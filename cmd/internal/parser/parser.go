@@ -300,6 +300,23 @@ func getConsts(src string) (string, error) {
 	return cleanCode(buf.String())
 }
 
+// recvTypeName extracts the receiver type name from a method declaration.
+// For pointer receivers (*T) it returns "T"; for value receivers (T) it returns "T".
+func recvTypeName(fd *dst.FuncDecl) string {
+	if fd.Recv == nil || len(fd.Recv.List) == 0 {
+		return ""
+	}
+	switch expr := fd.Recv.List[0].Type.(type) {
+	case *dst.StarExpr:
+		if ident, ok := expr.X.(*dst.Ident); ok {
+			return ident.Name
+		}
+	case *dst.Ident:
+		return expr.Name
+	}
+	return ""
+}
+
 func getBenchmarkCode(src, name string) (string, error) {
 	src, _ = cleanCode(src)
 	src = "package dummy\n\n" + src
@@ -312,19 +329,99 @@ func getBenchmarkCode(src, name string) (string, error) {
 		return "", fmt.Errorf("parsed file is nil")
 	}
 
-	var buf bytes.Buffer
-	newFile := &dst.File{}
-	dst.Inspect(file, func(n dst.Node) bool {
-		switch decl := n.(type) {
+	// Index all locally-defined type names and standalone function names.
+	typeNames := make(map[string]bool)
+	funcNames := make(map[string]bool)
+	for _, decl := range file.Decls {
+		switch d := decl.(type) {
+		case *dst.GenDecl:
+			if d.Tok == token.TYPE {
+				for _, spec := range d.Specs {
+					if ts, ok := spec.(*dst.TypeSpec); ok {
+						typeNames[ts.Name.Name] = true
+					}
+				}
+			}
 		case *dst.FuncDecl:
-			if strings.HasPrefix(decl.Name.Name, "Benchmark"+name+"_") {
-				newFile.Decls = append(newFile.Decls, decl)
+			if d.Recv == nil && !strings.HasPrefix(d.Name.Name, "Benchmark") {
+				funcNames[d.Name.Name] = true
 			}
 		}
-		return true
-	})
+	}
 
-	newFile.Name = dst.NewIdent("dummy")
+	// Collect benchmark functions for this implementation.
+	var benchFuncs []dst.Decl
+	for _, decl := range file.Decls {
+		if fd, ok := decl.(*dst.FuncDecl); ok {
+			if strings.HasPrefix(fd.Name.Name, "Benchmark"+name+"_") {
+				benchFuncs = append(benchFuncs, fd)
+			}
+		}
+	}
+
+	// Walk benchmark function bodies to collect all referenced identifiers.
+	referencedIdents := make(map[string]bool)
+	for _, decl := range benchFuncs {
+		dst.Inspect(decl, func(n dst.Node) bool {
+			if ident, ok := n.(*dst.Ident); ok {
+				referencedIdents[ident.Name] = true
+			}
+			return true
+		})
+	}
+
+	// Match referenced identifiers against local type and function names.
+	refTypes := make(map[string]bool)
+	refFuncs := make(map[string]bool)
+	for id := range referencedIdents {
+		if typeNames[id] {
+			refTypes[id] = true
+		}
+		if funcNames[id] {
+			refFuncs[id] = true
+		}
+	}
+
+	// Build output: referenced types + their methods, then helper functions,
+	// then benchmark functions. Source order is preserved within each group.
+	newFile := &dst.File{Name: dst.NewIdent("dummy")}
+	added := make(map[dst.Decl]bool)
+
+	for _, decl := range file.Decls {
+		switch d := decl.(type) {
+		case *dst.GenDecl:
+			if d.Tok == token.TYPE {
+				for _, spec := range d.Specs {
+					if ts, ok := spec.(*dst.TypeSpec); ok && refTypes[ts.Name.Name] {
+						if !added[decl] {
+							newFile.Decls = append(newFile.Decls, decl)
+							added[decl] = true
+						}
+					}
+				}
+			}
+		case *dst.FuncDecl:
+			// Methods on referenced types.
+			if d.Recv != nil && len(d.Recv.List) > 0 {
+				if refTypes[recvTypeName(d)] && !added[decl] {
+					newFile.Decls = append(newFile.Decls, decl)
+					added[decl] = true
+				}
+			}
+			// Referenced standalone helper functions.
+			if d.Recv == nil && refFuncs[d.Name.Name] && !added[decl] {
+				newFile.Decls = append(newFile.Decls, decl)
+				added[decl] = true
+			}
+		}
+	}
+
+	// Append benchmark functions last.
+	for _, fn := range benchFuncs {
+		newFile.Decls = append(newFile.Decls, fn)
+	}
+
+	var buf bytes.Buffer
 	decorator.Fprint(&buf, newFile)
 	return cleanCode(buf.String())
 }
@@ -356,18 +453,7 @@ func getCode(src, name string) (string, error) {
 			}
 		case *dst.FuncDecl:
 			if decl.Recv != nil && len(decl.Recv.List) > 0 {
-				var recvTypeName string
-
-				switch expr := decl.Recv.List[0].Type.(type) {
-				case *dst.StarExpr:
-					if expr.X != nil {
-						recvTypeName = expr.X.(*dst.Ident).Name
-					}
-				case *dst.Ident:
-					recvTypeName = expr.Name
-				}
-
-				if recvTypeName == name {
+				if recvTypeName(decl) == name {
 					newFile.Decls = append(newFile.Decls, decl)
 				}
 			}

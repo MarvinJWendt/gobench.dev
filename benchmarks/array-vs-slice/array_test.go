@@ -3,15 +3,14 @@ package array_vs_slice
 import "testing"
 
 func BenchmarkArray_run(b *testing.B) {
-	var arr [1000]int // Define an array of fixed size
+	var arr [size]int
 
 	b.ResetTimer()
-
-	for i := 0; i < 1_000; i++ {
-		for j := range arr {
-			arr[j] = i
+	for i := 0; i < b.N; i++ {
+		for j := 0; j < size; j++ {
+			arr[j] = j
 		}
-
-		arr = [1000]int{} // Reset the array
 	}
+
+	sink = arr[size-1]
 }

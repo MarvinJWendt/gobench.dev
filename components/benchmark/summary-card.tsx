@@ -50,7 +50,7 @@ function SummarySection({ label, data }: { label: string; data: FastSlow }) {
         {label}
       </p>
 
-      <div className="flex flex-col gap-4 sm:flex-row sm:gap-8">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-8">
         {/* Fastest */}
         <div className="flex items-center gap-3">
           <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-green-400/10">

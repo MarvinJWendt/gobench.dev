@@ -65,53 +65,60 @@ function CpuSection({
         {label}
       </p>
 
-      {summaries.map((s, i) => (
-        <div
-          key={s.label}
-          className={`flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8 ${
-            i > 0 ? "border-t border-dashed pt-3" : ""
-          }`}
-        >
-          {/* Behavior label */}
-          <div className="flex items-center sm:w-16">
-            <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+      <div className="grid grid-cols-[auto_1fr_1fr] items-center gap-x-8">
+        {summaries.map((s, i) => (
+          <Fragment key={s.label}>
+            {/* Behavior label */}
+            <span
+              className={`text-xs font-medium uppercase tracking-wide text-muted-foreground py-3 ${
+                i > 0 ? "border-t border-dashed" : ""
+              }`}
+            >
               {s.label}
             </span>
-          </div>
 
-          {/* Fastest */}
-          <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-green-400/10">
-              <Trophy className="h-5 w-5 text-green-400" />
+            {/* Fastest */}
+            <div
+              className={`flex items-center gap-3 py-3 ${
+                i > 0 ? "border-t border-dashed" : ""
+              }`}
+            >
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-green-400/10">
+                <Trophy className="h-5 w-5 text-green-400" />
+              </div>
+              <div>
+                <p className="text-xs text-muted-foreground">Fastest</p>
+                <a
+                  href={`#${slugify(s.data.fastest)}`}
+                  className="font-semibold text-green-400 link-underline"
+                >
+                  {s.data.fastest}
+                </a>
+              </div>
             </div>
-            <div>
-              <p className="text-xs text-muted-foreground">Fastest</p>
-              <a
-                href={`#${slugify(s.data.fastest)}`}
-                className="font-semibold text-green-400 link-underline"
-              >
-                {s.data.fastest}
-              </a>
-            </div>
-          </div>
 
-          {/* Slowest */}
-          <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-destructive/10">
-              <TrendingDown className="h-5 w-5 text-destructive" />
+            {/* Slowest */}
+            <div
+              className={`flex items-center gap-3 py-3 ${
+                i > 0 ? "border-t border-dashed" : ""
+              }`}
+            >
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-destructive/10">
+                <TrendingDown className="h-5 w-5 text-destructive" />
+              </div>
+              <div>
+                <p className="text-xs text-muted-foreground">Slowest</p>
+                <a
+                  href={`#${slugify(s.data.slowest)}`}
+                  className="font-semibold text-destructive link-underline"
+                >
+                  {s.data.slowest}
+                </a>
+              </div>
             </div>
-            <div>
-              <p className="text-xs text-muted-foreground">Slowest</p>
-              <a
-                href={`#${slugify(s.data.slowest)}`}
-                className="font-semibold text-destructive link-underline"
-              >
-                {s.data.slowest}
-              </a>
-            </div>
-          </div>
-        </div>
-      ))}
+          </Fragment>
+        ))}
+      </div>
     </div>
   );
 }

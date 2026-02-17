@@ -91,7 +91,7 @@ export default async function Image() {
               marginTop: 12,
             }}
           >
-            Stop guessing. Start measuring.
+            Write Faster Go Code
           </div>
         </div>
 

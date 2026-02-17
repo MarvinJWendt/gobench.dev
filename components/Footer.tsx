@@ -18,8 +18,8 @@ export function Footer() {
   return (
     <footer className="border-t py-6">
       <div className="container flex flex-col items-center justify-center gap-2 px-4 md:px-8 max-w-screen-2xl mx-auto text-center">
-        <p className="text-sm text-muted-foreground flex items-center justify-center gap-1 flex-wrap">
-          Made with <Heart className="h-4 w-4 text-red-500 fill-red-500" /> by{" "}
+        <p className="text-sm text-muted-foreground">
+          Made with <Heart className="inline h-4 w-4 text-red-500 fill-red-500 align-text-bottom" /> by{" "}
           <Link
             href="https://mjw.dev"
             target="_blank"
@@ -38,10 +38,7 @@ export function Footer() {
             contributors
           </Link>
         </p>
-        <p className="text-xs text-muted-foreground/60 max-w-[600px]">
-          gobench.dev is not affiliated with, funded by, or associated with the Go team or Google.
-        </p>
-        <div className="flex gap-2 justify-center items-center mt-2">
+        <div className="flex gap-2 justify-center items-center">
           <Button variant="ghost" size="icon" asChild>
             <Link
               href="https://github.com/MarvinJWendt"
@@ -63,6 +60,33 @@ export function Footer() {
             </Link>
           </Button>
         </div>
+        <p className="text-xs text-muted-foreground/60 max-w-[600px] mt-2">
+          gobench.dev is not affiliated with, funded by, or associated with the Go team or Google.
+        </p>
+        <p className="text-xs text-muted-foreground/60 max-w-[600px]">
+          Website content is licensed under{" "}
+          <Link
+            href="https://creativecommons.org/licenses/by/4.0/"
+            target="_blank"
+            rel="noreferrer"
+            className="link-underline"
+          >
+            Creative Commons Attribution 4.0 International
+          </Link>
+        </p>
+        <Link
+          href="https://creativecommons.org/licenses/by/4.0/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://i.creativecommons.org/l/by/4.0/88x31.png"
+            alt="Creative Commons Attribution 4.0 International License"
+            width={88}
+            height={31}
+          />
+        </Link>
       </div>
     </footer>
   );

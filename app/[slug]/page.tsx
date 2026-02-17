@@ -65,6 +65,7 @@ export async function generateMetadata({
       description,
       url,
       type: "article",
+      siteName: "gobench.dev",
     },
     twitter: {
       card: "summary_large_image",

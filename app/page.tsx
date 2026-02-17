@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     description: PAGE_DESCRIPTION,
     type: "website",
     url: SITE_URL,
+    siteName: "gobench.dev",
   },
   twitter: {
     card: "summary_large_image",

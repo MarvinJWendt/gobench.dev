@@ -138,7 +138,12 @@ export default async function BenchmarkPage({ params }: PageProps) {
       <section className="mt-8">
         <Card>
           <CardHeader>
-            <CardTitle>Performance Comparison</CardTitle>
+            <CardTitle>
+              Performance Comparison{" "}
+              <span className="text-sm font-normal text-muted-foreground/70">
+                (lower is better)
+              </span>
+            </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             {multiBehavior && <BehaviorTabs />}
@@ -178,7 +183,10 @@ export default async function BenchmarkPage({ params }: PageProps) {
                   <CardTitle className="text-base">
                     {multiBehavior
                       ? `Performance — ${bench.Name}`
-                      : `CPU Scaling — ${bench.Name}`}
+                      : `CPU Scaling — ${bench.Name}`}{" "}
+                    <span className="text-sm font-normal text-muted-foreground/70">
+                      (lower is better)
+                    </span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">

@@ -3,6 +3,7 @@
 <img src="public/header.png" alt="GoBench.dev — Write Faster Go Code" width="100%" />
 
 <br />
+<br />
 
 [![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel&logoColor=white)](https://gobench.dev)
 [![Go](https://img.shields.io/badge/Go-1.24+-00ADD8?logo=go&logoColor=white)](https://go.dev/)

@@ -18,6 +18,8 @@ import {
 } from "@/components/ui/chart";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import type { Benchmark } from "@/lib/benchmarks";
+import { useCurveType } from "@/components/benchmark/curve-type-context";
+import { CurveTypeToggle } from "@/components/benchmark/curve-type-toggle";
 import {
   getDetailChartData,
   getCombinedDetailChartData,
@@ -80,6 +82,7 @@ function StandardDetailChart({
   const { metric } = useMetric();
   const metricCfg = METRICS[metric];
   const [scale, setScale] = useState<ScaleType>("log");
+  const { curveType } = useCurveType();
 
   const rawData = useMemo(
     () => getDetailChartData(benchmark, variationName, metricCfg.field),
@@ -149,6 +152,7 @@ function StandardDetailChart({
       <div className="flex flex-wrap items-center gap-3">
         <MetricToggle />
         <ScaleToggle value={scale} onChange={setScale} />
+        <CurveTypeToggle />
       </div>
 
       <ChartContainer config={chartConfig} className="min-h-[250px] w-full">
@@ -217,7 +221,7 @@ function StandardDetailChart({
           {cpuCounts.map((cpu, i) => (
             <Line
               key={cpu}
-              type="monotone"
+              type={curveType}
               dataKey={cpuKey(cpu)}
               stroke={CPU_COLORS[i % CPU_COLORS.length]}
               strokeWidth={2}
@@ -246,6 +250,7 @@ function CombinedDetailChart({
   const cpuCounts = useMemo(() => getCpuCounts([benchmark]), [benchmark]);
   const [cpuCount, setCpuCount] = useState(cpuCounts[0]?.toString() ?? "1");
   const [scale, setScale] = useState<ScaleType>("log");
+  const { curveType } = useCurveType();
 
   const rawData = useMemo(
     () =>
@@ -326,6 +331,8 @@ function CombinedDetailChart({
             ))}
           </ToggleGroup>
         </div>
+
+        <CurveTypeToggle />
       </div>
 
       {/* Chart */}
@@ -395,7 +402,7 @@ function CombinedDetailChart({
           {behaviors.map((name, i) => (
             <Line
               key={name}
-              type="monotone"
+              type={curveType}
               dataKey={chartKey(name)}
               stroke={CHART_COLORS[i % CHART_COLORS.length]}
               strokeWidth={2}

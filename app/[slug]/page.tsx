@@ -27,6 +27,7 @@ import { BehaviorTabs } from "@/components/benchmark/behavior-tabs";
 import { BehaviorSummaryCard } from "@/components/benchmark/behavior-summary-card";
 import { BenchmarkSectionHeader } from "@/components/benchmark/benchmark-section-header";
 import { MetricProvider } from "@/components/benchmark/metric-context";
+import { CurveTypeProvider } from "@/components/benchmark/curve-type-context";
 import { CpuSelectionProvider } from "@/components/benchmark/cpu-selection-context";
 import { CpuSelectionToggle } from "@/components/benchmark/cpu-selection-toggle";
 import { ComparisonBlock } from "@/components/benchmark/comparison-block";
@@ -308,13 +309,15 @@ export default async function BenchmarkPage({ params }: PageProps) {
 
       <CpuSelectionProvider cpuCounts={cpuCounts}>
         <MetricProvider>
-          {multiBehavior ? (
-            <BehaviorProvider behaviors={variationNames}>
-              {pageContent}
-            </BehaviorProvider>
-          ) : (
-            pageContent
-          )}
+          <CurveTypeProvider>
+            {multiBehavior ? (
+              <BehaviorProvider behaviors={variationNames}>
+                {pageContent}
+              </BehaviorProvider>
+            ) : (
+              pageContent
+            )}
+          </CurveTypeProvider>
         </MetricProvider>
       </CpuSelectionProvider>
 

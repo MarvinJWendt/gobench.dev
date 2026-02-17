@@ -18,6 +18,8 @@ import {
 } from "@/components/ui/chart";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import type { Benchmark } from "@/lib/benchmarks";
+import { useCurveType } from "@/components/benchmark/curve-type-context";
+import { CurveTypeToggle } from "@/components/benchmark/curve-type-toggle";
 import {
   getOverviewChartData,
   getCpuCounts,
@@ -48,6 +50,7 @@ export function OverviewChart({ benchmarks }: OverviewChartProps) {
   const behaviorCtx = useBehavior();
   const { metric } = useMetric();
   const metricCfg = METRICS[metric];
+  const { curveType } = useCurveType();
 
   // Filter benchmarks based on active behavior
   const displayBenchmarks = useMemo(() => {
@@ -154,6 +157,8 @@ export function OverviewChart({ benchmarks }: OverviewChartProps) {
             ))}
           </ToggleGroup>
         </div>
+
+        <CurveTypeToggle />
       </div>
 
       {/* Chart */}
@@ -202,7 +207,7 @@ export function OverviewChart({ benchmarks }: OverviewChartProps) {
           {displayBenchmarks.map((b, i) => (
             <Line
               key={b.Name}
-              type="monotone"
+              type={curveType}
               dataKey={chartKey(b.Name)}
               stroke={CHART_COLORS[i % CHART_COLORS.length]}
               strokeWidth={2}

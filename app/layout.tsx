@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { SITE_URL, BASE_KEYWORDS } from "@/lib/seo";
 
 const geistSans = Geist({
@@ -72,11 +73,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
-        <Navbar />
-        <main className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        <TooltipProvider>
+          <Navbar />
+          <main className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </TooltipProvider>
         <Analytics />
       </body>
     </html>

@@ -1,7 +1,12 @@
 "use client";
 
-import { useMemo, Fragment } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useState, useMemo, Fragment } from "react";
+import { ChevronDown, ChevronRight, ArrowLeftRight } from "lucide-react";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import { useCpuSelection } from "./cpu-selection-context";
 import { useBehavior } from "./behavior-context";
 import {
@@ -17,11 +22,12 @@ interface ComparisonBlockProps {
   benchmarks: Benchmark[];
 }
 
-/** Renders the "X is N× faster/slower than Y" card for all selected CPU counts. */
+/** Renders the "X is N× faster/slower than Y" collapsible block for all selected CPU counts. */
 export function ComparisonBlock({
   benchmarkName,
   benchmarks,
 }: ComparisonBlockProps) {
+  const [open, setOpen] = useState(true);
   const { selectedCpus } = useCpuSelection();
   const behaviorCtx = useBehavior();
 
@@ -61,42 +67,48 @@ export function ComparisonBlock({
   if (!hasContent) return null;
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-base">
-          Comparisons — {benchmarkName}
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        {sections.map((s, i) => (
-          <Fragment key={s.cpu}>
-            {i > 0 && <div className="border-t" />}
-            <div className="space-y-2">
-              {/* CPU count label */}
-              <span className="inline-flex rounded-full bg-muted px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-                {s.label}
-              </span>
+    <Collapsible open={open} onOpenChange={setOpen}>
+      <CollapsibleTrigger className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground">
+        {open ? (
+          <ChevronDown className="h-4 w-4" />
+        ) : (
+          <ChevronRight className="h-4 w-4" />
+        )}
+        <ArrowLeftRight className="h-4 w-4" />
+        Comparisons — {benchmarkName}
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <div className="mt-2 space-y-4 rounded-lg border px-4 py-3">
+          {sections.map((s, i) => (
+            <Fragment key={s.cpu}>
+              {i > 0 && <div className="border-t" />}
+              <div className="space-y-2">
+                {/* CPU count label */}
+                <span className="inline-flex rounded-full bg-muted px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                  {s.label}
+                </span>
 
-              {/* Single-behavior comparison */}
-              {s.comparison && <ComparisonText comparison={s.comparison} />}
+                {/* Single-behavior comparison */}
+                {s.comparison && <ComparisonText comparison={s.comparison} />}
 
-              {/* Multi-behavior comparisons */}
-              {s.behaviorItems?.map((bi) => {
-                if (!bi.comparison || bi.comparison.vs.length === 0)
-                  return null;
-                return (
-                  <div key={bi.label}>
-                    <p className="mb-1 ml-2.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                      {bi.label}
-                    </p>
-                    <ComparisonText comparison={bi.comparison} />
-                  </div>
-                );
-              })}
-            </div>
-          </Fragment>
-        ))}
-      </CardContent>
-    </Card>
+                {/* Multi-behavior comparisons */}
+                {s.behaviorItems?.map((bi) => {
+                  if (!bi.comparison || bi.comparison.vs.length === 0)
+                    return null;
+                  return (
+                    <div key={bi.label}>
+                      <p className="mb-1 ml-2.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                        {bi.label}
+                      </p>
+                      <ComparisonText comparison={bi.comparison} />
+                    </div>
+                  );
+                })}
+              </div>
+            </Fragment>
+          ))}
+        </div>
+      </CollapsibleContent>
+    </Collapsible>
   );
 }

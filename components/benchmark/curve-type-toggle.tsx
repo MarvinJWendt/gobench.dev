@@ -15,7 +15,7 @@ export function CurveTypeToggle() {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <div className="ml-auto flex items-center gap-1.5">
+        <div className="ml-auto mr-5 flex items-center gap-1.5">
           <ChartSpline className="h-4 w-4 text-muted-foreground" />
           <Switch
             checked={curveType === "monotone"}

@@ -1,17 +1,18 @@
 name: String Concatination
-headline: A benchmark to compare the performance of different string concatination implementations in Go.
+headline: Comparing string concatenation approaches in Go — from the naive + operator to strings.Builder and beyond.
 description: >
-  The classic string concatination is done by using the `+` operator.
-  This implementation works fine in the most cases, but it has some drawbacks.
-  One of them is that it is not very fast.
-  A solution is to use the `strings.Builder` or `buffer.Bytes` type.
-  This benchmark shows which implementation is the fastest, in which use-case.
-  For every run, the final string is increased by the same string. This makes sure, that the final string increases over time, to visualize the performance differences.
+  Compares four common ways to build a string incrementally in Go.
+  Each implementation appends the same character repeatedly, letting
+  the final string grow over time to expose performance differences.
+  The `write` behavior measures the cost of appending, while `read`
+  measures the cost of materializing the final string.
 
 tags:
   - string
   - concatination
   - append
+  - builder
+  - buffer
 
 contributors:
   - MarvinJWendt
@@ -19,19 +20,24 @@ contributors:
 meta:
   - implementation: Append To Slice And Join
     description: >
-      This implementation uses the `append` function to append the strings to a slice.
-      After that, the `strings.Join` function is used to join the strings together.
+      Appends strings to a slice with `append`, then calls `strings.Join`
+      to produce the final result. Write is cheap (slice append), but read
+      iterates and allocates the joined string.
 
   - implementation: Buffer
     description: >
-      This implementation uses the `bytes.Buffer` type to append the strings.
-      After that, the `buffer.String` function is used to get the final string.
+      Uses `bytes.Buffer` to accumulate strings. Write is amortized O(1).
+      Reading calls `buf.String()`, which copies the internal buffer into
+      a new string (allocates).
 
   - implementation: Simple Append
     description: >
-      This implementation uses the `+` operator to append the strings together.
+      Uses the `+` operator to concatenate strings. Each append copies
+      the entire string, making the total cost O(n²). Reading is free
+      since the result is already a string.
 
   - implementation: String Builder
     description: >
-      This implementation uses the `strings.Builder` type to append the strings.
-      After that, the `builder.String` function is used to get the final string.
+      Uses `strings.Builder` to accumulate strings. Write is amortized O(1).
+      Reading calls `builder.String()`, which uses an unsafe conversion and
+      does not allocate.

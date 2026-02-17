@@ -1,25 +1,46 @@
-name: fmt
-headline: A benchmark of different fmt functions, of the Go standard library.
+name: Printing
+headline: Comparing the performance of different fmt printing functions in Go.
 description: >
-    The Go standard library has a lot of different functions to format strings.
-    This benchmark compares the performance of some of them.
-    This benchmark can be used to find the fastest function for a specific use-case.
+  The Go fmt package provides several functions for printing output.
+  This benchmark compares Print, Println, and Printf (which write to stdout)
+  against their Fprint, Fprintln, and Fprintf counterparts (which write to
+  an io.Writer, here io.Discard). The Fprint variants avoid the overhead
+  of going through os.Stdout, making them noticeably faster.
 
 tags:
-  - demo
+  - fmt
+  - print
+  - io
 
 contributors:
   - MarvinJWendt
 
 meta:
-  - implementation: Faster Over Time
+  - implementation: Print
     description: >
-      This benchmark gets faster, the more runs it has.
+      Uses fmt.Print to write a string to stdout (redirected to /dev/null).
 
-  - implementation: Slower Over Time
+  - implementation: Println
     description: >
-      This benchmark gets slower, the more runs it has.
+      Uses fmt.Println to write a string followed by a newline to stdout
+      (redirected to /dev/null).
 
-  - implementation: Faster With More CPU Cores
+  - implementation: Printf
     description: >
-      This benchmark gets faster, the more CPU cores it has.
+      Uses fmt.Printf with a %s verb to write a formatted string to stdout
+      (redirected to /dev/null).
+
+  - implementation: Fprint
+    description: >
+      Uses fmt.Fprint to write a string directly to io.Discard,
+      bypassing stdout entirely.
+
+  - implementation: Fprintln
+    description: >
+      Uses fmt.Fprintln to write a string followed by a newline directly
+      to io.Discard, bypassing stdout entirely.
+
+  - implementation: Fprintf
+    description: >
+      Uses fmt.Fprintf with a %s verb to write a formatted string directly
+      to io.Discard, bypassing stdout entirely.

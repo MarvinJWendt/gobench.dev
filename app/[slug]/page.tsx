@@ -31,6 +31,7 @@ import { CpuSelectionProvider } from "@/components/benchmark/cpu-selection-conte
 import { CpuSelectionToggle } from "@/components/benchmark/cpu-selection-toggle";
 import { ComparisonBlock } from "@/components/benchmark/comparison-block";
 import { Contributors } from "@/components/benchmark/contributors";
+import { SITE_URL, BASE_KEYWORDS } from "@/lib/seo";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -45,10 +46,34 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const group = getBenchmarkGroup(slug);
+  const meta = getBenchmarkMeta(slug);
+
+  const title = `${group.Name} — Go Benchmark`;
+  const description = `${group.Headline} Compare performance, memory allocation, and CPU scaling with interactive charts.`;
+  const url = `${SITE_URL}/${slug}`;
 
   return {
-    title: `${group.Name} – gobench.dev`,
-    description: group.Headline,
+    title,
+    description,
+    keywords: [
+      ...BASE_KEYWORDS,
+      ...meta.tags,
+      `go ${group.Name.toLowerCase()}`,
+    ],
+    openGraph: {
+      title: `${title} — gobench.dev`,
+      description,
+      url,
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} — gobench.dev`,
+      description,
+    },
+    alternates: {
+      canonical: url,
+    },
   };
 }
 
@@ -183,8 +208,37 @@ export default async function BenchmarkPage({ params }: PageProps) {
     </>
   );
 
+  // JSON-LD structured data for the benchmark page
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    headline: `${group.Name} — Go Benchmark`,
+    description: group.Headline,
+    url: `${SITE_URL}/${slug}`,
+    author: {
+      "@type": "Person",
+      name: "Marvin Wendt",
+      url: "https://mjw.dev",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "gobench.dev",
+      url: SITE_URL,
+    },
+    about: {
+      "@type": "SoftwareSourceCode",
+      programmingLanguage: "Go",
+    },
+    keywords: meta.tags.join(", "),
+  };
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Back link */}
       <Link
         href="/"
@@ -196,7 +250,12 @@ export default async function BenchmarkPage({ params }: PageProps) {
 
       {/* Header */}
       <header className="mb-6">
-        <h1 className="text-3xl font-bold tracking-tight">{group.Name}</h1>
+        <h1 className="text-3xl font-bold tracking-tight">
+          {group.Name}{" "}
+          <span className="text-muted-foreground font-normal text-xl">
+            — Go Benchmark
+          </span>
+        </h1>
         <p className="mt-2 text-lg text-muted-foreground">{group.Headline}</p>
 
         {meta.tags.length > 0 && (

@@ -18,15 +18,28 @@ import {
   GitPullRequest
 } from "lucide-react";
 import { Metadata } from "next";
+import { SITE_URL } from "@/lib/seo";
+
+const PAGE_TITLE = "Go Benchmarks — Compare Go Performance Patterns";
+const PAGE_DESCRIPTION =
+  "Discover the fastest way to write Go code. Compare benchmarks for performance, memory allocation, and CPU scaling of common Go patterns side-by-side.";
 
 export const metadata: Metadata = {
-  title: "gobench.dev | High Performance Go Benchmarks",
-  description: "Discover the fastest way to write Go code. Compare performance, memory allocation, and CPU usage of common Go patterns.",
-  keywords: ["go", "golang", "benchmark", "performance", "optimization", "cpu", "memory", "allocation"],
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
   openGraph: {
-    title: "gobench.dev | High Performance Go Benchmarks",
-    description: "Discover the fastest way to write Go code. Compare performance, memory allocation, and CPU usage of common Go patterns.",
+    title: `${PAGE_TITLE} | gobench.dev`,
+    description: PAGE_DESCRIPTION,
     type: "website",
+    url: SITE_URL,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${PAGE_TITLE} | gobench.dev`,
+    description: PAGE_DESCRIPTION,
+  },
+  alternates: {
+    canonical: SITE_URL,
   },
 };
 
@@ -36,8 +49,33 @@ export default function Home() {
     (b) => isDev || !b.hidden,
   );
 
+  // JSON-LD structured data for the landing page
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "gobench.dev",
+    url: SITE_URL,
+    description:
+      "Compare the speed of different ways to do the same thing in Go. Interactive Go benchmark comparisons with charts.",
+    author: {
+      "@type": "Person",
+      name: "Marvin Wendt",
+      url: "https://mjw.dev",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "gobench.dev",
+      url: SITE_URL,
+    },
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-16 md:pt-24 lg:pt-32 pb-16 px-6">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/20 via-background to-background opacity-40"></div>
@@ -103,10 +141,10 @@ export default function Home() {
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-16 gap-4">
             <div className="space-y-2">
-               <h2 className="text-4xl font-extrabold tracking-tight">Benchmarks</h2>
+               <h2 className="text-4xl font-extrabold tracking-tight">Go Benchmarks</h2>
                <p className="text-lg text-muted-foreground max-w-2xl">
-                 Explore our growing collection of performance comparisons.
-                 Data-driven insights to help you write more efficient Go code.
+                 Explore our growing collection of Go performance comparisons.
+                 Data-driven benchmark insights to help you write more efficient Go code.
                </p>
             </div>
             <Button size="lg" className="rounded-full hidden sm:flex" asChild>

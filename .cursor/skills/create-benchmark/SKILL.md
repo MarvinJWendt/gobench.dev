@@ -99,6 +99,8 @@ func BenchmarkConcurrent_run(b *testing.B) {
 
 8. **Report allocations** — the CLI runs with `-benchmem`, so `AllocedBytesPerOp` and `AllocsPerOp` are captured automatically. No need to call `b.ReportAllocs()`.
 
+9. **Explain benchmark code** — use small comments to explain the benchmark code. Can be inline. Don't overdo it, only explain complex steps.
+
 ### Common Mistakes to Watch For
 
 - **Value receiver on mutable state**: `func (c IntCounter) increment()` modifies a copy, not the original. Use pointer receivers for mutable structs.

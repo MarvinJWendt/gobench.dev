@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import { Badge } from "@/components/ui/badge";
 import { useBehavior } from "./behavior-context";
+import { useCpuSelection } from "./cpu-selection-context";
 import {
   getFastestAndSlowest,
   getBadges,
@@ -14,54 +15,49 @@ import type { Benchmark } from "@/lib/benchmarks";
 interface BenchmarkSectionHeaderProps {
   benchmarkName: string;
   benchmarks: Benchmark[];
-  maxCpu: number;
+  /** Explicit 1-based rank (used for non-multi-behavior pages). */
+  index?: number;
 }
 
 export function BenchmarkSectionHeader({
   benchmarkName,
   benchmarks,
-  maxCpu,
+  index,
 }: BenchmarkSectionHeaderProps) {
-  const ctx = useBehavior();
+  const behaviorCtx = useBehavior();
+  const { selectedCpus } = useCpuSelection();
 
   const { rank, badges } = useMemo(() => {
-    if (!ctx) return { rank: 0, badges: [] as { isFastest: boolean; label: string }[] };
-
-    if (ctx.behavior === "combined") {
-      // Show per-behavior badges with single/multi awareness
+    // Multi-behavior, combined view: per-behavior badges
+    if (behaviorCtx?.behavior === "combined") {
       const badgeList: { isFastest: boolean; label: string }[] = [];
-      for (const b of ctx.behaviors) {
-        const single = getFastestAndSlowest(benchmarks, b, 1);
-        const multi = getFastestAndSlowest(benchmarks, b, maxCpu);
-        const identical =
-          single.fastest === multi.fastest && single.slowest === multi.slowest;
-
-        if (identical) {
-          if (benchmarkName === single.fastest)
-            badgeList.push({ isFastest: true, label: `Fastest (${capitalize(b)})` });
-          if (benchmarkName === single.slowest)
-            badgeList.push({ isFastest: false, label: `Slowest (${capitalize(b)})` });
-        } else {
-          if (benchmarkName === single.fastest)
-            badgeList.push({ isFastest: true, label: `Fastest (${capitalize(b)}, Single)` });
-          if (benchmarkName === multi.fastest)
-            badgeList.push({ isFastest: true, label: `Fastest (${capitalize(b)}, Multi)` });
-          if (benchmarkName === single.slowest)
-            badgeList.push({ isFastest: false, label: `Slowest (${capitalize(b)}, Single)` });
-          if (benchmarkName === multi.slowest)
-            badgeList.push({ isFastest: false, label: `Slowest (${capitalize(b)}, Multi)` });
-        }
+      for (const b of behaviorCtx.behaviors) {
+        const results = selectedCpus.map((cpu) => ({
+          cpu,
+          data: getFastestAndSlowest(benchmarks, b, cpu),
+        }));
+        badgeList.push(...getBadges(benchmarkName, results, capitalize(b)));
       }
       return { rank: 0, badges: badgeList };
     }
 
-    // Single behavior: rank + single/multi badges
-    const sorted = sortByPerformance(benchmarks, ctx.behavior);
-    const r = sorted.findIndex((b) => b.Name === benchmarkName) + 1;
-    const single = getFastestAndSlowest(benchmarks, ctx.behavior, 1);
-    const multi = getFastestAndSlowest(benchmarks, ctx.behavior, maxCpu);
-    return { rank: r, badges: getBadges(benchmarkName, single, multi) };
-  }, [benchmarkName, benchmarks, ctx, maxCpu]);
+    // Multi-behavior single view or non-multi-behavior
+    const variationName = behaviorCtx?.behavior;
+    const sorted = sortByPerformance(benchmarks, variationName);
+    const r = behaviorCtx
+      ? sorted.findIndex((b) => b.Name === benchmarkName) + 1
+      : 0;
+
+    const results = selectedCpus.map((cpu) => ({
+      cpu,
+      data: getFastestAndSlowest(benchmarks, variationName, cpu),
+    }));
+
+    return {
+      rank: r || (index ?? 0),
+      badges: getBadges(benchmarkName, results),
+    };
+  }, [benchmarkName, benchmarks, behaviorCtx, selectedCpus, index]);
 
   return (
     <div className="mb-4 flex flex-wrap items-center gap-3">
@@ -70,7 +66,9 @@ export function BenchmarkSectionHeader({
           {rank}
         </span>
       )}
-      <h2 className="text-2xl font-semibold tracking-tight">{benchmarkName}</h2>
+      <h2 className="text-2xl font-semibold tracking-tight">
+        {benchmarkName}
+      </h2>
       {badges.map((badge) => (
         <Badge
           key={badge.label}

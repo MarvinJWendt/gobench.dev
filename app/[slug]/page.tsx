@@ -8,14 +8,10 @@ import {
   getBenchmarkMeta,
 } from "@/lib/benchmarks";
 import {
-  getFastestAndSlowest,
-  getComparisons,
   getVariationNames,
   hasMultipleBehaviors,
   sortByPerformance,
-  getMaxCpuCount,
-  getBadges,
-  capitalize,
+  getCpuCounts,
   slugify,
 } from "@/lib/benchmark-utils";
 import { highlightGo, renderDescription } from "@/lib/highlight";
@@ -25,13 +21,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { OverviewChart } from "@/components/benchmark/overview-chart";
 import { DetailChart } from "@/components/benchmark/detail-chart";
 import { CodeBlock } from "@/components/benchmark/code-block";
-import { ComparisonText } from "@/components/benchmark/comparison-text";
 import { SummaryCard } from "@/components/benchmark/summary-card";
 import { BehaviorProvider } from "@/components/benchmark/behavior-context";
 import { BehaviorTabs } from "@/components/benchmark/behavior-tabs";
 import { BehaviorSummaryCard } from "@/components/benchmark/behavior-summary-card";
 import { BenchmarkSectionHeader } from "@/components/benchmark/benchmark-section-header";
 import { MetricProvider } from "@/components/benchmark/metric-context";
+import { CpuSelectionProvider } from "@/components/benchmark/cpu-selection-context";
+import { CpuSelectionToggle } from "@/components/benchmark/cpu-selection-toggle";
+import { ComparisonBlock } from "@/components/benchmark/comparison-block";
 import { Contributors } from "@/components/benchmark/contributors";
 
 interface PageProps {
@@ -70,34 +68,8 @@ export default async function BenchmarkPage({ params }: PageProps) {
   const sortVariation = multiBehavior ? variationNames[0] : undefined;
   const sortedBenchmarks = sortByPerformance(group.Benchmarks, sortVariation);
 
-  // CPU counts for single/multi comparison
-  const maxCpu = getMaxCpuCount(group.Benchmarks);
-
-  // Standard single-behavior data (single-core + multi-core)
-  const singleResult = multiBehavior
-    ? { fastest: "", slowest: "" }
-    : getFastestAndSlowest(group.Benchmarks);
-  const multiResult = multiBehavior
-    ? { fastest: "", slowest: "" }
-    : getFastestAndSlowest(group.Benchmarks, undefined, maxCpu);
-  const singleComparisons = multiBehavior
-    ? null
-    : getComparisons(group.Benchmarks);
-  const multiComparisons = multiBehavior
-    ? null
-    : getComparisons(group.Benchmarks, undefined, maxCpu);
-
-  // Per-behavior comparisons for multi-behavior benchmarks
-  const singleBehaviorComparisons = multiBehavior
-    ? Object.fromEntries(
-        variationNames.map((b) => [b, getComparisons(group.Benchmarks, b)]),
-      )
-    : null;
-  const multiBehaviorComparisons = multiBehavior
-    ? Object.fromEntries(
-        variationNames.map((b) => [b, getComparisons(group.Benchmarks, b, maxCpu)]),
-      )
-    : null;
+  // Available CPU counts for the selection toggle
+  const cpuCounts = getCpuCounts(group.Benchmarks);
 
   // Pre-render descriptions and code blocks on the server
   const groupDescriptionHtml = await renderDescription(group.Description.trim());
@@ -119,15 +91,20 @@ export default async function BenchmarkPage({ params }: PageProps) {
     }
   }
 
-  // Shared page content from summary card downward
+  // Shared page content from CPU toggle downward
   const pageContent = (
     <>
-      {/* Summary: fastest / slowest */}
+      {/* CPU selection toggle */}
       <section className="mt-8">
+        <CpuSelectionToggle />
+      </section>
+
+      {/* Summary: fastest / slowest */}
+      <section className="mt-4">
         {multiBehavior ? (
-          <BehaviorSummaryCard benchmarks={group.Benchmarks} maxCpu={maxCpu} />
+          <BehaviorSummaryCard benchmarks={group.Benchmarks} />
         ) : (
-          <SummaryCard single={singleResult} multi={multiResult} maxCpu={maxCpu} />
+          <SummaryCard benchmarks={group.Benchmarks} />
         )}
       </section>
 
@@ -153,36 +130,12 @@ export default async function BenchmarkPage({ params }: PageProps) {
 
           return (
             <section key={bench.Name} id={slugify(bench.Name)}>
-              {/* Section heading */}
-              {multiBehavior ? (
-                <BenchmarkSectionHeader
-                  benchmarkName={bench.Name}
-                  benchmarks={group.Benchmarks}
-                  maxCpu={maxCpu}
-                />
-              ) : (
-                <div className="mb-4 flex flex-wrap items-center gap-3">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-secondary text-xs font-semibold">
-                    {index + 1}
-                  </span>
-                  <h2 className="text-2xl font-semibold tracking-tight">
-                    {bench.Name}
-                  </h2>
-                  {getBadges(bench.Name, singleResult, multiResult).map((b) => (
-                    <Badge
-                      key={b.label}
-                      variant="default"
-                      className={
-                        b.isFastest
-                          ? "bg-green-400/15 text-green-400 border-green-400/25"
-                          : "bg-destructive/15 text-destructive border-destructive/25"
-                      }
-                    >
-                      {b.label}
-                    </Badge>
-                  ))}
-                </div>
-              )}
+              {/* Section heading with dynamic badges */}
+              <BenchmarkSectionHeader
+                benchmarkName={bench.Name}
+                benchmarks={group.Benchmarks}
+                index={multiBehavior ? undefined : index + 1}
+              />
 
               {benchDescriptionHtml.has(bench.Name) && (
                 <p
@@ -219,77 +172,10 @@ export default async function BenchmarkPage({ params }: PageProps) {
               )}
 
               {/* Comparison text */}
-              {multiBehavior && singleBehaviorComparisons && multiBehaviorComparisons ? (
-                <div className="rounded-lg border bg-secondary/30 px-4 py-3 space-y-4">
-                  {/* Single-core */}
-                  <ComparisonSection label="Single-core">
-                    {variationNames.map((behavior) => {
-                      const comparison = singleBehaviorComparisons[behavior].find(
-                        (c) => c.name === bench.Name,
-                      );
-                      if (!comparison || comparison.vs.length === 0) return null;
-                      return (
-                        <div key={behavior}>
-                          <p className="mb-1.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                            {capitalize(behavior)}
-                          </p>
-                          <ComparisonText comparison={comparison} />
-                        </div>
-                      );
-                    })}
-                  </ComparisonSection>
-
-                  {/* Multi-core */}
-                  {maxCpu > 1 && (
-                    <>
-                      <div className="border-t" />
-                      <ComparisonSection label={`Multi-core · ${maxCpu} CPUs`}>
-                        {variationNames.map((behavior) => {
-                          const comparison = multiBehaviorComparisons[behavior].find(
-                            (c) => c.name === bench.Name,
-                          );
-                          if (!comparison || comparison.vs.length === 0) return null;
-                          return (
-                            <div key={behavior}>
-                              <p className="mb-1.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                                {capitalize(behavior)}
-                              </p>
-                              <ComparisonText comparison={comparison} />
-                            </div>
-                          );
-                        })}
-                      </ComparisonSection>
-                    </>
-                  )}
-                </div>
-              ) : (
-                (() => {
-                  const singleComparison = singleComparisons?.find(
-                    (c) => c.name === bench.Name,
-                  );
-                  const multiComparison = multiComparisons?.find(
-                    (c) => c.name === bench.Name,
-                  );
-                  if (!singleComparison && !multiComparison) return null;
-                  return (
-                    <div className="rounded-lg border bg-secondary/30 px-4 py-3 space-y-4">
-                      {singleComparison && (
-                        <ComparisonSection label="Single-core">
-                          <ComparisonText comparison={singleComparison} />
-                        </ComparisonSection>
-                      )}
-                      {multiComparison && maxCpu > 1 && (
-                        <>
-                          <div className="border-t" />
-                          <ComparisonSection label={`Multi-core · ${maxCpu} CPUs`}>
-                            <ComparisonText comparison={multiComparison} />
-                          </ComparisonSection>
-                        </>
-                      )}
-                    </div>
-                  );
-                })()
-              )}
+              <ComparisonBlock
+                benchmarkName={bench.Name}
+                benchmarks={group.Benchmarks}
+              />
             </section>
           );
         })}
@@ -352,36 +238,20 @@ export default async function BenchmarkPage({ params }: PageProps) {
 
       <Separator />
 
-      <MetricProvider>
-        {multiBehavior ? (
-          <BehaviorProvider behaviors={variationNames}>
-            {pageContent}
-          </BehaviorProvider>
-        ) : (
-          pageContent
-        )}
-      </MetricProvider>
+      <CpuSelectionProvider cpuCounts={cpuCounts}>
+        <MetricProvider>
+          {multiBehavior ? (
+            <BehaviorProvider behaviors={variationNames}>
+              {pageContent}
+            </BehaviorProvider>
+          ) : (
+            pageContent
+          )}
+        </MetricProvider>
+      </CpuSelectionProvider>
 
       {/* Contributors */}
       <Contributors contributors={meta.contributors} />
-    </div>
-  );
-}
-
-// Small helper to label a comparison section (Single-core / Multi-core)
-function ComparisonSection({
-  label,
-  children,
-}: {
-  label: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="space-y-2">
-      <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-        {label}
-      </p>
-      {children}
     </div>
   );
 }

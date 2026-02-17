@@ -1,42 +1,49 @@
+"use client";
+
+import { useMemo, Fragment } from "react";
 import { Trophy, TrendingDown } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { slugify, type FastSlow } from "@/lib/benchmark-utils";
+import { useCpuSelection } from "./cpu-selection-context";
+import {
+  getFastestAndSlowest,
+  cpuCountLabel,
+  slugify,
+  type FastSlow,
+} from "@/lib/benchmark-utils";
+import type { Benchmark } from "@/lib/benchmarks";
 
 interface SummaryCardProps {
-  single: FastSlow;
-  multi: FastSlow;
-  maxCpu: number;
+  benchmarks: Benchmark[];
 }
 
-export function SummaryCard({ single, multi, maxCpu }: SummaryCardProps) {
-  const showMulti = maxCpu > 1;
+export function SummaryCard({ benchmarks }: SummaryCardProps) {
+  const { selectedCpus } = useCpuSelection();
+
+  const sections = useMemo(
+    () =>
+      selectedCpus.map((cpu) => ({
+        cpu,
+        label: cpuCountLabel(cpu),
+        data: getFastestAndSlowest(benchmarks, undefined, cpu),
+      })),
+    [benchmarks, selectedCpus],
+  );
 
   return (
     <Card>
       <CardContent className="space-y-4">
-        <SummarySection label="Single-core" data={single} />
-
-        {showMulti && (
-          <>
-            <div className="border-t" />
-            <SummarySection
-              label={`Multi-core · ${maxCpu} CPUs`}
-              data={multi}
-            />
-          </>
-        )}
+        {sections.map((s, i) => (
+          <Fragment key={s.cpu}>
+            {i > 0 && <div className="border-t" />}
+            <SummarySection label={s.label} data={s.data} />
+          </Fragment>
+        ))}
       </CardContent>
     </Card>
   );
 }
 
-function SummarySection({
-  label,
-  data,
-}: {
-  label: string;
-  data: FastSlow;
-}) {
+function SummarySection({ label, data }: { label: string; data: FastSlow }) {
   return (
     <div className="space-y-2">
       <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">

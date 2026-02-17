@@ -317,33 +317,48 @@ export function getFastestAndSlowest(
   return { fastest: fastest.Name, slowest: slowest.Name };
 }
 
-/** Compute display badges for a benchmark given single-core and multi-core rankings. */
+/** Compute display badges for a benchmark across one or more CPU counts. */
 export function getBadges(
   benchName: string,
-  single: FastSlow,
-  multi: FastSlow,
+  results: { cpu: number; data: FastSlow }[],
+  behaviorLabel?: string,
 ): { label: string; isFastest: boolean }[] {
   const badges: { label: string; isFastest: boolean }[] = [];
-  const identical =
-    single.fastest === multi.fastest && single.slowest === multi.slowest;
 
-  if (identical) {
-    if (benchName === single.fastest)
-      badges.push({ label: "Fastest", isFastest: true });
-    if (benchName === single.slowest)
-      badges.push({ label: "Slowest", isFastest: false });
+  const fastCpus = results.filter((r) => r.data.fastest === benchName);
+  const slowCpus = results.filter((r) => r.data.slowest === benchName);
+  const prefix = behaviorLabel ? `${behaviorLabel}, ` : "";
+
+  // Fastest badges
+  if (fastCpus.length === results.length && fastCpus.length > 0) {
+    badges.push({ label: `Fastest${behaviorLabel ? ` (${behaviorLabel})` : ""}`, isFastest: true });
   } else {
-    if (benchName === single.fastest)
-      badges.push({ label: "Fastest (Single)", isFastest: true });
-    if (benchName === multi.fastest)
-      badges.push({ label: "Fastest (Multi)", isFastest: true });
-    if (benchName === single.slowest)
-      badges.push({ label: "Slowest (Single)", isFastest: false });
-    if (benchName === multi.slowest)
-      badges.push({ label: "Slowest (Multi)", isFastest: false });
+    for (const r of fastCpus) {
+      badges.push({
+        label: `Fastest (${prefix}${r.cpu} CPU${r.cpu > 1 ? "s" : ""})`,
+        isFastest: true,
+      });
+    }
+  }
+
+  // Slowest badges
+  if (slowCpus.length === results.length && slowCpus.length > 0) {
+    badges.push({ label: `Slowest${behaviorLabel ? ` (${behaviorLabel})` : ""}`, isFastest: false });
+  } else {
+    for (const r of slowCpus) {
+      badges.push({
+        label: `Slowest (${prefix}${r.cpu} CPU${r.cpu > 1 ? "s" : ""})`,
+        isFastest: false,
+      });
+    }
   }
 
   return badges;
+}
+
+/** Format a CPU count as a section label. */
+export function cpuCountLabel(cpu: number): string {
+  return `${cpu} CPU${cpu > 1 ? "s" : ""}`;
 }
 
 /** Sorts benchmarks from fastest to slowest by mean NsPerOp at CPUCount=1. */

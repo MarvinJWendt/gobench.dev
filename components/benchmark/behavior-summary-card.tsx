@@ -1,11 +1,13 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, Fragment } from "react";
 import { Trophy, TrendingDown } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useBehavior } from "./behavior-context";
+import { useCpuSelection } from "./cpu-selection-context";
 import {
   getFastestAndSlowest,
+  cpuCountLabel,
   slugify,
   capitalize,
   type FastSlow,
@@ -14,52 +16,37 @@ import type { Benchmark } from "@/lib/benchmarks";
 
 interface BehaviorSummaryCardProps {
   benchmarks: Benchmark[];
-  maxCpu: number;
 }
 
-export function BehaviorSummaryCard({
-  benchmarks,
-  maxCpu,
-}: BehaviorSummaryCardProps) {
+export function BehaviorSummaryCard({ benchmarks }: BehaviorSummaryCardProps) {
   const ctx = useBehavior();
+  const { selectedCpus } = useCpuSelection();
   if (!ctx) return null;
 
   const { behaviors } = ctx;
-  const showMulti = maxCpu > 1;
 
-  const summaries = useMemo(() => {
-    return behaviors.map((b) => ({
-      label: capitalize(b),
-      single: getFastestAndSlowest(benchmarks, b, 1),
-      multi: getFastestAndSlowest(benchmarks, b, maxCpu),
-    }));
-  }, [benchmarks, behaviors, maxCpu]);
+  const sections = useMemo(
+    () =>
+      selectedCpus.map((cpu) => ({
+        cpu,
+        label: cpuCountLabel(cpu),
+        summaries: behaviors.map((b) => ({
+          label: capitalize(b),
+          data: getFastestAndSlowest(benchmarks, b, cpu),
+        })),
+      })),
+    [benchmarks, behaviors, selectedCpus],
+  );
 
   return (
     <Card>
       <CardContent className="space-y-4">
-        {/* Single-core section */}
-        <CpuSection
-          label="Single-core"
-          summaries={summaries.map((s) => ({
-            label: s.label,
-            data: s.single,
-          }))}
-        />
-
-        {/* Multi-core section */}
-        {showMulti && (
-          <>
-            <div className="border-t" />
-            <CpuSection
-              label={`Multi-core · ${maxCpu} CPUs`}
-              summaries={summaries.map((s) => ({
-                label: s.label,
-                data: s.multi,
-              }))}
-            />
-          </>
-        )}
+        {sections.map((section, i) => (
+          <Fragment key={section.cpu}>
+            {i > 0 && <div className="border-t" />}
+            <CpuSection label={section.label} summaries={section.summaries} />
+          </Fragment>
+        ))}
       </CardContent>
     </Card>
   );

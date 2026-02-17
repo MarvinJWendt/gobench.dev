@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, Fragment } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useCpuSelection } from "./cpu-selection-context";
 import { useBehavior } from "./behavior-context";
 import {
@@ -16,7 +17,7 @@ interface ComparisonBlockProps {
   benchmarks: Benchmark[];
 }
 
-/** Renders the "X is N× faster/slower than Y" block for all selected CPU counts. */
+/** Renders the "X is N× faster/slower than Y" card for all selected CPU counts. */
 export function ComparisonBlock({
   benchmarkName,
   benchmarks,
@@ -60,33 +61,42 @@ export function ComparisonBlock({
   if (!hasContent) return null;
 
   return (
-    <div className="rounded-lg border bg-secondary/30 px-4 py-3 space-y-4">
-      {sections.map((s, i) => (
-        <Fragment key={s.cpu}>
-          {i > 0 && <div className="border-t" />}
-          <div className="space-y-2">
-            <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-              {s.label}
-            </p>
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-base">
+          Comparisons — {benchmarkName}
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        {sections.map((s, i) => (
+          <Fragment key={s.cpu}>
+            {i > 0 && <div className="border-t" />}
+            <div className="space-y-2">
+              {/* CPU count label */}
+              <span className="inline-flex rounded-full bg-muted px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                {s.label}
+              </span>
 
-            {/* Single-behavior comparison */}
-            {s.comparison && <ComparisonText comparison={s.comparison} />}
+              {/* Single-behavior comparison */}
+              {s.comparison && <ComparisonText comparison={s.comparison} />}
 
-            {/* Multi-behavior comparisons */}
-            {s.behaviorItems?.map((bi) => {
-              if (!bi.comparison || bi.comparison.vs.length === 0) return null;
-              return (
-                <div key={bi.label}>
-                  <p className="mb-1.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                    {bi.label}
-                  </p>
-                  <ComparisonText comparison={bi.comparison} />
-                </div>
-              );
-            })}
-          </div>
-        </Fragment>
-      ))}
-    </div>
+              {/* Multi-behavior comparisons */}
+              {s.behaviorItems?.map((bi) => {
+                if (!bi.comparison || bi.comparison.vs.length === 0)
+                  return null;
+                return (
+                  <div key={bi.label}>
+                    <p className="mb-1 ml-2.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                      {bi.label}
+                    </p>
+                    <ComparisonText comparison={bi.comparison} />
+                  </div>
+                );
+              })}
+            </div>
+          </Fragment>
+        ))}
+      </CardContent>
+    </Card>
   );
 }

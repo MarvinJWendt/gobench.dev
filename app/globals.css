@@ -143,3 +143,77 @@
     @apply rounded-sm bg-[#1e1e2e] px-1.5 py-0.5 text-sm font-mono;
   }
 }
+
+/* Magical glow card effect ----------------------------------------------- */
+.glow-card {
+  --glow-x: 50%;
+  --glow-y: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  /* Slightly lighter / bluer than the card — forms the resting border tint */
+  background: hsl(225 18% 20%);
+}
+
+/* Bright radial glow behind the 1px border gap — shown on ALL cards */
+.glow-card-border {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    600px circle at var(--glow-x) var(--glow-y),
+    hsl(217 92% 76% / 0.4),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 300ms;
+  z-index: 1;
+}
+
+[data-glow-active] .glow-card-border {
+  opacity: 1;
+}
+
+/* Inner panel sits 1px inside the wrapper, hiding most of the outer glow */
+.glow-card-inner {
+  position: relative;
+  margin: 1px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-radius: calc(var(--radius-xl) - 1px);
+  background: hsl(var(--card));
+  z-index: 2;
+  overflow: hidden;
+}
+
+/* Faint surface glow — only on the currently hovered card */
+.glow-card-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    400px circle at calc(var(--glow-x) - 1px) calc(var(--glow-y) - 1px),
+    hsl(217 92% 76% / 0.07),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 300ms;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.glow-card:hover .glow-card-glow {
+  opacity: 1;
+}
+
+/* Content layer above the glow */
+.glow-card-content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { getAllBenchmarkSummaries } from "@/lib/benchmarks";
 import {
-  Card,
   CardHeader,
   CardTitle,
   CardDescription,
   CardContent,
 } from "@/components/ui/card";
+import { GlowCardGrid, GlowCard } from "@/components/ui/glow-card-grid";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -155,10 +155,10 @@ export default function Home() {
             </Button>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
+          <GlowCardGrid className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
           {benchmarks.map((b) => (
             <Link key={b.slug} href={`/${b.slug}`} className="group h-full no-underline">
-              <Card className="h-full hover:shadow-xl hover:border-primary transition-all duration-300 group-hover:-translate-y-1 bg-card border-muted-foreground/10">
+              <GlowCard className="h-full">
                 <CardHeader className="pb-4">
                   <div className="flex justify-between items-start gap-4">
                     <CardTitle className="text-2xl font-bold leading-tight group-hover:text-primary transition-colors">{b.name}</CardTitle>
@@ -182,10 +182,10 @@ export default function Home() {
                     </div>
                   </CardContent>
                 )}
-              </Card>
+              </GlowCard>
             </Link>
           ))}
-        </div>
+        </GlowCardGrid>
         </div>
       </section>
     </div>

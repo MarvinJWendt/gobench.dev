@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"runtime"
 	"strings"
+	"time"
 
 	"github.com/marvinjwendt/gobench/cmd/internal/logger"
 	"github.com/marvinjwendt/gobench/cmd/internal/utils"
@@ -20,9 +21,10 @@ var runCmd = &cobra.Command{
 	RunE: func(cmd *cobra.Command, args []string) error {
 		debug, _ := cmd.Flags().GetBool("debug")
 		all, _ := cmd.Flags().GetBool("all")
+		count, _ := cmd.Flags().GetInt("count")
 		logger := logger.New(debug)
 
-		logger.Info("running benchmarks")
+		logger.Info("running benchmarks", "count", count)
 
 		basePath := cmd.Flag("benchmarks").Value.String()
 		logger.Debug("benchmarks directory", "basePath", basePath)
@@ -32,14 +34,14 @@ var runCmd = &cobra.Command{
 
 		// Walk through the benchmarks directory
 		err := utils.WalkOverBenchmarks(basePath, func(path string) error {
-			return runBenchmark(logger, path, all)
+			return runBenchmark(logger, path, all, count)
 		})
 
 		return err
 	},
 }
 
-func runBenchmark(logger *slog.Logger, path string, all bool) error {
+func runBenchmark(logger *slog.Logger, path string, all bool, count int) error {
 	outputFilePath := filepath.Join(path, "_bench.out")
 	logger.Debug("running benchmark", "path", path)
 
@@ -56,23 +58,31 @@ func runBenchmark(logger *slog.Logger, path string, all bool) error {
 		cpuTests = append(cpuTests, fmt.Sprint(i))
 	}
 
-	//ony keep first, second and last cpu test
-	//cpuTests = append(cpuTests[:2], cpuTests[len(cpuTests)-1:]...)
-
 	logger.Debug("cpu tests", "cpuTests", cpuTests)
 
 	benchtimes := []string{"1000x", "2000x", "3000x", "4000x", "5000x", "6000x", "7000x", "8000x", "9000x", "10000x"}
 	var output []byte
-	for _, benchtime := range benchtimes {
-		cmd := exec.Command("go", "test", "-bench", ".", "-benchmem", "-benchtime", benchtime, "-cpu", strings.Join(cpuTests, ","))
-		logger.Debug("executing benchmark command", "command", cmd.String(), "path", path)
-		cmd.Dir = path
-		result, err := cmd.Output()
-		if err != nil {
-			logger.Error("failed to run benchmark", "path", path, "output", string(output))
-			return fmt.Errorf("failed to run benchmark: %w", err)
+
+	// Run benchmarks sequentially count times to reduce variance.
+	for run := range count {
+		if run > 0 {
+			logger.Debug("sleeping 1s between runs for CPU cooldown")
+			time.Sleep(time.Second)
 		}
-		output = append(output, result...)
+
+		logger.Info("benchmark run", "run", run+1, "total", count, "path", path)
+
+		for _, benchtime := range benchtimes {
+			cmd := exec.Command("go", "test", "-bench", ".", "-benchmem", "-benchtime", benchtime, "-cpu", strings.Join(cpuTests, ","))
+			logger.Debug("executing benchmark command", "command", cmd.String(), "path", path)
+			cmd.Dir = path
+			result, err := cmd.Output()
+			if err != nil {
+				logger.Error("failed to run benchmark", "path", path, "output", string(output))
+				return fmt.Errorf("failed to run benchmark: %w", err)
+			}
+			output = append(output, result...)
+		}
 	}
 
 	logger.Info("writing benchmark output", "path", path+string(os.PathSeparator)+"_bench.out")
@@ -82,6 +92,7 @@ func runBenchmark(logger *slog.Logger, path string, all bool) error {
 func init() {
 	runCmd.Flags().StringP("benchmarks", "b", "../benchmarks", "Filepath of the \"benchmarks\" directory")
 	runCmd.Flags().BoolP("all", "a", false, "Re-run all benchmarks, overwriting existing output files")
+	runCmd.Flags().IntP("count", "c", 10, "Number of times to run each benchmark (results are averaged)")
 
 	rootCmd.AddCommand(runCmd)
 }

@@ -10,11 +10,17 @@ tasks:
     dir: cmd
     cmds:
       - go run . run --all
-      - go run . generate
+      - task: gen
 
   bench:update:
     desc: Runs benchmarks for groups that have not been run yet
     dir: cmd
     cmds:
       - go run . run
+      - task: gen
+
+  gen:
+    desc: Generates benchmarks (needs to be run first)
+    dir: cmd
+    cmds:
       - go run . generate

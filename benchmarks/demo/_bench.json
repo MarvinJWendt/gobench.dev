@@ -17,7 +17,7 @@
       "Variations": [
         {
           "N": 1000,
-          "NsPerOp": 833.9,
+          "NsPerOp": 819,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -25,11 +25,11 @@
           "Ord": 1,
           "Name": "run",
           "CPUCount": 2,
-          "OpsPerSec": 1199184.554502938
+          "OpsPerSec": 1221001.221001221
         },
         {
           "N": 2000,
-          "NsPerOp": 855.9,
+          "NsPerOp": 731.4000000000001,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -37,11 +37,11 @@
           "Ord": 19,
           "Name": "run",
           "CPUCount": 2,
-          "OpsPerSec": 1168360.7898118938
+          "OpsPerSec": 1367240.9078479626
         },
         {
           "N": 3000,
-          "NsPerOp": 741.9,
+          "NsPerOp": 650.7,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -49,11 +49,11 @@
           "Ord": 37,
           "Name": "run",
           "CPUCount": 2,
-          "OpsPerSec": 1347890.5512872355
+          "OpsPerSec": 1536806.516059628
         },
         {
           "N": 4000,
-          "NsPerOp": 554.6,
+          "NsPerOp": 567.7,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -61,11 +61,11 @@
           "Ord": 55,
           "Name": "run",
           "CPUCount": 2,
-          "OpsPerSec": 1803101.3342949874
+          "OpsPerSec": 1761493.746697199
         },
         {
           "N": 5000,
-          "NsPerOp": 460.9,
+          "NsPerOp": 475.2,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -73,11 +73,11 @@
           "Ord": 73,
           "Name": "run",
           "CPUCount": 2,
-          "OpsPerSec": 2169668.0407897593
+          "OpsPerSec": 2104377.1043771044
         },
         {
           "N": 6000,
-          "NsPerOp": 432.2,
+          "NsPerOp": 390,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -85,11 +85,11 @@
           "Ord": 91,
           "Name": "run",
           "CPUCount": 2,
-          "OpsPerSec": 2313743.6372049977
+          "OpsPerSec": 2564102.564102564
         },
         {
           "N": 7000,
-          "NsPerOp": 331.6,
+          "NsPerOp": 332.04999999999995,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -97,11 +97,11 @@
           "Ord": 109,
           "Name": "run",
           "CPUCount": 2,
-          "OpsPerSec": 3015681.5440289504
+          "OpsPerSec": 3011594.639361542
         },
         {
           "N": 8000,
-          "NsPerOp": 345.3,
+          "NsPerOp": 295.20000000000005,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -109,11 +109,11 @@
           "Ord": 127,
           "Name": "run",
           "CPUCount": 2,
-          "OpsPerSec": 2896032.4355632784
+          "OpsPerSec": 3387533.8753387528
         },
         {
           "N": 9000,
-          "NsPerOp": 275.1,
+          "NsPerOp": 264.35,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -121,11 +121,11 @@
           "Ord": 145,
           "Name": "run",
           "CPUCount": 2,
-          "OpsPerSec": 3635041.802980734
+          "OpsPerSec": 3782863.6277662185
         },
         {
           "N": 10000,
-          "NsPerOp": 252.1,
+          "NsPerOp": 238.6,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -133,251 +133,11 @@
           "Ord": 163,
           "Name": "run",
           "CPUCount": 2,
-          "OpsPerSec": 3966679.8889329634
+          "OpsPerSec": 4191114.8365465216
         },
         {
           "N": 1000,
-          "NsPerOp": 812.3,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 2,
-          "Name": "run",
-          "CPUCount": 4,
-          "OpsPerSec": 1231072.2639418934
-        },
-        {
-          "N": 2000,
-          "NsPerOp": 744.9,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 20,
-          "Name": "run",
-          "CPUCount": 4,
-          "OpsPerSec": 1342462.0754463687
-        },
-        {
-          "N": 3000,
-          "NsPerOp": 642.2,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 38,
-          "Name": "run",
-          "CPUCount": 4,
-          "OpsPerSec": 1557147.3061351604
-        },
-        {
-          "N": 4000,
-          "NsPerOp": 554.2,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 56,
-          "Name": "run",
-          "CPUCount": 4,
-          "OpsPerSec": 1804402.7426921688
-        },
-        {
-          "N": 5000,
-          "NsPerOp": 555.4,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 74,
-          "Name": "run",
-          "CPUCount": 4,
-          "OpsPerSec": 1800504.1411595247
-        },
-        {
-          "N": 6000,
-          "NsPerOp": 382.9,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 92,
-          "Name": "run",
-          "CPUCount": 4,
-          "OpsPerSec": 2611647.9498563595
-        },
-        {
-          "N": 7000,
-          "NsPerOp": 329.4,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 110,
-          "Name": "run",
-          "CPUCount": 4,
-          "OpsPerSec": 3035822.707953856
-        },
-        {
-          "N": 8000,
-          "NsPerOp": 298.7,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 128,
-          "Name": "run",
-          "CPUCount": 4,
-          "OpsPerSec": 3347840.6427854034
-        },
-        {
-          "N": 9000,
-          "NsPerOp": 264.3,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 146,
-          "Name": "run",
-          "CPUCount": 4,
-          "OpsPerSec": 3783579.265985622
-        },
-        {
-          "N": 10000,
-          "NsPerOp": 238.5,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 164,
-          "Name": "run",
-          "CPUCount": 4,
-          "OpsPerSec": 4192872.1174004194
-        },
-        {
-          "N": 1000,
-          "NsPerOp": 1012,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 4,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 988142.2924901185
-        },
-        {
-          "N": 2000,
-          "NsPerOp": 747.7,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 22,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 1337434.8000534973
-        },
-        {
-          "N": 3000,
-          "NsPerOp": 642.2,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 40,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 1557147.3061351604
-        },
-        {
-          "N": 4000,
-          "NsPerOp": 547.9,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 58,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 1825150.5749224313
-        },
-        {
-          "N": 5000,
-          "NsPerOp": 467.7,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 76,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 2138122.7282446013
-        },
-        {
-          "N": 6000,
-          "NsPerOp": 388.3,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 94,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 2575328.3543651816
-        },
-        {
-          "N": 7000,
-          "NsPerOp": 330.3,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 112,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 3027550.7114744172
-        },
-        {
-          "N": 8000,
-          "NsPerOp": 295.3,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 130,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 3386386.7253640364
-        },
-        {
-          "N": 9000,
-          "NsPerOp": 255.5,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 148,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 3913894.324853229
-        },
-        {
-          "N": 10000,
-          "NsPerOp": 297.9,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 166,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 3356831.1513930853
-        },
-        {
-          "N": 1000,
-          "NsPerOp": 880.6,
+          "NsPerOp": 831.25,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -385,11 +145,11 @@
           "Ord": 0,
           "Name": "run",
           "CPUCount": 1,
-          "OpsPerSec": 1135589.3708834886
+          "OpsPerSec": 1203007.5187969925
         },
         {
           "N": 2000,
-          "NsPerOp": 756.6,
+          "NsPerOp": 751.9,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -397,11 +157,11 @@
           "Ord": 18,
           "Name": "run",
           "CPUCount": 1,
-          "OpsPerSec": 1321702.3526301878
+          "OpsPerSec": 1329964.090969544
         },
         {
           "N": 3000,
-          "NsPerOp": 704,
+          "NsPerOp": 648.65,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -409,11 +169,11 @@
           "Ord": 36,
           "Name": "run",
           "CPUCount": 1,
-          "OpsPerSec": 1420454.5454545454
+          "OpsPerSec": 1541663.4548678023
         },
         {
           "N": 4000,
-          "NsPerOp": 548.7,
+          "NsPerOp": 551,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -421,11 +181,11 @@
           "Ord": 54,
           "Name": "run",
           "CPUCount": 1,
-          "OpsPerSec": 1822489.520685256
+          "OpsPerSec": 1814882.0326678767
         },
         {
           "N": 5000,
-          "NsPerOp": 485,
+          "NsPerOp": 474.29999999999995,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -433,11 +193,11 @@
           "Ord": 72,
           "Name": "run",
           "CPUCount": 1,
-          "OpsPerSec": 2061855.6701030927
+          "OpsPerSec": 2108370.2298123552
         },
         {
           "N": 6000,
-          "NsPerOp": 407.4,
+          "NsPerOp": 390.65,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -445,11 +205,11 @@
           "Ord": 90,
           "Name": "run",
           "CPUCount": 1,
-          "OpsPerSec": 2454590.083456063
+          "OpsPerSec": 2559836.170485089
         },
         {
           "N": 7000,
-          "NsPerOp": 337.7,
+          "NsPerOp": 334.4,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -457,11 +217,11 @@
           "Ord": 108,
           "Name": "run",
           "CPUCount": 1,
-          "OpsPerSec": 2961208.1729345573
+          "OpsPerSec": 2990430.62200957
         },
         {
           "N": 8000,
-          "NsPerOp": 297.1,
+          "NsPerOp": 298.15,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -469,11 +229,11 @@
           "Ord": 126,
           "Name": "run",
           "CPUCount": 1,
-          "OpsPerSec": 3365870.0774150114
+          "OpsPerSec": 3354016.4346805303
         },
         {
           "N": 9000,
-          "NsPerOp": 256.4,
+          "NsPerOp": 269,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -481,11 +241,11 @@
           "Ord": 144,
           "Name": "run",
           "CPUCount": 1,
-          "OpsPerSec": 3900156.00624025
+          "OpsPerSec": 3717472.118959108
         },
         {
           "N": 10000,
-          "NsPerOp": 257.1,
+          "NsPerOp": 238.6,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -493,11 +253,11 @@
           "Ord": 162,
           "Name": "run",
           "CPUCount": 1,
-          "OpsPerSec": 3889537.145079735
+          "OpsPerSec": 4191114.8365465216
         },
         {
           "N": 1000,
-          "NsPerOp": 875.9,
+          "NsPerOp": 812.2,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -505,11 +265,11 @@
           "Ord": 3,
           "Name": "run",
           "CPUCount": 8,
-          "OpsPerSec": 1141682.8405069073
+          "OpsPerSec": 1231223.8364934744
         },
         {
           "N": 2000,
-          "NsPerOp": 725.5,
+          "NsPerOp": 729.2,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -517,11 +277,11 @@
           "Ord": 21,
           "Name": "run",
           "CPUCount": 8,
-          "OpsPerSec": 1378359.7518952447
+          "OpsPerSec": 1371365.880416895
         },
         {
           "N": 3000,
-          "NsPerOp": 653.4,
+          "NsPerOp": 642.45,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -529,11 +289,11 @@
           "Ord": 39,
           "Name": "run",
           "CPUCount": 8,
-          "OpsPerSec": 1530456.0759106213
+          "OpsPerSec": 1556541.3650867771
         },
         {
           "N": 4000,
-          "NsPerOp": 604.1,
+          "NsPerOp": 574.3499999999999,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -541,11 +301,11 @@
           "Ord": 57,
           "Name": "run",
           "CPUCount": 8,
-          "OpsPerSec": 1655355.0736633006
+          "OpsPerSec": 1741098.633237573
         },
         {
           "N": 5000,
-          "NsPerOp": 464.1,
+          "NsPerOp": 466.55,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -553,11 +313,11 @@
           "Ord": 75,
           "Name": "run",
           "CPUCount": 8,
-          "OpsPerSec": 2154708.0370609784
+          "OpsPerSec": 2143392.991104919
         },
         {
           "N": 6000,
-          "NsPerOp": 385.9,
+          "NsPerOp": 390.4,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -565,11 +325,11 @@
           "Ord": 93,
           "Name": "run",
           "CPUCount": 8,
-          "OpsPerSec": 2591344.9080072558
+          "OpsPerSec": 2561475.409836066
         },
         {
           "N": 7000,
-          "NsPerOp": 381.6,
+          "NsPerOp": 337.65,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -577,11 +337,11 @@
           "Ord": 111,
           "Name": "run",
           "CPUCount": 8,
-          "OpsPerSec": 2620545.073375262
+          "OpsPerSec": 2961646.675551607
         },
         {
           "N": 8000,
-          "NsPerOp": 295.4,
+          "NsPerOp": 294.15,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -589,11 +349,11 @@
           "Ord": 129,
           "Name": "run",
           "CPUCount": 8,
-          "OpsPerSec": 3385240.352064997
+          "OpsPerSec": 3399626.0411354755
         },
         {
           "N": 9000,
-          "NsPerOp": 279.1,
+          "NsPerOp": 261.95,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -601,11 +361,11 @@
           "Ord": 147,
           "Name": "run",
           "CPUCount": 8,
-          "OpsPerSec": 3582945.1809387314
+          "OpsPerSec": 3817522.4279442644
         },
         {
           "N": 10000,
-          "NsPerOp": 326.5,
+          "NsPerOp": 234.2,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -613,11 +373,251 @@
           "Ord": 165,
           "Name": "run",
           "CPUCount": 8,
-          "OpsPerSec": 3062787.136294028
+          "OpsPerSec": 4269854.824935952
         },
         {
           "N": 1000,
-          "NsPerOp": 812.4,
+          "NsPerOp": 808.1500000000001,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 4,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 1237394.0481346282
+        },
+        {
+          "N": 2000,
+          "NsPerOp": 725.55,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 22,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 1378264.7646612916
+        },
+        {
+          "N": 3000,
+          "NsPerOp": 647.05,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 40,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 1545475.6201220928
+        },
+        {
+          "N": 4000,
+          "NsPerOp": 558,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 58,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 1792114.6953405018
+        },
+        {
+          "N": 5000,
+          "NsPerOp": 466.35,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 76,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 2144312.2118580462
+        },
+        {
+          "N": 6000,
+          "NsPerOp": 399.8,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 94,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 2501250.625312656
+        },
+        {
+          "N": 7000,
+          "NsPerOp": 333.7,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 112,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 2996703.6260113874
+        },
+        {
+          "N": 8000,
+          "NsPerOp": 301.9,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 130,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 3312355.084465055
+        },
+        {
+          "N": 9000,
+          "NsPerOp": 262.29999999999995,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 148,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 3812428.5169653078
+        },
+        {
+          "N": 10000,
+          "NsPerOp": 232.39999999999998,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 166,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 4302925.989672978
+        },
+        {
+          "N": 1000,
+          "NsPerOp": 838.3,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 2,
+          "Name": "run",
+          "CPUCount": 4,
+          "OpsPerSec": 1192890.373374687
+        },
+        {
+          "N": 2000,
+          "NsPerOp": 744.35,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 20,
+          "Name": "run",
+          "CPUCount": 4,
+          "OpsPerSec": 1343454.0202861556
+        },
+        {
+          "N": 3000,
+          "NsPerOp": 641.8499999999999,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 38,
+          "Name": "run",
+          "CPUCount": 4,
+          "OpsPerSec": 1557996.416608242
+        },
+        {
+          "N": 4000,
+          "NsPerOp": 577.2,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 56,
+          "Name": "run",
+          "CPUCount": 4,
+          "OpsPerSec": 1732501.7325017324
+        },
+        {
+          "N": 5000,
+          "NsPerOp": 506.45,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 74,
+          "Name": "run",
+          "CPUCount": 4,
+          "OpsPerSec": 1974528.5813012144
+        },
+        {
+          "N": 6000,
+          "NsPerOp": 387.3,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 92,
+          "Name": "run",
+          "CPUCount": 4,
+          "OpsPerSec": 2581977.794990963
+        },
+        {
+          "N": 7000,
+          "NsPerOp": 333.7,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 110,
+          "Name": "run",
+          "CPUCount": 4,
+          "OpsPerSec": 2996703.6260113874
+        },
+        {
+          "N": 8000,
+          "NsPerOp": 292.5,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 128,
+          "Name": "run",
+          "CPUCount": 4,
+          "OpsPerSec": 3418803.418803419
+        },
+        {
+          "N": 9000,
+          "NsPerOp": 258.35,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 146,
+          "Name": "run",
+          "CPUCount": 4,
+          "OpsPerSec": 3870718.018192374
+        },
+        {
+          "N": 10000,
+          "NsPerOp": 235.5,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 164,
+          "Name": "run",
+          "CPUCount": 4,
+          "OpsPerSec": 4246284.501061571
+        },
+        {
+          "N": 1000,
+          "NsPerOp": 825.2,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -625,11 +625,11 @@
           "Ord": 5,
           "Name": "run",
           "CPUCount": 32,
-          "OpsPerSec": 1230920.7287050714
+          "OpsPerSec": 1211827.4357731459
         },
         {
           "N": 2000,
-          "NsPerOp": 737.6,
+          "NsPerOp": 733.25,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -637,11 +637,11 @@
           "Ord": 23,
           "Name": "run",
           "CPUCount": 32,
-          "OpsPerSec": 1355748.3731019523
+          "OpsPerSec": 1363791.3399249914
         },
         {
           "N": 3000,
-          "NsPerOp": 638.2,
+          "NsPerOp": 643.8,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -649,11 +649,11 @@
           "Ord": 41,
           "Name": "run",
           "CPUCount": 32,
-          "OpsPerSec": 1566906.9257286116
+          "OpsPerSec": 1553277.415346381
         },
         {
           "N": 4000,
-          "NsPerOp": 633.3,
+          "NsPerOp": 571.2,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -661,11 +661,11 @@
           "Ord": 59,
           "Name": "run",
           "CPUCount": 32,
-          "OpsPerSec": 1579030.4752881732
+          "OpsPerSec": 1750700.2801120447
         },
         {
           "N": 5000,
-          "NsPerOp": 486.7,
+          "NsPerOp": 469.65,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -673,11 +673,11 @@
           "Ord": 77,
           "Name": "run",
           "CPUCount": 32,
-          "OpsPerSec": 2054653.7908362441
+          "OpsPerSec": 2129245.1825827747
         },
         {
           "N": 6000,
-          "NsPerOp": 408.8,
+          "NsPerOp": 391.15,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -685,11 +685,11 @@
           "Ord": 95,
           "Name": "run",
           "CPUCount": 32,
-          "OpsPerSec": 2446183.953033268
+          "OpsPerSec": 2556563.97801355
         },
         {
           "N": 7000,
-          "NsPerOp": 541.2,
+          "NsPerOp": 336.4,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -697,11 +697,11 @@
           "Ord": 113,
           "Name": "run",
           "CPUCount": 32,
-          "OpsPerSec": 1847745.7501847744
+          "OpsPerSec": 2972651.605231867
         },
         {
           "N": 8000,
-          "NsPerOp": 293.6,
+          "NsPerOp": 293.54999999999995,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -709,11 +709,11 @@
           "Ord": 131,
           "Name": "run",
           "CPUCount": 32,
-          "OpsPerSec": 3405994.550408719
+          "OpsPerSec": 3406574.68915006
         },
         {
           "N": 9000,
-          "NsPerOp": 260.2,
+          "NsPerOp": 259.05,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -721,11 +721,11 @@
           "Ord": 149,
           "Name": "run",
           "CPUCount": 32,
-          "OpsPerSec": 3843197.5403535743
+          "OpsPerSec": 3860258.6373287006
         },
         {
           "N": 10000,
-          "NsPerOp": 330.5,
+          "NsPerOp": 234.5,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -733,7 +733,7 @@
           "Ord": 167,
           "Name": "run",
           "CPUCount": 32,
-          "OpsPerSec": 3025718.60816944
+          "OpsPerSec": 4264392.324093817
         }
       ]
     },
@@ -745,607 +745,7 @@
       "Variations": [
         {
           "N": 1000,
-          "NsPerOp": 2422,
-          "AllocedBytesPerOp": 16,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 14,
-          "Name": "run",
-          "CPUCount": 4,
-          "OpsPerSec": 412881.9157720892
-        },
-        {
-          "N": 2000,
-          "NsPerOp": 2417,
-          "AllocedBytesPerOp": 22,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 32,
-          "Name": "run",
-          "CPUCount": 4,
-          "OpsPerSec": 413736.0364087712
-        },
-        {
-          "N": 3000,
-          "NsPerOp": 2309,
-          "AllocedBytesPerOp": 36,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 50,
-          "Name": "run",
-          "CPUCount": 4,
-          "OpsPerSec": 433087.91684712
-        },
-        {
-          "N": 4000,
-          "NsPerOp": 2314,
-          "AllocedBytesPerOp": 17,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 68,
-          "Name": "run",
-          "CPUCount": 4,
-          "OpsPerSec": 432152.11754537595
-        },
-        {
-          "N": 5000,
-          "NsPerOp": 2303,
-          "AllocedBytesPerOp": 16,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 86,
-          "Name": "run",
-          "CPUCount": 4,
-          "OpsPerSec": 434216.2396873643
-        },
-        {
-          "N": 6000,
-          "NsPerOp": 2327,
-          "AllocedBytesPerOp": 16,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 104,
-          "Name": "run",
-          "CPUCount": 4,
-          "OpsPerSec": 429737.85990545765
-        },
-        {
-          "N": 7000,
-          "NsPerOp": 2322,
-          "AllocedBytesPerOp": 16,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 122,
-          "Name": "run",
-          "CPUCount": 4,
-          "OpsPerSec": 430663.2213608958
-        },
-        {
-          "N": 8000,
-          "NsPerOp": 2332,
-          "AllocedBytesPerOp": 16,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 140,
-          "Name": "run",
-          "CPUCount": 4,
-          "OpsPerSec": 428816.4665523156
-        },
-        {
-          "N": 9000,
-          "NsPerOp": 2310,
-          "AllocedBytesPerOp": 16,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 158,
-          "Name": "run",
-          "CPUCount": 4,
-          "OpsPerSec": 432900.4329004329
-        },
-        {
-          "N": 10000,
-          "NsPerOp": 2396,
-          "AllocedBytesPerOp": 16,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 176,
-          "Name": "run",
-          "CPUCount": 4,
-          "OpsPerSec": 417362.27045075124
-        },
-        {
-          "N": 1000,
-          "NsPerOp": 1449,
-          "AllocedBytesPerOp": 48,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 15,
-          "Name": "run",
-          "CPUCount": 8,
-          "OpsPerSec": 690131.1249137336
-        },
-        {
-          "N": 2000,
-          "NsPerOp": 1272,
-          "AllocedBytesPerOp": 37,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 33,
-          "Name": "run",
-          "CPUCount": 8,
-          "OpsPerSec": 786163.5220125787
-        },
-        {
-          "N": 3000,
-          "NsPerOp": 1270,
-          "AllocedBytesPerOp": 22,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 51,
-          "Name": "run",
-          "CPUCount": 8,
-          "OpsPerSec": 787401.5748031496
-        },
-        {
-          "N": 4000,
-          "NsPerOp": 1185,
-          "AllocedBytesPerOp": 16,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 69,
-          "Name": "run",
-          "CPUCount": 8,
-          "OpsPerSec": 843881.8565400844
-        },
-        {
-          "N": 5000,
-          "NsPerOp": 1204,
-          "AllocedBytesPerOp": 18,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 87,
-          "Name": "run",
-          "CPUCount": 8,
-          "OpsPerSec": 830564.7840531562
-        },
-        {
-          "N": 6000,
-          "NsPerOp": 1176,
-          "AllocedBytesPerOp": 16,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 105,
-          "Name": "run",
-          "CPUCount": 8,
-          "OpsPerSec": 850340.1360544218
-        },
-        {
-          "N": 7000,
-          "NsPerOp": 1183,
-          "AllocedBytesPerOp": 16,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 123,
-          "Name": "run",
-          "CPUCount": 8,
-          "OpsPerSec": 845308.53761623
-        },
-        {
-          "N": 8000,
-          "NsPerOp": 1168,
-          "AllocedBytesPerOp": 16,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 141,
-          "Name": "run",
-          "CPUCount": 8,
-          "OpsPerSec": 856164.3835616439
-        },
-        {
-          "N": 9000,
-          "NsPerOp": 1173,
-          "AllocedBytesPerOp": 16,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 159,
-          "Name": "run",
-          "CPUCount": 8,
-          "OpsPerSec": 852514.9190110827
-        },
-        {
-          "N": 10000,
-          "NsPerOp": 1239,
-          "AllocedBytesPerOp": 16,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 177,
-          "Name": "run",
-          "CPUCount": 8,
-          "OpsPerSec": 807102.5020177562
-        },
-        {
-          "N": 1000,
-          "NsPerOp": 4598,
-          "AllocedBytesPerOp": 35,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 13,
-          "Name": "run",
-          "CPUCount": 2,
-          "OpsPerSec": 217485.86341887777
-        },
-        {
-          "N": 2000,
-          "NsPerOp": 4600,
-          "AllocedBytesPerOp": 20,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 31,
-          "Name": "run",
-          "CPUCount": 2,
-          "OpsPerSec": 217391.30434782608
-        },
-        {
-          "N": 3000,
-          "NsPerOp": 4591,
-          "AllocedBytesPerOp": 16,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 49,
-          "Name": "run",
-          "CPUCount": 2,
-          "OpsPerSec": 217817.4689610107
-        },
-        {
-          "N": 4000,
-          "NsPerOp": 4621,
-          "AllocedBytesPerOp": 16,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 67,
-          "Name": "run",
-          "CPUCount": 2,
-          "OpsPerSec": 216403.37589266393
-        },
-        {
-          "N": 5000,
-          "NsPerOp": 4593,
-          "AllocedBytesPerOp": 16,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 85,
-          "Name": "run",
-          "CPUCount": 2,
-          "OpsPerSec": 217722.6213803614
-        },
-        {
-          "N": 6000,
-          "NsPerOp": 4676,
-          "AllocedBytesPerOp": 16,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 103,
-          "Name": "run",
-          "CPUCount": 2,
-          "OpsPerSec": 213857.998289136
-        },
-        {
-          "N": 7000,
-          "NsPerOp": 4728,
-          "AllocedBytesPerOp": 16,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 121,
-          "Name": "run",
-          "CPUCount": 2,
-          "OpsPerSec": 211505.92216582064
-        },
-        {
-          "N": 8000,
-          "NsPerOp": 4605,
-          "AllocedBytesPerOp": 16,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 139,
-          "Name": "run",
-          "CPUCount": 2,
-          "OpsPerSec": 217155.26601520088
-        },
-        {
-          "N": 9000,
-          "NsPerOp": 4646,
-          "AllocedBytesPerOp": 16,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 157,
-          "Name": "run",
-          "CPUCount": 2,
-          "OpsPerSec": 215238.91519586742
-        },
-        {
-          "N": 10000,
-          "NsPerOp": 4650,
-          "AllocedBytesPerOp": 16,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 175,
-          "Name": "run",
-          "CPUCount": 2,
-          "OpsPerSec": 215053.7634408602
-        },
-        {
-          "N": 1000,
-          "NsPerOp": 1045,
-          "AllocedBytesPerOp": 76,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 17,
-          "Name": "run",
-          "CPUCount": 32,
-          "OpsPerSec": 956937.7990430621
-        },
-        {
-          "N": 2000,
-          "NsPerOp": 804.9,
-          "AllocedBytesPerOp": 113,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 35,
-          "Name": "run",
-          "CPUCount": 32,
-          "OpsPerSec": 1242390.3590508138
-        },
-        {
-          "N": 3000,
-          "NsPerOp": 873.1,
-          "AllocedBytesPerOp": 61,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 53,
-          "Name": "run",
-          "CPUCount": 32,
-          "OpsPerSec": 1145344.1759248653
-        },
-        {
-          "N": 4000,
-          "NsPerOp": 621.5,
-          "AllocedBytesPerOp": 64,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 71,
-          "Name": "run",
-          "CPUCount": 32,
-          "OpsPerSec": 1609010.4585679807
-        },
-        {
-          "N": 5000,
-          "NsPerOp": 570.1,
-          "AllocedBytesPerOp": 32,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 89,
-          "Name": "run",
-          "CPUCount": 32,
-          "OpsPerSec": 1754078.2318891422
-        },
-        {
-          "N": 6000,
-          "NsPerOp": 554.8,
-          "AllocedBytesPerOp": 29,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 107,
-          "Name": "run",
-          "CPUCount": 32,
-          "OpsPerSec": 1802451.3338139872
-        },
-        {
-          "N": 7000,
-          "NsPerOp": 534.3,
-          "AllocedBytesPerOp": 27,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 125,
-          "Name": "run",
-          "CPUCount": 32,
-          "OpsPerSec": 1871607.7110237696
-        },
-        {
-          "N": 8000,
-          "NsPerOp": 514.5,
-          "AllocedBytesPerOp": 26,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 143,
-          "Name": "run",
-          "CPUCount": 32,
-          "OpsPerSec": 1943634.5966958213
-        },
-        {
-          "N": 9000,
-          "NsPerOp": 516.4,
-          "AllocedBytesPerOp": 25,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 161,
-          "Name": "run",
-          "CPUCount": 32,
-          "OpsPerSec": 1936483.3462432225
-        },
-        {
-          "N": 10000,
-          "NsPerOp": 487.4,
-          "AllocedBytesPerOp": 24,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 179,
-          "Name": "run",
-          "CPUCount": 32,
-          "OpsPerSec": 2051702.9134181372
-        },
-        {
-          "N": 1000,
-          "NsPerOp": 1207,
-          "AllocedBytesPerOp": 143,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 16,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 828500.4142502071
-        },
-        {
-          "N": 2000,
-          "NsPerOp": 872.4,
-          "AllocedBytesPerOp": 60,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 34,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 1146263.1820265932
-        },
-        {
-          "N": 3000,
-          "NsPerOp": 828.3,
-          "AllocedBytesPerOp": 38,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 52,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 1207292.0439454305
-        },
-        {
-          "N": 4000,
-          "NsPerOp": 772.5,
-          "AllocedBytesPerOp": 26,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 70,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 1294498.3818770226
-        },
-        {
-          "N": 5000,
-          "NsPerOp": 719.4,
-          "AllocedBytesPerOp": 23,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 88,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 1390047.2616068947
-        },
-        {
-          "N": 6000,
-          "NsPerOp": 739.6,
-          "AllocedBytesPerOp": 23,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 106,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 1352082.206598161
-        },
-        {
-          "N": 7000,
-          "NsPerOp": 687.6,
-          "AllocedBytesPerOp": 20,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 124,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 1454333.9150668993
-        },
-        {
-          "N": 8000,
-          "NsPerOp": 671.1,
-          "AllocedBytesPerOp": 19,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 142,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 1490090.8955446281
-        },
-        {
-          "N": 9000,
-          "NsPerOp": 669.7,
-          "AllocedBytesPerOp": 20,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 160,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 1493205.9130954158
-        },
-        {
-          "N": 10000,
-          "NsPerOp": 699.6,
-          "AllocedBytesPerOp": 19,
-          "AllocsPerOp": 1,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 178,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 1429388.221841052
-        },
-        {
-          "N": 1000,
-          "NsPerOp": 9743,
+          "NsPerOp": 9477.5,
           "AllocedBytesPerOp": 492,
           "AllocsPerOp": 2,
           "MBPerS": 0,
@@ -1353,11 +753,11 @@
           "Ord": 12,
           "Name": "run",
           "CPUCount": 1,
-          "OpsPerSec": 102637.79123473263
+          "OpsPerSec": 105513.05724083356
         },
         {
           "N": 2000,
-          "NsPerOp": 9744,
+          "NsPerOp": 9481.5,
           "AllocedBytesPerOp": 487,
           "AllocsPerOp": 2,
           "MBPerS": 0,
@@ -1365,11 +765,11 @@
           "Ord": 30,
           "Name": "run",
           "CPUCount": 1,
-          "OpsPerSec": 102627.2577996716
+          "OpsPerSec": 105468.54400674999
         },
         {
           "N": 3000,
-          "NsPerOp": 9574,
+          "NsPerOp": 9548.5,
           "AllocedBytesPerOp": 487,
           "AllocsPerOp": 2,
           "MBPerS": 0,
@@ -1377,11 +777,11 @@
           "Ord": 48,
           "Name": "run",
           "CPUCount": 1,
-          "OpsPerSec": 104449.55086693127
+          "OpsPerSec": 104728.49138608159
         },
         {
           "N": 4000,
-          "NsPerOp": 9590,
+          "NsPerOp": 9582,
           "AllocedBytesPerOp": 490,
           "AllocsPerOp": 2,
           "MBPerS": 0,
@@ -1389,11 +789,11 @@
           "Ord": 66,
           "Name": "run",
           "CPUCount": 1,
-          "OpsPerSec": 104275.28675703859
+          "OpsPerSec": 104362.34606553955
         },
         {
           "N": 5000,
-          "NsPerOp": 9597,
+          "NsPerOp": 9528,
           "AllocedBytesPerOp": 494,
           "AllocsPerOp": 2,
           "MBPerS": 0,
@@ -1401,11 +801,11 @@
           "Ord": 84,
           "Name": "run",
           "CPUCount": 1,
-          "OpsPerSec": 104199.22892570595
+          "OpsPerSec": 104953.82031905961
         },
         {
           "N": 6000,
-          "NsPerOp": 9727,
+          "NsPerOp": 9650,
           "AllocedBytesPerOp": 489,
           "AllocsPerOp": 2,
           "MBPerS": 0,
@@ -1413,11 +813,11 @@
           "Ord": 102,
           "Name": "run",
           "CPUCount": 1,
-          "OpsPerSec": 102806.62074637607
+          "OpsPerSec": 103626.94300518135
         },
         {
           "N": 7000,
-          "NsPerOp": 9631,
+          "NsPerOp": 9546.5,
           "AllocedBytesPerOp": 495,
           "AllocsPerOp": 2,
           "MBPerS": 0,
@@ -1425,11 +825,11 @@
           "Ord": 120,
           "Name": "run",
           "CPUCount": 1,
-          "OpsPerSec": 103831.37784238397
+          "OpsPerSec": 104750.4320955324
         },
         {
           "N": 8000,
-          "NsPerOp": 9861,
+          "NsPerOp": 9820.5,
           "AllocedBytesPerOp": 491,
           "AllocsPerOp": 2,
           "MBPerS": 0,
@@ -1437,11 +837,11 @@
           "Ord": 138,
           "Name": "run",
           "CPUCount": 1,
-          "OpsPerSec": 101409.59334753068
+          "OpsPerSec": 101827.80917468561
         },
         {
           "N": 9000,
-          "NsPerOp": 10360,
+          "NsPerOp": 9760.5,
           "AllocedBytesPerOp": 498,
           "AllocsPerOp": 2,
           "MBPerS": 0,
@@ -1449,11 +849,11 @@
           "Ord": 156,
           "Name": "run",
           "CPUCount": 1,
-          "OpsPerSec": 96525.09652509652
+          "OpsPerSec": 102453.76773730855
         },
         {
           "N": 10000,
-          "NsPerOp": 9775,
+          "NsPerOp": 9707,
           "AllocedBytesPerOp": 494,
           "AllocsPerOp": 2,
           "MBPerS": 0,
@@ -1461,7 +861,607 @@
           "Ord": 174,
           "Name": "run",
           "CPUCount": 1,
-          "OpsPerSec": 102301.79028132993
+          "OpsPerSec": 103018.44030081385
+        },
+        {
+          "N": 1000,
+          "NsPerOp": 1385,
+          "AllocedBytesPerOp": 72,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 15,
+          "Name": "run",
+          "CPUCount": 8,
+          "OpsPerSec": 722021.6606498195
+        },
+        {
+          "N": 2000,
+          "NsPerOp": 1304.5,
+          "AllocedBytesPerOp": 28,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 33,
+          "Name": "run",
+          "CPUCount": 8,
+          "OpsPerSec": 766577.23265619
+        },
+        {
+          "N": 3000,
+          "NsPerOp": 1235,
+          "AllocedBytesPerOp": 34,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 51,
+          "Name": "run",
+          "CPUCount": 8,
+          "OpsPerSec": 809716.5991902835
+        },
+        {
+          "N": 4000,
+          "NsPerOp": 1236,
+          "AllocedBytesPerOp": 19,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 69,
+          "Name": "run",
+          "CPUCount": 8,
+          "OpsPerSec": 809061.4886731391
+        },
+        {
+          "N": 5000,
+          "NsPerOp": 1193.5,
+          "AllocedBytesPerOp": 17,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 87,
+          "Name": "run",
+          "CPUCount": 8,
+          "OpsPerSec": 837871.805613741
+        },
+        {
+          "N": 6000,
+          "NsPerOp": 1187.5,
+          "AllocedBytesPerOp": 16,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 105,
+          "Name": "run",
+          "CPUCount": 8,
+          "OpsPerSec": 842105.2631578947
+        },
+        {
+          "N": 7000,
+          "NsPerOp": 1182,
+          "AllocedBytesPerOp": 16,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 123,
+          "Name": "run",
+          "CPUCount": 8,
+          "OpsPerSec": 846023.6886632825
+        },
+        {
+          "N": 8000,
+          "NsPerOp": 1179.5,
+          "AllocedBytesPerOp": 16,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 141,
+          "Name": "run",
+          "CPUCount": 8,
+          "OpsPerSec": 847816.871555744
+        },
+        {
+          "N": 9000,
+          "NsPerOp": 1181,
+          "AllocedBytesPerOp": 16,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 159,
+          "Name": "run",
+          "CPUCount": 8,
+          "OpsPerSec": 846740.050804403
+        },
+        {
+          "N": 10000,
+          "NsPerOp": 1175.5,
+          "AllocedBytesPerOp": 16,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 177,
+          "Name": "run",
+          "CPUCount": 8,
+          "OpsPerSec": 850701.8290089323
+        },
+        {
+          "N": 1000,
+          "NsPerOp": 1199.5,
+          "AllocedBytesPerOp": 126,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 16,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 833680.7002917882
+        },
+        {
+          "N": 2000,
+          "NsPerOp": 922.45,
+          "AllocedBytesPerOp": 67,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 34,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 1084069.5972681446
+        },
+        {
+          "N": 3000,
+          "NsPerOp": 823.2,
+          "AllocedBytesPerOp": 32,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 52,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 1214771.6229348881
+        },
+        {
+          "N": 4000,
+          "NsPerOp": 765.55,
+          "AllocedBytesPerOp": 26,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 70,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 1306250.4082032526
+        },
+        {
+          "N": 5000,
+          "NsPerOp": 734.7,
+          "AllocedBytesPerOp": 24,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 88,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 1361099.7686130393
+        },
+        {
+          "N": 6000,
+          "NsPerOp": 729.5,
+          "AllocedBytesPerOp": 22,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 106,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 1370801.9191226868
+        },
+        {
+          "N": 7000,
+          "NsPerOp": 701.8499999999999,
+          "AllocedBytesPerOp": 21,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 124,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 1424805.8702001853
+        },
+        {
+          "N": 8000,
+          "NsPerOp": 686.9,
+          "AllocedBytesPerOp": 19,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 142,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 1455815.9848595138
+        },
+        {
+          "N": 9000,
+          "NsPerOp": 694.9000000000001,
+          "AllocedBytesPerOp": 19,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 160,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 1439055.9792775938
+        },
+        {
+          "N": 10000,
+          "NsPerOp": 670.8,
+          "AllocedBytesPerOp": 19,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 178,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 1490757.304710793
+        },
+        {
+          "N": 1000,
+          "NsPerOp": 4602.5,
+          "AllocedBytesPerOp": 30,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 13,
+          "Name": "run",
+          "CPUCount": 2,
+          "OpsPerSec": 217273.22107550246
+        },
+        {
+          "N": 2000,
+          "NsPerOp": 4581,
+          "AllocedBytesPerOp": 20,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 31,
+          "Name": "run",
+          "CPUCount": 2,
+          "OpsPerSec": 218292.94913774286
+        },
+        {
+          "N": 3000,
+          "NsPerOp": 4626,
+          "AllocedBytesPerOp": 16,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 49,
+          "Name": "run",
+          "CPUCount": 2,
+          "OpsPerSec": 216169.47686986596
+        },
+        {
+          "N": 4000,
+          "NsPerOp": 4585.5,
+          "AllocedBytesPerOp": 16,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 67,
+          "Name": "run",
+          "CPUCount": 2,
+          "OpsPerSec": 218078.7264202377
+        },
+        {
+          "N": 5000,
+          "NsPerOp": 4577.5,
+          "AllocedBytesPerOp": 16,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 85,
+          "Name": "run",
+          "CPUCount": 2,
+          "OpsPerSec": 218459.8580010923
+        },
+        {
+          "N": 6000,
+          "NsPerOp": 4603.5,
+          "AllocedBytesPerOp": 16,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 103,
+          "Name": "run",
+          "CPUCount": 2,
+          "OpsPerSec": 217226.02367763658
+        },
+        {
+          "N": 7000,
+          "NsPerOp": 4706,
+          "AllocedBytesPerOp": 16,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 121,
+          "Name": "run",
+          "CPUCount": 2,
+          "OpsPerSec": 212494.6876328092
+        },
+        {
+          "N": 8000,
+          "NsPerOp": 4607,
+          "AllocedBytesPerOp": 16,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 139,
+          "Name": "run",
+          "CPUCount": 2,
+          "OpsPerSec": 217060.99413935316
+        },
+        {
+          "N": 9000,
+          "NsPerOp": 4609.5,
+          "AllocedBytesPerOp": 16,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 157,
+          "Name": "run",
+          "CPUCount": 2,
+          "OpsPerSec": 216943.26933506888
+        },
+        {
+          "N": 10000,
+          "NsPerOp": 4618.5,
+          "AllocedBytesPerOp": 16,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 175,
+          "Name": "run",
+          "CPUCount": 2,
+          "OpsPerSec": 216520.51531882645
+        },
+        {
+          "N": 1000,
+          "NsPerOp": 2332,
+          "AllocedBytesPerOp": 25,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 14,
+          "Name": "run",
+          "CPUCount": 4,
+          "OpsPerSec": 428816.4665523156
+        },
+        {
+          "N": 2000,
+          "NsPerOp": 2336,
+          "AllocedBytesPerOp": 20,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 32,
+          "Name": "run",
+          "CPUCount": 4,
+          "OpsPerSec": 428082.19178082194
+        },
+        {
+          "N": 3000,
+          "NsPerOp": 2307,
+          "AllocedBytesPerOp": 18,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 50,
+          "Name": "run",
+          "CPUCount": 4,
+          "OpsPerSec": 433463.3723450368
+        },
+        {
+          "N": 4000,
+          "NsPerOp": 2300,
+          "AllocedBytesPerOp": 16,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 68,
+          "Name": "run",
+          "CPUCount": 4,
+          "OpsPerSec": 434782.60869565216
+        },
+        {
+          "N": 5000,
+          "NsPerOp": 2327.5,
+          "AllocedBytesPerOp": 16,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 86,
+          "Name": "run",
+          "CPUCount": 4,
+          "OpsPerSec": 429645.54242749733
+        },
+        {
+          "N": 6000,
+          "NsPerOp": 2321.5,
+          "AllocedBytesPerOp": 16,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 104,
+          "Name": "run",
+          "CPUCount": 4,
+          "OpsPerSec": 430755.97673917725
+        },
+        {
+          "N": 7000,
+          "NsPerOp": 2311,
+          "AllocedBytesPerOp": 16,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 122,
+          "Name": "run",
+          "CPUCount": 4,
+          "OpsPerSec": 432713.1112072696
+        },
+        {
+          "N": 8000,
+          "NsPerOp": 2313.5,
+          "AllocedBytesPerOp": 16,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 140,
+          "Name": "run",
+          "CPUCount": 4,
+          "OpsPerSec": 432245.51545277715
+        },
+        {
+          "N": 9000,
+          "NsPerOp": 2320.5,
+          "AllocedBytesPerOp": 16,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 158,
+          "Name": "run",
+          "CPUCount": 4,
+          "OpsPerSec": 430941.60741219565
+        },
+        {
+          "N": 10000,
+          "NsPerOp": 2346,
+          "AllocedBytesPerOp": 16,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 176,
+          "Name": "run",
+          "CPUCount": 4,
+          "OpsPerSec": 426257.45950554137
+        },
+        {
+          "N": 1000,
+          "NsPerOp": 1027.2,
+          "AllocedBytesPerOp": 96,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 17,
+          "Name": "run",
+          "CPUCount": 32,
+          "OpsPerSec": 973520.2492211837
+        },
+        {
+          "N": 2000,
+          "NsPerOp": 744.05,
+          "AllocedBytesPerOp": 112,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 35,
+          "Name": "run",
+          "CPUCount": 32,
+          "OpsPerSec": 1343995.6992137625
+        },
+        {
+          "N": 3000,
+          "NsPerOp": 683.35,
+          "AllocedBytesPerOp": 73,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 53,
+          "Name": "run",
+          "CPUCount": 32,
+          "OpsPerSec": 1463378.941977025
+        },
+        {
+          "N": 4000,
+          "NsPerOp": 615.3,
+          "AllocedBytesPerOp": 43,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 71,
+          "Name": "run",
+          "CPUCount": 32,
+          "OpsPerSec": 1625223.4682268812
+        },
+        {
+          "N": 5000,
+          "NsPerOp": 568.6500000000001,
+          "AllocedBytesPerOp": 32,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 89,
+          "Name": "run",
+          "CPUCount": 32,
+          "OpsPerSec": 1758550.9540138922
+        },
+        {
+          "N": 6000,
+          "NsPerOp": 551.1500000000001,
+          "AllocedBytesPerOp": 29,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 107,
+          "Name": "run",
+          "CPUCount": 32,
+          "OpsPerSec": 1814388.0976140792
+        },
+        {
+          "N": 7000,
+          "NsPerOp": 531.45,
+          "AllocedBytesPerOp": 27,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 125,
+          "Name": "run",
+          "CPUCount": 32,
+          "OpsPerSec": 1881644.5573431177
+        },
+        {
+          "N": 8000,
+          "NsPerOp": 512.55,
+          "AllocedBytesPerOp": 26,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 143,
+          "Name": "run",
+          "CPUCount": 32,
+          "OpsPerSec": 1951029.16788606
+        },
+        {
+          "N": 9000,
+          "NsPerOp": 506.3,
+          "AllocedBytesPerOp": 25,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 161,
+          "Name": "run",
+          "CPUCount": 32,
+          "OpsPerSec": 1975113.5690302192
+        },
+        {
+          "N": 10000,
+          "NsPerOp": 493.20000000000005,
+          "AllocedBytesPerOp": 24,
+          "AllocsPerOp": 1,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 179,
+          "Name": "run",
+          "CPUCount": 32,
+          "OpsPerSec": 2027575.02027575
         }
       ]
     },
@@ -1473,367 +1473,7 @@
       "Variations": [
         {
           "N": 1000,
-          "NsPerOp": 98.9,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 6,
-          "Name": "run",
-          "CPUCount": 1,
-          "OpsPerSec": 10111223.458038421
-        },
-        {
-          "N": 2000,
-          "NsPerOp": 195.5,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 24,
-          "Name": "run",
-          "CPUCount": 1,
-          "OpsPerSec": 5115089.514066496
-        },
-        {
-          "N": 3000,
-          "NsPerOp": 276.3,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 42,
-          "Name": "run",
-          "CPUCount": 1,
-          "OpsPerSec": 3619254.433586681
-        },
-        {
-          "N": 4000,
-          "NsPerOp": 376.1,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 60,
-          "Name": "run",
-          "CPUCount": 1,
-          "OpsPerSec": 2658867.322520606
-        },
-        {
-          "N": 5000,
-          "NsPerOp": 454.8,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 78,
-          "Name": "run",
-          "CPUCount": 1,
-          "OpsPerSec": 2198768.689533861
-        },
-        {
-          "N": 6000,
-          "NsPerOp": 556.6,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 96,
-          "Name": "run",
-          "CPUCount": 1,
-          "OpsPerSec": 1796622.3499820337
-        },
-        {
-          "N": 7000,
-          "NsPerOp": 724.3,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 114,
-          "Name": "run",
-          "CPUCount": 1,
-          "OpsPerSec": 1380643.3798149938
-        },
-        {
-          "N": 8000,
-          "NsPerOp": 753,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 132,
-          "Name": "run",
-          "CPUCount": 1,
-          "OpsPerSec": 1328021.2483399734
-        },
-        {
-          "N": 9000,
-          "NsPerOp": 825.7,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 150,
-          "Name": "run",
-          "CPUCount": 1,
-          "OpsPerSec": 1211093.6175366356
-        },
-        {
-          "N": 10000,
-          "NsPerOp": 1010,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 168,
-          "Name": "run",
-          "CPUCount": 1,
-          "OpsPerSec": 990099.0099009901
-        },
-        {
-          "N": 1000,
-          "NsPerOp": 99.09,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 9,
-          "Name": "run",
-          "CPUCount": 8,
-          "OpsPerSec": 10091835.704914724
-        },
-        {
-          "N": 2000,
-          "NsPerOp": 188.1,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 27,
-          "Name": "run",
-          "CPUCount": 8,
-          "OpsPerSec": 5316321.10579479
-        },
-        {
-          "N": 3000,
-          "NsPerOp": 275.9,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 45,
-          "Name": "run",
-          "CPUCount": 8,
-          "OpsPerSec": 3624501.6310257344
-        },
-        {
-          "N": 4000,
-          "NsPerOp": 361.6,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 63,
-          "Name": "run",
-          "CPUCount": 8,
-          "OpsPerSec": 2765486.7256637164
-        },
-        {
-          "N": 5000,
-          "NsPerOp": 457.2,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 81,
-          "Name": "run",
-          "CPUCount": 8,
-          "OpsPerSec": 2187226.5966754155
-        },
-        {
-          "N": 6000,
-          "NsPerOp": 546.3,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 99,
-          "Name": "run",
-          "CPUCount": 8,
-          "OpsPerSec": 1830496.0644334615
-        },
-        {
-          "N": 7000,
-          "NsPerOp": 699.3,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 117,
-          "Name": "run",
-          "CPUCount": 8,
-          "OpsPerSec": 1430001.43000143
-        },
-        {
-          "N": 8000,
-          "NsPerOp": 747.2,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 135,
-          "Name": "run",
-          "CPUCount": 8,
-          "OpsPerSec": 1338329.7644539613
-        },
-        {
-          "N": 9000,
-          "NsPerOp": 833.8,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 153,
-          "Name": "run",
-          "CPUCount": 8,
-          "OpsPerSec": 1199328.3761093789
-        },
-        {
-          "N": 10000,
-          "NsPerOp": 896.8,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 171,
-          "Name": "run",
-          "CPUCount": 8,
-          "OpsPerSec": 1115075.8251561106
-        },
-        {
-          "N": 1000,
-          "NsPerOp": 99.01,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 10,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 10099989.9000101
-        },
-        {
-          "N": 2000,
-          "NsPerOp": 210.2,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 28,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 4757373.929590866
-        },
-        {
-          "N": 3000,
-          "NsPerOp": 276.3,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 46,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 3619254.433586681
-        },
-        {
-          "N": 4000,
-          "NsPerOp": 373.8,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 64,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 2675227.394328518
-        },
-        {
-          "N": 5000,
-          "NsPerOp": 458.7,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 82,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 2180074.1225201655
-        },
-        {
-          "N": 6000,
-          "NsPerOp": 559.8,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 100,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 1786352.2686673813
-        },
-        {
-          "N": 7000,
-          "NsPerOp": 644.1,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 118,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 1552553.951249806
-        },
-        {
-          "N": 8000,
-          "NsPerOp": 726.6,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 136,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 1376273.0525736306
-        },
-        {
-          "N": 9000,
-          "NsPerOp": 837.5,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 154,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 1194029.8507462686
-        },
-        {
-          "N": 10000,
-          "NsPerOp": 899.9,
-          "AllocedBytesPerOp": 0,
-          "AllocsPerOp": 0,
-          "MBPerS": 0,
-          "Measured": 13,
-          "Ord": 172,
-          "Name": "run",
-          "CPUCount": 16,
-          "OpsPerSec": 1111234.58162018
-        },
-        {
-          "N": 1000,
-          "NsPerOp": 98.98,
+          "NsPerOp": 98.38499999999999,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -1841,11 +1481,11 @@
           "Ord": 8,
           "Name": "run",
           "CPUCount": 4,
-          "OpsPerSec": 10103051.121438675
+          "OpsPerSec": 10164151.039284445
         },
         {
           "N": 2000,
-          "NsPerOp": 187.1,
+          "NsPerOp": 186.35000000000002,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -1853,11 +1493,11 @@
           "Ord": 26,
           "Name": "run",
           "CPUCount": 4,
-          "OpsPerSec": 5344735.435595938
+          "OpsPerSec": 5366246.310705661
         },
         {
           "N": 3000,
-          "NsPerOp": 279.8,
+          "NsPerOp": 276.3,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -1865,11 +1505,11 @@
           "Ord": 44,
           "Name": "run",
           "CPUCount": 4,
-          "OpsPerSec": 3573981.4152966402
+          "OpsPerSec": 3619254.433586681
         },
         {
           "N": 4000,
-          "NsPerOp": 373.5,
+          "NsPerOp": 365.8,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -1877,11 +1517,11 @@
           "Ord": 62,
           "Name": "run",
           "CPUCount": 4,
-          "OpsPerSec": 2677376.171352075
+          "OpsPerSec": 2733734.281027884
         },
         {
           "N": 5000,
-          "NsPerOp": 468.9,
+          "NsPerOp": 458.04999999999995,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -1889,11 +1529,11 @@
           "Ord": 80,
           "Name": "run",
           "CPUCount": 4,
-          "OpsPerSec": 2132650.8850501175
+          "OpsPerSec": 2183167.7764436197
         },
         {
           "N": 6000,
-          "NsPerOp": 543.6,
+          "NsPerOp": 544.9000000000001,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -1901,11 +1541,11 @@
           "Ord": 98,
           "Name": "run",
           "CPUCount": 4,
-          "OpsPerSec": 1839587.932303164
+          "OpsPerSec": 1835199.1191044226
         },
         {
           "N": 7000,
-          "NsPerOp": 704.9,
+          "NsPerOp": 634.45,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -1913,11 +1553,11 @@
           "Ord": 116,
           "Name": "run",
           "CPUCount": 4,
-          "OpsPerSec": 1418640.9419775854
+          "OpsPerSec": 1576168.3347781543
         },
         {
           "N": 8000,
-          "NsPerOp": 753.8,
+          "NsPerOp": 723.45,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -1925,11 +1565,11 @@
           "Ord": 134,
           "Name": "run",
           "CPUCount": 4,
-          "OpsPerSec": 1326611.8333775538
+          "OpsPerSec": 1382265.5332089292
         },
         {
           "N": 9000,
-          "NsPerOp": 824.3,
+          "NsPerOp": 814.75,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -1937,11 +1577,11 @@
           "Ord": 152,
           "Name": "run",
           "CPUCount": 4,
-          "OpsPerSec": 1213150.5519835013
+          "OpsPerSec": 1227370.35900583
         },
         {
           "N": 10000,
-          "NsPerOp": 899.3,
+          "NsPerOp": 908.85,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -1949,11 +1589,251 @@
           "Ord": 170,
           "Name": "run",
           "CPUCount": 4,
-          "OpsPerSec": 1111975.9813188035
+          "OpsPerSec": 1100291.577267976
         },
         {
           "N": 1000,
-          "NsPerOp": 99.22,
+          "NsPerOp": 98.285,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 9,
+          "Name": "run",
+          "CPUCount": 8,
+          "OpsPerSec": 10174492.54718421
+        },
+        {
+          "N": 2000,
+          "NsPerOp": 186.7,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 27,
+          "Name": "run",
+          "CPUCount": 8,
+          "OpsPerSec": 5356186.395286556
+        },
+        {
+          "N": 3000,
+          "NsPerOp": 275.35,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 45,
+          "Name": "run",
+          "CPUCount": 8,
+          "OpsPerSec": 3631741.420010895
+        },
+        {
+          "N": 4000,
+          "NsPerOp": 367.25,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 63,
+          "Name": "run",
+          "CPUCount": 8,
+          "OpsPerSec": 2722940.776038121
+        },
+        {
+          "N": 5000,
+          "NsPerOp": 456.5,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 81,
+          "Name": "run",
+          "CPUCount": 8,
+          "OpsPerSec": 2190580.503833516
+        },
+        {
+          "N": 6000,
+          "NsPerOp": 546.55,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 99,
+          "Name": "run",
+          "CPUCount": 8,
+          "OpsPerSec": 1829658.7686396488
+        },
+        {
+          "N": 7000,
+          "NsPerOp": 634.05,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 117,
+          "Name": "run",
+          "CPUCount": 8,
+          "OpsPerSec": 1577162.6843308888
+        },
+        {
+          "N": 8000,
+          "NsPerOp": 726.3,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 135,
+          "Name": "run",
+          "CPUCount": 8,
+          "OpsPerSec": 1376841.5255404103
+        },
+        {
+          "N": 9000,
+          "NsPerOp": 811,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 153,
+          "Name": "run",
+          "CPUCount": 8,
+          "OpsPerSec": 1233045.6226880394
+        },
+        {
+          "N": 10000,
+          "NsPerOp": 899.2,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 171,
+          "Name": "run",
+          "CPUCount": 8,
+          "OpsPerSec": 1112099.6441281138
+        },
+        {
+          "N": 1000,
+          "NsPerOp": 98.58000000000001,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 6,
+          "Name": "run",
+          "CPUCount": 1,
+          "OpsPerSec": 10144045.445323594
+        },
+        {
+          "N": 2000,
+          "NsPerOp": 186.3,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 24,
+          "Name": "run",
+          "CPUCount": 1,
+          "OpsPerSec": 5367686.527106817
+        },
+        {
+          "N": 3000,
+          "NsPerOp": 274.04999999999995,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 42,
+          "Name": "run",
+          "CPUCount": 1,
+          "OpsPerSec": 3648969.166210546
+        },
+        {
+          "N": 4000,
+          "NsPerOp": 365.45000000000005,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 60,
+          "Name": "run",
+          "CPUCount": 1,
+          "OpsPerSec": 2736352.4421945545
+        },
+        {
+          "N": 5000,
+          "NsPerOp": 458.15,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 78,
+          "Name": "run",
+          "CPUCount": 1,
+          "OpsPerSec": 2182691.2583215106
+        },
+        {
+          "N": 6000,
+          "NsPerOp": 545.2,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 96,
+          "Name": "run",
+          "CPUCount": 1,
+          "OpsPerSec": 1834189.288334556
+        },
+        {
+          "N": 7000,
+          "NsPerOp": 635.45,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 114,
+          "Name": "run",
+          "CPUCount": 1,
+          "OpsPerSec": 1573687.9376819576
+        },
+        {
+          "N": 8000,
+          "NsPerOp": 725.5,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 132,
+          "Name": "run",
+          "CPUCount": 1,
+          "OpsPerSec": 1378359.7518952447
+        },
+        {
+          "N": 9000,
+          "NsPerOp": 810.3499999999999,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 150,
+          "Name": "run",
+          "CPUCount": 1,
+          "OpsPerSec": 1234034.6763744063
+        },
+        {
+          "N": 10000,
+          "NsPerOp": 904.6,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 168,
+          "Name": "run",
+          "CPUCount": 1,
+          "OpsPerSec": 1105460.977227504
+        },
+        {
+          "N": 1000,
+          "NsPerOp": 98.38,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -1961,11 +1841,11 @@
           "Ord": 7,
           "Name": "run",
           "CPUCount": 2,
-          "OpsPerSec": 10078613.182826044
+          "OpsPerSec": 10164667.615368977
         },
         {
           "N": 2000,
-          "NsPerOp": 186.9,
+          "NsPerOp": 186.14999999999998,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -1973,11 +1853,11 @@
           "Ord": 25,
           "Name": "run",
           "CPUCount": 2,
-          "OpsPerSec": 5350454.788657036
+          "OpsPerSec": 5372011.818426001
         },
         {
           "N": 3000,
-          "NsPerOp": 282,
+          "NsPerOp": 274.55,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -1985,11 +1865,11 @@
           "Ord": 43,
           "Name": "run",
           "CPUCount": 2,
-          "OpsPerSec": 3546099.290780142
+          "OpsPerSec": 3642323.80258605
         },
         {
           "N": 4000,
-          "NsPerOp": 367.5,
+          "NsPerOp": 365.75,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -1997,11 +1877,11 @@
           "Ord": 61,
           "Name": "run",
           "CPUCount": 2,
-          "OpsPerSec": 2721088.4353741496
+          "OpsPerSec": 2734107.997265892
         },
         {
           "N": 5000,
-          "NsPerOp": 474.3,
+          "NsPerOp": 460.55,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -2009,11 +1889,11 @@
           "Ord": 79,
           "Name": "run",
           "CPUCount": 2,
-          "OpsPerSec": 2108370.229812355
+          "OpsPerSec": 2171316.903702095
         },
         {
           "N": 6000,
-          "NsPerOp": 553.6,
+          "NsPerOp": 547.5,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -2021,11 +1901,11 @@
           "Ord": 97,
           "Name": "run",
           "CPUCount": 2,
-          "OpsPerSec": 1806358.38150289
+          "OpsPerSec": 1826484.0182648401
         },
         {
           "N": 7000,
-          "NsPerOp": 720.7,
+          "NsPerOp": 636.2,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -2033,11 +1913,11 @@
           "Ord": 115,
           "Name": "run",
           "CPUCount": 2,
-          "OpsPerSec": 1387539.8917718884
+          "OpsPerSec": 1571832.7569946556
         },
         {
           "N": 8000,
-          "NsPerOp": 745,
+          "NsPerOp": 724.8,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -2045,11 +1925,11 @@
           "Ord": 133,
           "Name": "run",
           "CPUCount": 2,
-          "OpsPerSec": 1342281.8791946308
+          "OpsPerSec": 1379690.949227373
         },
         {
           "N": 9000,
-          "NsPerOp": 821.7,
+          "NsPerOp": 812.9000000000001,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -2057,11 +1937,11 @@
           "Ord": 151,
           "Name": "run",
           "CPUCount": 2,
-          "OpsPerSec": 1216989.1687963977
+          "OpsPerSec": 1230163.611760364
         },
         {
           "N": 10000,
-          "NsPerOp": 964.5,
+          "NsPerOp": 900.35,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -2069,11 +1949,11 @@
           "Ord": 169,
           "Name": "run",
           "CPUCount": 2,
-          "OpsPerSec": 1036806.6355624676
+          "OpsPerSec": 1110679.1803187649
         },
         {
           "N": 1000,
-          "NsPerOp": 100.7,
+          "NsPerOp": 98.405,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -2081,11 +1961,11 @@
           "Ord": 11,
           "Name": "run",
           "CPUCount": 32,
-          "OpsPerSec": 9930486.593843099
+          "OpsPerSec": 10162085.25989533
         },
         {
           "N": 2000,
-          "NsPerOp": 192,
+          "NsPerOp": 186.4,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -2093,11 +1973,11 @@
           "Ord": 29,
           "Name": "run",
           "CPUCount": 32,
-          "OpsPerSec": 5208333.333333333
+          "OpsPerSec": 5364806.86695279
         },
         {
           "N": 3000,
-          "NsPerOp": 278.6,
+          "NsPerOp": 274.5,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
@@ -2105,7 +1985,127 @@
           "Ord": 47,
           "Name": "run",
           "CPUCount": 32,
-          "OpsPerSec": 3589375.448671931
+          "OpsPerSec": 3642987.2495446266
+        },
+        {
+          "N": 4000,
+          "NsPerOp": 364.5,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 65,
+          "Name": "run",
+          "CPUCount": 32,
+          "OpsPerSec": 2743484.2249657065
+        },
+        {
+          "N": 5000,
+          "NsPerOp": 455.8,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 83,
+          "Name": "run",
+          "CPUCount": 32,
+          "OpsPerSec": 2193944.7125932425
+        },
+        {
+          "N": 6000,
+          "NsPerOp": 543.65,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 101,
+          "Name": "run",
+          "CPUCount": 32,
+          "OpsPerSec": 1839418.7436769982
+        },
+        {
+          "N": 7000,
+          "NsPerOp": 633.8,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 119,
+          "Name": "run",
+          "CPUCount": 32,
+          "OpsPerSec": 1577784.790154623
+        },
+        {
+          "N": 8000,
+          "NsPerOp": 721.3,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 137,
+          "Name": "run",
+          "CPUCount": 32,
+          "OpsPerSec": 1386385.6924996534
+        },
+        {
+          "N": 9000,
+          "NsPerOp": 814.75,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 155,
+          "Name": "run",
+          "CPUCount": 32,
+          "OpsPerSec": 1227370.35900583
+        },
+        {
+          "N": 10000,
+          "NsPerOp": 898.2,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 173,
+          "Name": "run",
+          "CPUCount": 32,
+          "OpsPerSec": 1113337.78668448
+        },
+        {
+          "N": 1000,
+          "NsPerOp": 98.995,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 10,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 10101520.278801959
+        },
+        {
+          "N": 2000,
+          "NsPerOp": 186.55,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 28,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 5360493.165371214
+        },
+        {
+          "N": 3000,
+          "NsPerOp": 274.65,
+          "AllocedBytesPerOp": 0,
+          "AllocsPerOp": 0,
+          "MBPerS": 0,
+          "Measured": 13,
+          "Ord": 46,
+          "Name": "run",
+          "CPUCount": 16,
+          "OpsPerSec": 3640997.633351539
         },
         {
           "N": 4000,
@@ -2114,82 +2114,82 @@
           "AllocsPerOp": 0,
           "MBPerS": 0,
           "Measured": 13,
-          "Ord": 65,
+          "Ord": 64,
           "Name": "run",
-          "CPUCount": 32,
+          "CPUCount": 16,
           "OpsPerSec": 2703433.360367667
         },
         {
           "N": 5000,
-          "NsPerOp": 459.9,
+          "NsPerOp": 460.4,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
           "Measured": 13,
-          "Ord": 83,
+          "Ord": 82,
           "Name": "run",
-          "CPUCount": 32,
-          "OpsPerSec": 2174385.736029572
+          "CPUCount": 16,
+          "OpsPerSec": 2172024.326672459
         },
         {
           "N": 6000,
-          "NsPerOp": 555.3,
+          "NsPerOp": 544.05,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
           "Measured": 13,
-          "Ord": 101,
+          "Ord": 100,
           "Name": "run",
-          "CPUCount": 32,
-          "OpsPerSec": 1800828.3810552857
+          "CPUCount": 16,
+          "OpsPerSec": 1838066.3541953866
         },
         {
           "N": 7000,
-          "NsPerOp": 637,
+          "NsPerOp": 633.05,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
           "Measured": 13,
-          "Ord": 119,
+          "Ord": 118,
           "Name": "run",
-          "CPUCount": 32,
-          "OpsPerSec": 1569858.7127158556
+          "CPUCount": 16,
+          "OpsPerSec": 1579654.0557617883
         },
         {
           "N": 8000,
-          "NsPerOp": 729.2,
+          "NsPerOp": 724.9,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
           "Measured": 13,
-          "Ord": 137,
+          "Ord": 136,
           "Name": "run",
-          "CPUCount": 32,
-          "OpsPerSec": 1371365.880416895
+          "CPUCount": 16,
+          "OpsPerSec": 1379500.6207752794
         },
         {
           "N": 9000,
-          "NsPerOp": 826.3,
+          "NsPerOp": 813.8,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
           "Measured": 13,
-          "Ord": 155,
+          "Ord": 154,
           "Name": "run",
-          "CPUCount": 32,
-          "OpsPerSec": 1210214.207914801
+          "CPUCount": 16,
+          "OpsPerSec": 1228803.1457360531
         },
         {
           "N": 10000,
-          "NsPerOp": 898.8,
+          "NsPerOp": 904.1,
           "AllocedBytesPerOp": 0,
           "AllocsPerOp": 0,
           "MBPerS": 0,
           "Measured": 13,
-          "Ord": 173,
+          "Ord": 172,
           "Name": "run",
-          "CPUCount": 32,
-          "OpsPerSec": 1112594.570538496
+          "CPUCount": 16,
+          "OpsPerSec": 1106072.3371308483
         }
       ]
     }

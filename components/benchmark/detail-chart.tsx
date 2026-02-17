@@ -86,9 +86,19 @@ function StandardDetailChart({
     [benchmark, variationName, metricCfg.field],
   );
 
+  // Check if every metric value is zero (e.g. 0 allocs).
+  const allZero = useMemo(
+    () =>
+      rawData.every((point) =>
+        Object.entries(point).every(([key, val]) => key === "N" || val === 0),
+      ),
+    [rawData],
+  );
+
   // Log scale can't handle zero values (log(0) = -Infinity breaks the chart).
+  // When all values are zero, keep the original data and fall back to linear.
   const data = useMemo(() => {
-    if (scale !== "log") return rawData;
+    if (scale !== "log" || allZero) return rawData;
     return rawData.map((point) => {
       const cleaned: Record<string, number | undefined> = { N: point.N };
       for (const key of Object.keys(point)) {
@@ -97,7 +107,7 @@ function StandardDetailChart({
       }
       return cleaned;
     });
-  }, [rawData, scale]);
+  }, [rawData, scale, allZero]);
   const cpuCounts = useMemo(() => {
     const variations = variationName
       ? benchmark.Variations.filter((v) => v.Name === variationName)
@@ -158,9 +168,15 @@ function StandardDetailChart({
             }}
           />
           <YAxis
-            scale={scale}
-            domain={scale === "log" ? ["auto", "auto"] : undefined}
-            allowDataOverflow={scale === "log"}
+            scale={scale === "log" && allZero ? "linear" : scale}
+            domain={
+              scale === "log" && allZero
+                ? [0, 1]
+                : scale === "log"
+                  ? ["auto", "auto"]
+                  : undefined
+            }
+            allowDataOverflow={scale === "log" && !allZero}
             tickFormatter={metricCfg.format}
             label={{
               value: yLabel,
@@ -237,9 +253,19 @@ function CombinedDetailChart({
     [benchmark, cpuCount, metricCfg.field],
   );
 
+  // Check if every metric value is zero (e.g. 0 allocs).
+  const allZero = useMemo(
+    () =>
+      rawData.every((point) =>
+        Object.entries(point).every(([key, val]) => key === "N" || val === 0),
+      ),
+    [rawData],
+  );
+
   // Log scale can't handle zero values (log(0) = -Infinity breaks the chart).
+  // When all values are zero, keep the original data and fall back to linear.
   const data = useMemo(() => {
-    if (scale !== "log") return rawData;
+    if (scale !== "log" || allZero) return rawData;
     return rawData.map((point) => {
       const cleaned: Record<string, number | undefined> = { N: point.N };
       for (const key of Object.keys(point)) {
@@ -248,7 +274,7 @@ function CombinedDetailChart({
       }
       return cleaned;
     });
-  }, [rawData, scale]);
+  }, [rawData, scale, allZero]);
 
   const chartConfig = useMemo(() => {
     const config: ChartConfig = {};
@@ -320,9 +346,15 @@ function CombinedDetailChart({
             }}
           />
           <YAxis
-            scale={scale}
-            domain={scale === "log" ? ["auto", "auto"] : undefined}
-            allowDataOverflow={scale === "log"}
+            scale={scale === "log" && allZero ? "linear" : scale}
+            domain={
+              scale === "log" && allZero
+                ? [0, 1]
+                : scale === "log"
+                  ? ["auto", "auto"]
+                  : undefined
+            }
+            allowDataOverflow={scale === "log" && !allZero}
             tickFormatter={metricCfg.format}
             label={{
               value: yLabel,

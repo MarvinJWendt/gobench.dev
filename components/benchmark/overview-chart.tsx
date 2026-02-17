@@ -80,10 +80,20 @@ export function OverviewChart({ benchmarks }: OverviewChartProps) {
     [displayBenchmarks, cpuCount, metricCfg.field],
   );
 
+  // Check if every metric value is zero (e.g. 0 allocs).
+  const allZero = useMemo(
+    () =>
+      rawData.every((point) =>
+        Object.entries(point).every(([key, val]) => key === "N" || val === 0),
+      ),
+    [rawData],
+  );
+
   // Log scale can't handle zero values (log(0) = -Infinity breaks the chart).
   // Replace zeros with undefined so the line skips those points.
+  // When all values are zero, keep the original data and fall back to linear.
   const data = useMemo(() => {
-    if (scale !== "log") return rawData;
+    if (scale !== "log" || allZero) return rawData;
     return rawData.map((point) => {
       const cleaned: Record<string, number | undefined> = { N: point.N };
       for (const key of Object.keys(point)) {
@@ -92,7 +102,7 @@ export function OverviewChart({ benchmarks }: OverviewChartProps) {
       }
       return cleaned;
     });
-  }, [rawData, scale]);
+  }, [rawData, scale, allZero]);
 
   const chartConfig = useMemo(() => {
     const config: ChartConfig = {};
@@ -156,9 +166,15 @@ export function OverviewChart({ benchmarks }: OverviewChartProps) {
             label={{ value: "Iterations (N)", position: "insideBottom", offset: -2, style: { fill: "var(--color-muted-foreground)", fontSize: 12 } }}
           />
           <YAxis
-            scale={scale}
-            domain={scale === "log" ? ["auto", "auto"] : undefined}
-            allowDataOverflow={scale === "log"}
+            scale={scale === "log" && allZero ? "linear" : scale}
+            domain={
+              scale === "log" && allZero
+                ? [0, 1]
+                : scale === "log"
+                  ? ["auto", "auto"]
+                  : undefined
+            }
+            allowDataOverflow={scale === "log" && !allZero}
             tickFormatter={metricCfg.format}
             label={{ value: yLabel, angle: -90, position: "insideLeft", offset: 5, style: { fill: "var(--color-muted-foreground)", fontSize: 12 } }}
           />

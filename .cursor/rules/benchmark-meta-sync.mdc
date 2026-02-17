@@ -1,0 +1,16 @@
+---
+description: Remind to check _meta.yml when modifying Go benchmark test files
+globs: benchmarks/**/*_test.go
+alwaysApply: false
+---
+
+# Keep _meta.yml in sync with benchmark tests
+
+When modifying a `*_test.go` file inside `benchmarks/`, always check the `_meta.yml` in the same directory and update it if needed.
+
+## What to check
+
+- **Renamed/added/removed benchmark functions**: Each `Benchmark*` function should have a matching `implementation` entry under `meta:` in `_meta.yml`.
+- **Changed behaviour or approach**: Update the `description` for the affected implementation(s).
+- **Package or directory rename**: Update the top-level `name` and `headline` fields.
+- **New imports or techniques**: Update `tags` if the benchmark now covers different topics.
